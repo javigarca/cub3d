@@ -6,7 +6,7 @@
 #    By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/17 14:24:44 by xamayuel          #+#    #+#              #
-#    Updated: 2024/02/17 14:44:38 by xamayuel         ###   ########.fr        #
+#    Updated: 2024/02/17 20:40:08 by xamayuel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -37,7 +37,10 @@ LIGHT_PINK      =   \033[38;5;200m
 BLUE			= 	\033[38;5;39m
 DARK_BLUE		=   \033[38;5;57m
 # -----------------SRC
-SRC =	$(SRC_DIR)/main.c
+SRC =	$(SRC_DIR)/main.c \
+		$(SRC_DIR)/arguments_checks.c \
+		$(SRC_DIR)/map_checks.c\
+		$(SRC_DIR)/file_utils.c
 OBJ = $(patsubst $(SRC_DIR)%.c, $(OBJ_DIR)%.o, $(SRC))
 
 CC = gcc

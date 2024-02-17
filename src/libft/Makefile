@@ -6,7 +6,7 @@
 #    By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/06 09:14:35 by xamayuel          #+#    #+#              #
-#    Updated: 2024/02/17 14:37:21 by xamayuel         ###   ########.fr        #
+#    Updated: 2024/02/17 23:53:04 by xamayuel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -58,7 +58,7 @@ SRC += /ft_lstnew.c /ft_lstadd_front.c /ft_lstsize.c
 SRC += /ft_lstlast.c /ft_lstadd_back.c /ft_lstdelone.c
 SRC += /ft_lstclear.c /ft_lstiter.c /ft_lstmap.c
 SRC += /ft_2d_array_count.c /ft_2d_array_free.c 
-SRC += /ft_strncmp_nocase.c /ft_charlcat.c
+SRC += /ft_strncmp_nocase.c /ft_charlcat.c /ft_isspace.c
 OBJ = $(patsubst %.c, $(OBJ_DIR)%.o, $(SRC))
 CC = gcc
 HEAD = -I ../../includes 

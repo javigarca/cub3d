@@ -1,35 +1,22 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_builtin_export_aux.c                            :+:      :+:    :+:   */
+/*   ft_isspace.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2022/05/31 16:40:26 by xamayuel          #+#    #+#             */
-/*   Updated: 2022/05/31 16:44:11 by xamayuel         ###   ########.fr       */
+/*   Created: 2024/02/17 23:52:36 by xamayuel          #+#    #+#             */
+/*   Updated: 2024/02/17 23:52:39 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "executer.h"
+#include "libft.h"
 
-void	sort_env_list(t_env *lst)
+int		ft_isspace(int c)
 {
-	char			*text_temp;
-	t_env			*tmp;
-
-	tmp = lst;
-	while (lst->next != NULL)
-	{
-		if (ft_strncmp(lst->line, lst->next->line, MAXPROMPT) > 0)
-		{
-			text_temp = ft_strdup(lst->line);
-			free(lst->line);
-			lst->line = lst->next->line;
-			lst->next->line = text_temp;
-			lst = tmp;
-		}
-		else
-			lst = lst->next;
-	}
-	lst = tmp;
+	c = (unsigned char)c;
+	if (c == '\t' || c == '\n' || c == '\v' || c == '\f' || c == '\r'
+		|| c == ' ')
+		return (1);
+	return (0);
 }

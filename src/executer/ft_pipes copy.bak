@@ -1,0 +1,149 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   ft_pipes.c                                         :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: javi <marvin@42.fr>                        +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2024/01/27 19:18:09 by javi              #+#    #+#             */
+/*   Updated: 2024/02/09 01:12:04 by javi             ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "executer.h"
+#define READ_END    0    /* index pipe extremo escritura */
+#define WRITE_END   1    /* index pipe extremo lectura */
+// Function Prototypes
+static int	pipes2_child(int fd1[2], t_cmd *cmd, t_minishell *shell);
+static void	setup_child_pipe(t_pipes *pipcell, int fd[2], int *fdd);
+static int	handle_pipe_stage(t_pipes *my_pipe, t_minishell *shell, int fdd);
+
+// Function to handle two commands connected by a pipe
+int	pipes2(t_pipes *my_pipe, t_minishell *shell)
+{
+	int	fd1[2];
+	int	child_status;
+
+	if (pipe(fd1) == -1)
+	{
+		perror("pipe");
+		return (-1);
+	}
+	g_struct.g_pid = fork();
+	if (g_struct.g_pid < 0)
+	{
+		perror("fork");
+		return (-1);
+	}
+	if (g_struct.g_pid == 0)
+		return (pipes2_child(fd1, my_pipe->cmd, shell));
+	else
+	{
+		close(fd1[WRITE_END]);
+		g_struct.g_pid = fork();
+		if (g_struct.g_pid < 0)
+		{
+			perror("fork");
+			return (-1);
+		}
+		if (g_struct.g_pid == 0)
+		{
+			dup2(fd1[READ_END], STDIN_FILENO);
+			close(fd1[READ_END]);
+			ft_mini_cmd_job(my_pipe->next->cmd, shell);
+			exit(0);
+		}
+		else
+			close(fd1[READ_END]);
+	}
+	wait(&child_status);
+	wait(&child_status);
+	return (0);
+}
+
+// Function for the child process in pipes2
+static int	pipes2_child(int fd1[2], t_cmd *cmd, t_minishell *shell)
+{
+	close(fd1[READ_END]);
+	dup2(fd1[WRITE_END], STDOUT_FILENO);
+	close(fd1[WRITE_END]);
+	ft_mini_cmd_job(cmd, shell);
+	return (0);
+}
+
+// Function to set up child process pipe
+static void	setup_child_pipe(t_pipes *pipcell, int fd[2], int *fdd)
+{
+	close(fd[READ_END]);
+	dup2(*fdd, STDIN_FILENO);
+	close(*fdd);
+	if (pipcell->next)
+	{
+		dup2(fd[WRITE_END], STDOUT_FILENO);
+		close(fd[WRITE_END]);
+	}
+}
+
+void	pipes3(t_pipes *pipes, t_minishell *shell, int status)
+{
+	int	fdd;
+
+	fdd = dup(STDIN_FILENO);
+	g_struct.g_pid = fork();
+	if (g_struct.g_pid < 0)
+	{
+		perror("fork");
+		return ;
+	}
+	if (g_struct.g_pid == 0)
+	{
+		while (pipes->next != NULL)
+		{
+			fdd = handle_pipe_stage(pipes, shell, fdd);
+			pipes = pipes->next;
+		}
+		dup2(fdd, STDIN_FILENO);
+		close(fdd);
+		ft_mini_cmd_job(pipes->cmd, shell);
+		exit(0);
+	}
+	else
+	{
+		waitpid(g_struct.g_pid, &status, 0);
+		if (WIFEXITED(status))
+			status = WEXITSTATUS(status);
+		else
+			status = 1;
+	}
+}
+
+// Function to handle individual pipe stage
+int	handle_pipe_stage(t_pipes *my_pipe, t_minishell *shell, int fdd)
+{
+	int	fd[2];
+
+	if (pipe(fd) == -1)
+	{
+		perror("pipe");
+		return (-1);
+	}
+	g_struct.g_pid = fork();
+	if (g_struct.g_pid < 0)
+	{
+		perror("fork");
+		close(fd[READ_END]);
+		close(fd[WRITE_END]);
+		close(fdd);
+		return (-1);
+	}
+	if (g_struct.g_pid == 0)
+	{
+		setup_child_pipe(my_pipe, fd, &fdd);
+		ft_mini_cmd_job(my_pipe->cmd, shell);
+		_exit(0);
+	}
+	wait(NULL);
+	close(fdd);
+	close(fd[WRITE_END]);
+	return (fd[READ_END]);
+}

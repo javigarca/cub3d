@@ -1,0 +1,62 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   expansion_cmd.bak                                  :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2022/04/03 21:04:35 by xamayuel          #+#    #+#             */
+/*   Updated: 2024/02/14 21:08:59 by xamayuel         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
+#include "expanser.h"
+
+/**
+ * DESCRIPTION : Function to make expansion in cmd list. It calls args and redir
+ * 				 expansions.
+ * 
+ * @param lst: cmd list 
+ * @param env: enviroment matrix
+ */
+void	ft_expansion_cmd(t_cmd *lst, t_env *env)
+{
+	t_cmd	*tmp;
+	t_args  *tmp2;
+	int i=0;
+	
+	if (lst)
+	{
+		tmp = lst;
+		if (tmp->command != NULL)
+		{
+			tmp->command = ft_expand_quotes_dollar(tmp->command, env);
+			if (ft_strlen(tmp->command)>0)
+			{
+				expansion_cmd_bin(tmp, env);
+				expansion_args(tmp->args, env);
+			}
+			else
+			{
+				tmp2 = tmp->args;
+				while (tmp2->next != NULL)
+				{
+					i++;
+					tmp2 = tmp2->next;
+				}
+				if (i >0)
+				{
+					printf("esto cambia");
+					ft_strlcpy(tmp->command, tmp->args->next->value,ft_strlen( tmp->args->next->value)+1);
+					tmp->args->next = tmp->args->next->next;
+					expansion_cmd_bin(tmp, env);
+					expansion_args(tmp->args, env);
+				}
+				
+			}
+		
+		}
+		expansion_redir(tmp->redirections, env);
+		expansion_args(tmp->args, env);
+	}
+}

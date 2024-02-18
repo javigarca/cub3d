@@ -1,26 +1,21 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   ft_show_error.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/02/17 13:45:06 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/18 11:48:19 by xamayuel         ###   ########.fr       */
+/*   Created: 2024/02/18 11:27:35 by xamayuel          #+#    #+#             */
+/*   Updated: 2024/02/18 11:31:45 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-int	main(int argn, char *argv[])
+int ft_show_error(const char *error_text)
 {
-	if (argn != 2)
-		printf(KRED"Error\n"KWHT"CUBE3D:\
-				Incorrect number of arguments."KNRM"\n");
-	else if (ft_is_valid_input_file(argv) == TRUE)
-	{
-		printf(KGRN"\nLoading map.....\n"KNRM);
-		ft_is_valid_map(argv[1]);
-	}
-	exit(0);
+	printf(KRED"Error\n");
+	printf(KWHT"CUBE3D:");
+	printf("%s \n", error_text);
+	return (FALSE);
 }

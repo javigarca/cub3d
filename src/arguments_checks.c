@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 15:56:17 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/17 22:36:11 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/18 11:48:07 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@
  *
  * @return `TRUE` if arguments are valid, `FALSE` otherwise.
  */
-int	ft_is_valid_arguments(char *arguments[])
+int	ft_is_valid_input_file(char *arguments[])
 {
 	if (ft_is_valid_file_extension(arguments[1], ".cub") == FALSE)
 		return (FALSE);

@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 12:15:28 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/18 13:25:40 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/18 13:42:11 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,11 +16,11 @@ int ft_line_has_only_6(const char *str) {
   while (*str) {
     if (*str != '0' && *str != 'N' && *str != 'S' && *str != 'W' && *str != 'E' &&*str != '1' && *str != ' '&& *str != '\n')
 	{
-      return FALSE; // Caracter encontrado
+      return FALSE;
     }
     str++;
   }
-  return TRUE; // No se encontraron caracteres
+  return TRUE;
 }
 int ft_line_has_only_1(const char *str) {
   while (*str) {

@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 11:10:49 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/18 12:18:13 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/18 13:40:24 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,9 @@ int	ft_is_valid_map_line(int position, const char *line, int nlines)
 		return (ft_show_error("Invalid first map line.\n"));
 	return (TRUE);
 }
+
+
+
 int	ft_is_valid_line(int position, const char *line, int n_lines)
 {
 	if (position == 1 && ft_is_valid_texture_line("NO", line) == FALSE)
@@ -40,8 +43,6 @@ int	ft_is_valid_line(int position, const char *line, int n_lines)
 		return (FALSE);
 	if (position > 6 && ft_is_valid_map_line(position,line, n_lines) == FALSE)
 		return (FALSE);
-	(void)n_lines;
-	//printf("%d %s %d\n", position, line, n_lines);
 	return (TRUE);
 }
 

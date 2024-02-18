@@ -6,13 +6,13 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 16:06:34 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/18 11:36:50 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/18 13:46:36 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-static int	ft_check_files(const char *filename, int nlines);
+static int	ft_check_lines(const char *filename, int nlines);
 
 /**
  * Checks if a given file contains a valid map representation.
@@ -31,11 +31,25 @@ int	ft_is_valid_map(const char *filename)
 	nlines = ft_count_files(filename);
 	if (nlines < 9)
 		return (ft_show_error("Less than 9 lines in file"));
-	if (ft_check_files(filename, nlines) == FALSE)
+	if (ft_check_lines(filename, nlines) == FALSE)
 		return (FALSE);
 	return (TRUE);
 }
 
+int	ft_count_directions(const char *line,char caracter)
+{
+	int contador = 0;
+  	int i = 0;
+
+	while (line[i] != '\0') {
+	if (line[i] == caracter) {
+	  contador++;
+	}
+	i++;
+	}
+
+  return contador;
+}
 /**
  * Checks the individual lines of a file to ensure they meet map requirements.
  *
@@ -50,15 +64,17 @@ int	ft_is_valid_map(const char *filename)
  *      - Returns FALSE and closes the file if an invalid line is encountered.
  *  - Returns TRUE if all lines are valid.
  */
-static int	ft_check_files(const char *filename, int nlines)
+static int	ft_check_lines(const char *filename, int nlines)
 {
 	char	*line;
 	int		fd;
 	int		pos;
+	int		count;
 
 	fd = open(filename, O_RDONLY);
 	pos = 1;
 	line = get_next_line(fd);
+	count = 0;
 	while (line != NULL)
 	{
 		if (ft_line_all_spaces(line) == FALSE)
@@ -69,10 +85,20 @@ static int	ft_check_files(const char *filename, int nlines)
 				free(line);
 				return (FALSE);
 			}
+			if (pos >6)
+			{
+				count += ft_count_directions(line,'N');
+				count += ft_count_directions(line,'S');
+				count += ft_count_directions(line,'W');
+				count += ft_count_directions(line,'E');
+			}
+				
 		}
 		line = get_next_line(fd);
 	}
 	close(fd);
 	free(line);
+	if (count > 1)
+		return (ft_show_error("Too many spawn points."));
 	return (TRUE);
 }

@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 20:39:09 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/17 23:57:22 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/18 14:23:34 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,17 +65,16 @@ int	ft_is_valid_file_extension(const char *filename, const char *extension)
 	return (FALSE);
 }
 
-char *ft_str_remove_newline(char *str)
+char	*ft_str_remove_newline(char *str)
 {
-  char *ptr;
-  
-  ptr = ft_strrchr(str, '\n');
-
-  if (ptr != NULL) {
-    *ptr = '\0';
-  }
-
-  return str;
+	char *ptr;
+	
+	ptr = ft_strrchr(str, '\n');
+	if (ptr != NULL)
+	{
+		*ptr = '\0';
+	}
+	return str;
 }
 
 int ft_line_all_spaces(const char *line)

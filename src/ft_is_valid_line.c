@@ -6,27 +6,34 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 11:10:49 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/18 13:40:24 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/18 14:20:41 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-int ft_is_color_argument(char *argument);
-
-int	ft_is_valid_map_line(int position, const char *line, int nlines)
-{
-	if (position == 7 && ft_is_valid_first_map_line(line) == FALSE)
-		return (ft_show_error("Invalid first map line.\n"));
-	if (position >7 && position < nlines && ft_is_valid_inter_map_line(line) == FALSE)
-		return (ft_show_error("Invalid first map line.\n"));
-	if (position == nlines && ft_is_valid_last_map_line(line) == FALSE)
-		return (ft_show_error("Invalid first map line.\n"));
-	return (TRUE);
-}
-
-
-
+/**
+ * @brief Validates a line within a configuration file based
+ *        on its position and content.
+ *
+ * This function determines if a specific line in a configuration file
+ * is valid for its designated position. Validation criteria vary depending on
+ * the line's position, using other helper functions for specific checks:
+ *
+ * - Positions 1-4: Expected to be texture specifications.
+ * - Positions 5-6: Expected to be color specifications.
+ * - Positions > 6: Assumed to be part of the map data.
+ *
+ * If all checks pass, the function returns `TRUE`. 
+ * Otherwise, it returns `FALSE` 
+ *
+ * @param position The integer representing the line's position.
+ * @param line Pointer to a null-terminated character string 
+ *             containing the line to be validated.
+ * @param n_lines The total number of lines in the configuration file.
+ *
+ * @return `TRUE` if the line is valid for its position, `FALSE` otherwise.
+ */
 int	ft_is_valid_line(int position, const char *line, int n_lines)
 {
 	if (position == 1 && ft_is_valid_texture_line("NO", line) == FALSE)
@@ -43,60 +50,5 @@ int	ft_is_valid_line(int position, const char *line, int n_lines)
 		return (FALSE);
 	if (position > 6 && ft_is_valid_map_line(position,line, n_lines) == FALSE)
 		return (FALSE);
-	return (TRUE);
-}
-
-int ft_is_color_line(const char *type, const char *line)
-{
-	char **data;
-
-	data = ft_split(line,' ');
-	if (ft_2d_array_size(data) != 2)
-	{
-		printf(KRED"ERROR\n"KWHT"CUBE3D: To many arguments in line\n");
-		free(data);
-		return (FALSE);
-	}
-	if (ft_strncmp(data[0],type,1) != 0 || ft_strlen(data[0])!=1)
-	{
-		printf(KRED"ERROR\n"KWHT"CUBE3D: Error in color line\n");
-		free(data);
-		return (FALSE);	
-	}
-	if (ft_is_color_argument(data[1]) == FALSE)
-	{
-		printf(KRED"ERROR\n"KWHT"CUBE3D: Error in color line\n");
-		free(data);
-		return (FALSE);	
-
-	}
-
-	free(data);
-	return (TRUE);
-}
-
-int ft_is_color_argument(char *argument)
-{
-	char **data;
-	int  i;
-
-	data = ft_split(argument, ',');
-	if (ft_2d_array_size(data) != 3)
-	{
-		printf(KRED"ERROR\n"KWHT"CUBE3D: Not RGB data\n");
-		free(data);
-		return (FALSE);
-	}
-	i = 0;
-	while (i < 3)
-	{
-		if (ft_atoi(data[i]) < 0 || ft_atoi(data[i++]) > 255)
-		{
-			printf(KRED"ERROR\n"KWHT"CUBE3D: Not RGB data\n");
-			free(data);
-			return (FALSE);
-		}
-	}
-	free(data);
 	return (TRUE);
 }

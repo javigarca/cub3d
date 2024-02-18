@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 12:15:28 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/18 14:33:14 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/18 15:02:01 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,9 @@ int	ft_is_valid_map_line(int position, const char *line, int nlines)
 		return (ft_show_error("Invalid first map line.\n"));
 	if (position > 7 && position < nlines && \
 						ft_is_valid_inter_map_line(line) == FALSE)
-		return (ft_show_error("Invalid first map line.\n"));
+		return (ft_show_error("Invalid inter map line.\n"));
 	if (position == nlines && ft_is_valid_last_map_line(line) == FALSE)
-		return (ft_show_error("Invalid first map line.\n"));
+		return (ft_show_error("Invalid last map line.\n"));
 	return (TRUE);
 }
 
@@ -80,6 +80,7 @@ int	ft_is_valid_last_map_line(const char *line)
 	char	*map_line;
 
 	map_line = ft_strtrim(line, " ");
+	printf("%s\n", map_line);
 	if (ft_line_has_only_1(map_line) == FALSE)
 		return (ft_show_error("Incorrect last line."));
 	free(map_line);

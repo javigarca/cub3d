@@ -6,13 +6,14 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 16:06:34 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/18 13:46:36 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/18 14:57:02 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
 static int	ft_check_lines(const char *filename, int nlines);
+static int	ft_count_directions(const char *line, char caracter);
 
 /**
  * Checks if a given file contains a valid map representation.
@@ -36,20 +37,6 @@ int	ft_is_valid_map(const char *filename)
 	return (TRUE);
 }
 
-int	ft_count_directions(const char *line,char caracter)
-{
-	int contador = 0;
-  	int i = 0;
-
-	while (line[i] != '\0') {
-	if (line[i] == caracter) {
-	  contador++;
-	}
-	i++;
-	}
-
-  return contador;
-}
 /**
  * Checks the individual lines of a file to ensure they meet map requirements.
  *
@@ -85,14 +72,13 @@ static int	ft_check_lines(const char *filename, int nlines)
 				free(line);
 				return (FALSE);
 			}
-			if (pos >6)
+			if (pos > 6)
 			{
-				count += ft_count_directions(line,'N');
-				count += ft_count_directions(line,'S');
-				count += ft_count_directions(line,'W');
-				count += ft_count_directions(line,'E');
+				count += ft_count_directions(line, 'N');
+				count += ft_count_directions(line, 'S');
+				count += ft_count_directions(line, 'W');
+				count += ft_count_directions(line, 'E');
 			}
-				
 		}
 		line = get_next_line(fd);
 	}
@@ -101,4 +87,21 @@ static int	ft_check_lines(const char *filename, int nlines)
 	if (count > 1)
 		return (ft_show_error("Too many spawn points."));
 	return (TRUE);
+}
+
+static int	ft_count_directions(const char *line, char caracter)
+{
+	int	contador;
+	int	i;
+
+	i = 0;
+	contador = 0;
+	while (line[i] != '\0')
+	{
+		if (line[i++] == caracter)
+		{
+			contador++;
+		}
+	}
+	return (contador);
 }

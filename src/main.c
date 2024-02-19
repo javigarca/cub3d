@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 13:45:06 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/19 13:38:50 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/19 15:48:43 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,7 +52,29 @@ t_data* init_data()
 	data->t_ea.texture_path = ft_strdup("textures/barrel.xpm");
 	return (data);
 }
+void ft_print(t_data data)
+{
+	int map_lines;
+	int cont;
 
+	cont = 0;
+	printf("IMPRIMENDO T_DATA\n");
+	printf("TEXTURES\n");
+	printf("NO: %s", data.t_no.texture_path);
+	printf("SO: %s", data.t_so.texture_path);
+	printf("WE: %s", data.t_we.texture_path);
+	printf("EA: %s", data.t_ea.texture_path);
+	printf("------------------------------\n");
+	printf("FLOOR: %d,%d,%d\n", data.c_floor.r,data.c_floor.g,data.c_floor.b);
+	printf("CEILING: %d,%d,%d\n", data.c_celing.r,data.c_celing.g,data.c_celing.b);
+	printf("------------------------------\n");
+	map_lines = ft_2d_array_size(data.map2d);
+	while (cont < map_lines)
+	{
+		printf("%s", data.map2d[cont++]);
+	}
+	printf("\n");
+}
 int	main(int argn, char *argv[])
 {
 	t_data	*game;
@@ -69,7 +91,8 @@ int	main(int argn, char *argv[])
 			//game = init_data();
 			
 			game = ft_parse_map(argv[1]);
-			printf("%d",ft_check_closed_map(game));
+			ft_print(*game);
+			//printf("%d",ft_check_closed_map(game));
 			//printf("%d\n", game->c_celing.b);
 			
 			//printf("%s\n", game->t_no.texture_path);

@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2021/10/21 18:01:35 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/15 16:53:46 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/19 12:27:35 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define LIBFT_H
 # include <stdlib.h>
 # include <unistd.h>
-# include "get_next_line.h"
+
 # define TRUE 1
 # define FALSE 0
 
@@ -86,4 +86,5 @@ size_t	ft_charlcat(char *str, char char_new, size_t size);
 int		ft_error_w(int status, int fds);
 int		ft_error_r(int fds);
 void	ft_archive_init(void);
+int		ft_isspace(int c);
 #endif

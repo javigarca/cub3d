@@ -6,7 +6,7 @@
 #    By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/06 09:14:35 by xamayuel          #+#    #+#              #
-#    Updated: 2024/02/17 14:37:21 by xamayuel         ###   ########.fr        #
+#    Updated: 2024/02/19 13:57:17 by xamayuel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,10 +44,8 @@ SRC = /ft_isalpha.c /ft_toupper.c \
 		/ft_bzero.c   /ft_strnstr.c \
 		/ft_memcpy.c  /ft_atoi.c \
 		/ft_memmove.c /ft_strchrc.c \
-		/ft_strlcpy.c /ft_archives.c \
-		/ft_strlcat.c /get_next_line.c \
-		/ft_strcat.c /get_next_line_utils.c \
-		/ft_archives.c
+		/ft_strlcpy.c  \
+		/ft_strlcat.c /ft_strcat.c 
 
 SRC += /ft_calloc.c /ft_strdup.c
 SRC += /ft_substr.c /ft_strjoin.c
@@ -58,7 +56,7 @@ SRC += /ft_lstnew.c /ft_lstadd_front.c /ft_lstsize.c
 SRC += /ft_lstlast.c /ft_lstadd_back.c /ft_lstdelone.c
 SRC += /ft_lstclear.c /ft_lstiter.c /ft_lstmap.c
 SRC += /ft_2d_array_count.c /ft_2d_array_free.c 
-SRC += /ft_strncmp_nocase.c /ft_charlcat.c
+SRC += /ft_strncmp_nocase.c /ft_charlcat.c /ft_isspace.c
 OBJ = $(patsubst %.c, $(OBJ_DIR)%.o, $(SRC))
 CC = gcc
 HEAD = -I ../../includes 
@@ -79,7 +77,7 @@ $(OBJ_DIR)/%.o: %.c
 		@sleep .2
 
 $(LIBFT):
-		@make -C $(LIBFT_DIR)
+		@make -s $(LIBFT_DIR)
 		
 clean:
 		@$(RM) $(OBJ_DIR)

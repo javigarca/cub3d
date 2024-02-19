@@ -1,33 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_putstr_fd.c                                     :+:      :+:    :+:   */
+/*   ft_parse_map.c                                     :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2021/10/22 17:48:15 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/19 12:17:57 by xamayuel         ###   ########.fr       */
+/*   Created: 2024/02/19 13:50:26 by xamayuel          #+#    #+#             */
+/*   Updated: 2024/02/19 15:38:06 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "libft.h"
+#include "parser.h"
+#include "game_struct.h"
 
-/**
- * NAME: ft_putstr_c()
- * 
- * DESCRIPTION:
- * 		Writes the string in the file defined by the file descriptor
- * 
- * PARAMS:
- * 		@param  s: string to be written.
- * 		@param fd: file descriptor.
- * 
- * RETURN:
- * 		Nothing.
- */
-
-void	ft_putstr_fd(char *s, int fd)
+void ft_parse_map()
 {
-	if (s)
-		write(fd, s, ft_strlen(s));
+   
+ 
+    printf("\nParsing map");
+   
+   
 }

@@ -6,20 +6,17 @@
 #    By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/19 12:00:15 by xamayuel          #+#    #+#              #
-#    Updated: 2024/02/19 14:15:37 by xamayuel         ###   ########.fr        #
+#    Updated: 2024/02/19 14:08:58 by xamayuel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 
-NAME = parser.a
+NAME = gnl.a
 SRC_DIR = 
-OBJ_DIR = ../../.objs/parse
+OBJ_DIR = ../../.objs/gnl
 LIBFT_DIR = ../libft
 LIBFT = $(LIBFT_DIR)/libft.a
-GNL_DIR = ../libft
-GNL= $(GNL_DIR)/gnl.a
 DESTINATION = ../../libraries/
-
 # ------------- COLORS
 RESET			= 	\033[0m
 GREEN 			= 	\033[38;5;46m
@@ -32,26 +29,26 @@ LIGHT_PINK      =   \033[38;5;200m
 BLUE			= 	\033[38;5;39m
 DARK_BLUE		=   \033[38;5;57m
 # -----------------SRC
-SRC =	$(SRC_DIR)/ft_parse_map.c
+SRC =	$(SRC_DIR)/get_next_line.c \
+		$(SRC_DIR)/get_next_line_utils.c
 		
 OBJ = $(patsubst %.c, $(OBJ_DIR)%.o, $(SRC))
 CC = gcc
 HEAD = -I ../../includes \
-	   -I $(LIBFT_DIR) \
-	    -I $(GNL_DIR) 
+	   -I $(LIBFT_DIR) 
 CFLAGS = -Wall -Werror -Wextra
-LFLAGS = -L ./$(LIBFT_DIR) L ./$(GNL_DIR) 
+LFLAGS = -L ./$(LIBFT_DIR) 
 RM = /bin/rm -rf
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(GNL) $(LIBFT) 
+$(NAME): $(OBJ) $(LIBFT) 
 		@${MAKE} -C ../libft 
-		@ar rcs ${DESTINATION}${NAME} ${OBJ}  ../../.objs/libft/*.o ../../.objs/gnl/*.o
+		@ar rcs ${DESTINATION}${NAME} ${OBJ}  ../../.objs/libft/*.o
 
 $(OBJ_DIR)/%.o: %.c
 		@mkdir -p $(OBJ_DIR)
-		@echo "$(GREY)Compiling.............................$(PINK)$(<F)"
+		@echo "$(GREY)Compiling.............................$(ORANGE)$(<F)"
 		@$(CC) $(CFLAGS) $(HEAD)  -c $< -o $@
 		@echo "$(GREEN)DONE!$(GREY)"
 		@sleep .2
@@ -59,8 +56,6 @@ $(OBJ_DIR)/%.o: %.c
 $(LIBFT):
 		@make -C $(LIBFT_DIR) 
 		
-$(GNL):
-		@make -C $(GNL_DIR) 
 clean:
 		@$(RM) $(OBJ_DIR)
 		sleep .1
@@ -71,7 +66,7 @@ fclean: clean
 		sleep .1
 		clear
 		@echo "$(ORANGE)╔════════════════════════════════════╗"
-		@echo "$(ORANGE)║       ${DARK_BLUE} 🗑️  PARSER REMOVED 🗑️ ${ORANGE}         ║"
+		@echo "$(ORANGE)║       ${DARK_BLUE} 🗑️  GNL REMOVED 🗑️ ${ORANGE}         ║"
 		@echo "$(ORANGE)╚════════════════════════════════════╝ $(RESET)"
 
 re: fclean all

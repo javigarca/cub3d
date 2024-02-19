@@ -1,0 +1,9 @@
+[31mError
+[37mCUBE3D:[31mError
+[37mCUBE3D:[34m
+Loading maps/spawn/error_spawn.cub ...
+[0mOpen map line. 
+Invalid inter map line.
+ 
+[32mParsing map ...
+[0m

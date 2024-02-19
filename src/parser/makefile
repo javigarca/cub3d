@@ -6,7 +6,7 @@
 #    By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/19 12:00:15 by xamayuel          #+#    #+#              #
-#    Updated: 2024/02/19 14:15:37 by xamayuel         ###   ########.fr        #
+#    Updated: 2024/02/19 18:14:40 by xamayuel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,14 +32,15 @@ LIGHT_PINK      =   \033[38;5;200m
 BLUE			= 	\033[38;5;39m
 DARK_BLUE		=   \033[38;5;57m
 # -----------------SRC
-SRC =	$(SRC_DIR)/ft_parse_map.c
+SRC =	$(SRC_DIR)/ft_parse_map.c \
+		$(SRC_DIR)/ft_closed_map.c
 		
 OBJ = $(patsubst %.c, $(OBJ_DIR)%.o, $(SRC))
 CC = gcc
 HEAD = -I ../../includes \
 	   -I $(LIBFT_DIR) \
 	    -I $(GNL_DIR) 
-CFLAGS = -Wall -Werror -Wextra
+CFLAGS = 
 LFLAGS = -L ./$(LIBFT_DIR) L ./$(GNL_DIR) 
 RM = /bin/rm -rf
 

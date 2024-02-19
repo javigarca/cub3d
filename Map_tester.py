@@ -36,6 +36,8 @@ for archivo_cub in archivos_cub:
 			print("\t \033[32mOK\033[0m")
 		elif "Error" in contenido and "error" not in archivo_cub:
 			print("\t \033[31mKO\033[0m")
+		elif "Error" not in contenido and "error" in archivo_cub:
+			print("\t \033[31mKO\033[0m")
 		else:
 			print("\t \033[32mOK\033[0m")
 	contador = contador + 1;

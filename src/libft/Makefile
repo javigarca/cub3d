@@ -6,7 +6,7 @@
 #    By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/05/06 09:14:35 by xamayuel          #+#    #+#              #
-#    Updated: 2024/02/19 12:29:43 by xamayuel         ###   ########.fr        #
+#    Updated: 2024/02/19 13:57:17 by xamayuel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -77,7 +77,7 @@ $(OBJ_DIR)/%.o: %.c
 		@sleep .2
 
 $(LIBFT):
-		@make -C $(LIBFT_DIR)
+		@make -s $(LIBFT_DIR)
 		
 clean:
 		@$(RM) $(OBJ_DIR)

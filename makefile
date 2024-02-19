@@ -6,7 +6,7 @@
 #    By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/17 14:24:44 by xamayuel          #+#    #+#              #
-#    Updated: 2024/02/19 12:26:22 by xamayuel         ###   ########.fr        #
+#    Updated: 2024/02/19 14:10:47 by xamayuel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,9 +24,11 @@ LIBRARIES_DIR = libraries
 LIBFT_DIR = src/libft
 MAP_DIR = src/map
 GNL_DIR = src/gnl
+PARSER_DIR = src/parser
 LIBFT = $(LIBRARIES_DIR)/libft.a
 MAP = $(LIBRARIES_DIR)/map.a
 GNL = $(LIBRARIES_DIR)/gnl.a
+PARSER = $(LIBRARIES_DIR)/parser.a
 # ------------- COLORS 
 # https://talyian.github.io/ansicolors/
 RESET			= 	\033[0m
@@ -53,7 +55,8 @@ HEAD = -I./includes \
 CFLAGS = -Wall -Werror -Wextra #-g -fsanitize=address
 LFLAGS = -L . $(LIBFT) \
 		 -L . $(GNL) \
-		 -L . $(MAP)
+		 -L . $(MAP)\
+		 -L . $(PARSER)
 
 # Address sanitizing flags
 ASAN := -fsanitize=address -fsanitize-recover=address
@@ -72,7 +75,7 @@ RM = /bin/rm -rf
 all: $(NAME)
 bonus: all
 
-$(NAME): $(OBJ) libraries libft gnl map
+$(NAME): $(OBJ) libraries libft gnl map parser
 		
 		$(CC) $(OBJ) $(HEAD) $(CFLAGS) $(LFLAGS)  -o $(NAME)
 		#$(CC) $(OBJ) $(HEAD) $(CFLAGS) $(LFLAGS) $(ASAN) -o $(NAME)
@@ -97,6 +100,8 @@ map:
 		@make -C $(MAP_DIR)
 gnl:
 		@make -C $(GNL_DIR)	
+parser:
+		@make -C $(PARSER_DIR)	
 clean:
 		@$(RM) $(OBJ_DIR)
 		sleep .1
@@ -113,7 +118,7 @@ fclean: clean
 
 re: fclean all
 
-.PONY: all clean fclean re debug_mac debug_linux
+.PONY: all clean fclean re 
 
 installation: 
 		@echo "$(BLUE)╔════════════════════════════════════╗"

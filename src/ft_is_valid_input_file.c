@@ -6,11 +6,12 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 15:56:17 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/19 12:15:01 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/19 14:05:17 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "map.h"
+
 
 /**
  * @brief Checks the validity of program arguments.

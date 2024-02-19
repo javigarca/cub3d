@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 13:45:06 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/19 18:30:48 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/19 13:38:50 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,9 +66,9 @@ int	main(int argn, char *argv[])
 		printf(KNRM);
 		if (ft_is_valid_map(argv[1]) == TRUE)
 		{
-			game = init_data();
+			//game = init_data();
 			
-			//game = ft_parse_map(argv[1]);
+			game = ft_parse_map(argv[1]);
 			printf("%d",ft_check_closed_map(game));
 			//printf("%d\n", game->c_celing.b);
 			

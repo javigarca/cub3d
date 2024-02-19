@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 17:59:11 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/19 18:27:44 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/19 13:38:12 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,15 +38,23 @@ int ft_check_closed_map(t_data *game)
 	printf("Se puede ir arriba hasta [%d][%d] \n", pos.row, pos.col);
 	
     if (pos.row == -1)
-        return (FALSE);
+	{
+		return (FALSE);
+	}
+        
 	pos = ft_go_left(game->map2d, pos.row, pos.col);
 	printf("Se puede ir izquierda hasta [%d][%d] \n", pos.row, pos.col);
     if (pos.row == -1)
-        return (FALSE);
+	{
+		return (FALSE);
+	}
+        
 	pos = ft_go_down(game->map2d, pos.row, pos.col);
 	printf("Se puede ir abajo hasta [%d][%d] \n", pos.row, pos.col);
     if (pos.row == -1)
-        return (FALSE);
+	{
+		return (FALSE);
+	}
 	pos = ft_go_right(game->map2d, pos.row, pos.col);
 	printf("Se puede ir derecha hasta [%d][%d] \n", pos.row, pos.col);
 	if (pos.row == -1)

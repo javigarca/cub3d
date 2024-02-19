@@ -6,7 +6,7 @@
 #    By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/19 12:00:15 by xamayuel          #+#    #+#              #
-#    Updated: 2024/02/19 18:14:40 by xamayuel         ###   ########.fr        #
+#    Updated: 2024/02/19 13:33:41 by xamayuel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ CC = gcc
 HEAD = -I ../../includes \
 	   -I $(LIBFT_DIR) \
 	    -I $(GNL_DIR) 
-CFLAGS = 
+CFLAGS = -Wall -Werror -Wextra
 LFLAGS = -L ./$(LIBFT_DIR) L ./$(GNL_DIR) 
 RM = /bin/rm -rf
 

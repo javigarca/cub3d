@@ -1,6 +1,7 @@
 [31mError
-[37mCUBE3D: Permission denied
-[34m
-Loading maps/Texture_S/error_S3.cub ...
-[0m[31mError
-[37mCUBE3D:Texture filename error. 
+[37mCUBE3D:[31mError
+[37mCUBE3D:[34m
+Loading maps/spawn/error_spawn.cub ...
+[0mOpen map line. 
+Invalid inter map line.
+ 

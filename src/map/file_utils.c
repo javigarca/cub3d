@@ -6,11 +6,11 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 20:39:09 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/18 14:23:34 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/19 12:13:37 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "map.h"
 
 int	ft_is_valid_filename(const char *filename)
 {
@@ -49,21 +49,7 @@ int	ft_count_files(const char *filename)
 	return (pos - 1);
 }
 
-int	ft_is_valid_file_extension(const char *filename, const char *extension)
-{
-	int	len;
 
-	len = ft_strlen(filename);
-	if (len < 4)
-	{
-		printf("\x1B[31mERROR\n"KWHT"CUBE3D: Map filename too short."KNRM"\n");
-		return (FALSE);
-	}
-	if (ft_strncmp(filename + len - 4, extension, 4) == 0)
-		return (TRUE);
-	printf(KRED"ERROR\n"KWHT"CUBE3D: Incorrect filename extension."KNRM"\n");
-	return (FALSE);
-}
 
 char	*ft_str_remove_newline(char *str)
 {

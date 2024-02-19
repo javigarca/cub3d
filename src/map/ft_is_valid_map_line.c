@@ -6,11 +6,11 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 12:15:28 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/18 15:02:01 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/19 11:54:53 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "cube3d.h"
+#include "map.h"
 
 int	ft_is_valid_map_line(int position, const char *line, int nlines)
 {

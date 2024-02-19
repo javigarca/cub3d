@@ -1,0 +1,6 @@
+[31mError
+[37mCUBE3D: Permission denied
+[34m
+Loading maps/Texture_S/error_S3.cub ...
+[0m[31mError
+[37mCUBE3D:Texture filename error. 

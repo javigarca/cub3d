@@ -10,6 +10,12 @@ typedef struct {
 bool floor_fill(t_data *data, int x, int y, bool **visited, int start_x, int start_y) {
     if (x < 0 || y < 0 || x >= 28 || y >= 10 )
         return false; // Si está fuera de los límites o es una pared, salir
+    if (x == 0 && data->map2d[y][x] == '0')
+    {
+        printf("C");
+         return false;
+    }
+        
     if (data->map2d[y][x] == '1')
 		return false;
     if (visited[y][x]) {
@@ -35,7 +41,26 @@ bool floor_fill(t_data *data, int x, int y, bool **visited, int start_x, int sta
 
     return false;
 }
+bool isClosedByOne(t_data *data, int x, int y, bool **visited) {
+    // Verificar límites y si el punto es '1'
+    if (x < 0 || y < 0 || x >= 25 || y >= 10 || data->map2d[y][x] == '1')
+        return false;
 
+    // Si el punto ya fue visitado, evitar ciclos infinitos
+    if (visited[y][x])
+        return true;
+
+    visited[y][x] = true; // Marcar como visitado
+
+    // Explorar en todas las direcciones
+    bool closedRight = (x == 24) || isClosedByOne(data, x + 1, y, visited);
+    bool closedLeft = (x == 0) || isClosedByOne(data, x - 1, y, visited);
+    bool closedDown = (y == 9) || isClosedByOne(data, x, y + 1, visited);
+    bool closedUp = (y == 0) || isClosedByOne(data, x, y - 1, visited);
+
+    // Si está cerrado en todas las direcciones, entonces el punto está completamente rodeado por '1'
+    return closedRight && closedLeft && closedDown && closedUp;
+}
 int main() {
     t_data *data = (t_data *)malloc(sizeof(t_data));
     if (data == NULL) {
@@ -51,7 +76,7 @@ int main() {
     }
 
     // Inicializar el mapa
-    data->map2d[0] = strdup("111111101111111111111111");
+    data->map2d[0] = strdup("111111111111111111111111");
     data->map2d[1] = strdup("1000000000000000000000001");
     data->map2d[2] = strdup("1000000000000000000000001");
     data->map2d[3] = strdup("1000000000000000000000001");
@@ -59,24 +84,23 @@ int main() {
     data->map2d[5] = strdup("1000000000000000000000001");
     data->map2d[6] = strdup("1000000000000000000000001");
     data->map2d[7] = strdup("1000000000000000000000001");
-    data->map2d[8] = strdup("1111111111111111111111111");
+    data->map2d[8] = strdup("1111101111111111111111111");
     data->map2d[9] = NULL;
 
     // Crear una matriz de visitados
     bool **visited = (bool **)calloc(10, sizeof(bool *));
     for (int i = 0; i < 10; i++) {
-        visited[i] = (bool *)calloc(28, sizeof(bool));
+        visited[i] = (bool *)calloc(24, sizeof(bool));
     }
 
-    // Verificar si hay un bucle cerrado desde (3, 4)
-    bool has_loop = floor_fill(data, 3, 4, visited, 3, 4);
-
-    if (has_loop)
-        printf("Hay un bucle cerrado alrededor del punto (3, 4).\n");
+    bool closed = isClosedByOne(data, 5, 5, visited);
+    if (closed)
+        printf("El punto (5,5) está cerrado por '1'.\n");
     else
-        printf("No hay un bucle cerrado alrededor del punto (3, 4).\n");
+        printf("El punto (5,5) no está cerrado por '1'.\n");
 
-    // Liberar memoria
+    // ... códi
+
     for (int i = 0; i < 10; i++) {
         free(data->map2d[i]);
         free(visited[i]);

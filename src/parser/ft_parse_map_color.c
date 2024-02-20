@@ -6,13 +6,31 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 16:01:07 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/19 16:03:45 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/20 11:13:28 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 #include "game_struct.h"
 
+/**
+ * Extracts a color value from a map file for a given type.
+ *
+ * @param color A pointer to a `t_color` structure where the extracted
+ *        color values will be stored.
+ * @param filename The path to the map file.
+ * @param type A one-letter string representing the color type
+ *        ("C" for ceiling, "F" for floor).
+ *
+ * @return A pointer to the allocated string containing the parsed color
+ *         values, or NULL if the color is not found or an error occurs.
+ *
+ * This function searches for a line in the map file specified by `filename`
+ * that begins with the given `type` character followed by a space. If such
+ * a line is found, the function extracts the RGB color values separated by
+ * commas and stores them in the `t_color` structure pointed to by `color`.
+ *
+ */
 char	*ft_parse_map_color(t_color *color, char *filename, char *type)
 {
 	char	**elements;

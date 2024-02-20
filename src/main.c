@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 13:45:06 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/19 15:48:43 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/20 13:06:07 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,9 @@ void ft_print(t_data data)
 	printf("FLOOR: %d,%d,%d\n", data.c_floor.r,data.c_floor.g,data.c_floor.b);
 	printf("CEILING: %d,%d,%d\n", data.c_celing.r,data.c_celing.g,data.c_celing.b);
 	printf("------------------------------\n");
+	printf("PLAYER ARRAY POSITION: %d %d\n", data.p_x,data.p_y);
+	printf("PLAYER DIRECTION: %c\n", data.map2d[data.p_x][data.p_y]);
+	printf("------------------------------\n");
 	map_lines = ft_2d_array_size(data.map2d);
 	while (cont < map_lines)
 	{
@@ -75,6 +78,31 @@ void ft_print(t_data data)
 	}
 	printf("\n");
 }
+
+void	ft_show_logo()
+{
+	printf(""KBLU"  ______  __    __ _______  ________ ");
+	printf(KMAG" ______  _______  \n");
+	printf(KBLU" /      \\/  |  /  /       \\/        |");
+	printf(KMAG"/      \\/       \\ \n");
+	printf(KBLU"/$$$$$$  $$ |  $$ $$$$$$$  $$$$$$$$/");
+	printf(KMAG"/$$$$$$  $$$$$$$  |\n");
+	printf(KBLU"$$ |  $$/$$ |  $$ $$ |__$$ $$ |__   ");
+	printf(KMAG"$$ ___$$ $$ |  $$ |\n");
+	printf(KBLU"$$ |     $$ |  $$ $$    $$<$$    |    ");
+	printf(KMAG"/   $$<$$ |  $$ |\n");
+	printf(KBLU"$$ |   __$$ |  $$ $$$$$$$  $$$$$/    ");
+	printf(KMAG"_$$$$$  $$ |  $$ |\n");
+	printf(KBLU"$$ \\__/  $$ \\__$$ $$ |__$$ $$ |_____");
+	printf(KMAG"/  \\__$$ $$ |__$$ |\n");
+	printf(KBLU"$$    $$/$$    $$/$$    $$/$$       ");
+	printf(KMAG"$$    $$/$$    $$/ \n");
+	printf(KBLU" $$$$$$/  $$$$$$/ $$$$$$$/ $$$$$$$$/ ");
+	printf(KMAG"$$$$$$/ $$$$$$$/\n");
+	printf(KYEL"@Unai Amayuelas "KGRN"\t(A.K.A xamayuel)\n");
+	printf(KYEL"@Javier García Arango "KGRN"\t(A.K.A javigarc)\n"KWHT);
+}
+
 int	main(int argn, char *argv[])
 {
 	t_data	*game;
@@ -84,6 +112,7 @@ int	main(int argn, char *argv[])
 				Incorrect number of arguments."KNRM"\n");
 	else if (ft_is_valid_input_file(argv) == TRUE)
 	{
+		ft_show_logo();
 		printf(KBLU"\nLoading %s ...\n",argv[1]);
 		printf(KNRM);
 		if (ft_is_valid_map(argv[1]) == TRUE)

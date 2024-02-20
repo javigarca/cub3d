@@ -6,13 +6,24 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 16:07:27 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/19 16:09:29 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/20 11:09:45 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 #include "game_struct.h"
 
+/**
+ * Parses lines from a map file and populates a 2D character array.
+ *
+ * @param map2d A 2D character array to store the parsed map lines.
+ * @param filename The path to the map file.
+ *
+ * This function reads lines from the map file specified by `filename` and
+ * stores them in the provided `map2d` array. Each line in the map file
+ * represents a row of the map layout.
+ *
+ */
 void	ft_parse_map_lines(char **map2d, char *filename)
 {
 	char	*line;

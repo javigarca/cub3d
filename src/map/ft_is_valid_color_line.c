@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 14:05:50 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/19 12:19:26 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/20 13:37:10 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -63,12 +63,12 @@ int	ft_is_color_line(const char *type, const char *line)
 	if (ft_strncmp(data[0], type, 1) != 0 || ft_strlen(data[0]) != 1)
 	{
 		free(data);
-		return (ft_show_error("Error in color line"));
+		return (FALSE);
 	}
 	if (ft_is_color_element(data[1]) == FALSE)
 	{
 		free(data);
-		return (ft_show_error("Error in color line"));
+		return (FALSE);
 	}
 	free(data);
 	return (TRUE);

@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 11:55:43 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/19 14:37:05 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/20 13:21:00 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "map.h"
 # include "get_next_line.h"
 # include "parser.h"
-int	ft_is_valid_input_file(char *arguments[]);
-
+int	    ft_is_valid_input_file(char *arguments[]);
+void	ft_show_logo();
+void ft_print(t_data data);
 #endif

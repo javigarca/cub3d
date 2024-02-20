@@ -1,5 +1,8 @@
 {
     "files.associations": {
-        "numbers": "c"
-    }
+		"numbers": "c",
+		"cube3d.h": "c",
+		"game_struct.h": "c",
+		"random": "c"
+	}
 }

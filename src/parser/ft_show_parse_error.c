@@ -1,17 +1,17 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_show_error.c                                    :+:      :+:    :+:   */
+/*   ft_show_parse_error.c                              :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 11:27:35 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/20 15:27:29 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/20 14:14:30 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "map.h"
-
+#include "game_struct.h"
 /**
  * @brief Prints an error message to the console in a formatted way.
  *
@@ -23,10 +23,10 @@
  *
  * @return `FALSE`, indicating an error condition.
  */
-int	ft_show_error(const char *error_text)
+t_data	*ft_show_parse_error(const char *error_text)
 {
 	ft_putstr_fd(KRED"Error\n", 2);
-	ft_putstr_fd(KWHT"FILE STRUCTURE:", 2);
+	ft_putstr_fd(KWHT"CUBE3D PARSER:", 2);
 	printf("%s \n", error_text);
-	return (FALSE);
+	return (NULL);
 }

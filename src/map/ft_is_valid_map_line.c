@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 12:15:28 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/19 13:47:17 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/20 16:18:24 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,6 +60,12 @@ int	ft_is_valid_first_map_line(const char *line)
 	return (TRUE);
 }
 
+/*
+	if (map_line[0] != '1' || map_line[0] != '0')
+		return (ft_show_error("Map line error."));
+	if (map_line[ft_strlen(map_line)-2] != '1')
+		return (ft_show_error("Open map line."));
+	*/
 int	ft_is_valid_inter_map_line(const char *line)
 {
 	char	*map_line;
@@ -67,10 +73,6 @@ int	ft_is_valid_inter_map_line(const char *line)
 	map_line = ft_strtrim(line, " ");
 	if (ft_line_has_only_6(map_line) == FALSE)
 		return (ft_show_error("Incorrect map line."));
-	if (map_line[0] != '1')
-		return (ft_show_error("Open map line."));
-	if (map_line[ft_strlen(map_line)-2] != '1')
-		return (ft_show_error("Open map line."));
 	free(map_line);
 	return (TRUE);
 }

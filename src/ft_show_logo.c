@@ -6,13 +6,13 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 13:10:04 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/20 13:10:31 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/20 16:22:39 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "cube3d.h"
 
-void	ft_show_logo()
+void	ft_show_logo(void)
 {
 	printf(""KBLU"  ______  __    __ _______  ________ ");
 	printf(KMAG" ______  _______  \n");

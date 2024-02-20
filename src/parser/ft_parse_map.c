@@ -6,34 +6,39 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 13:50:26 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/20 14:11:52 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/20 16:21:33 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 #include "game_struct.h"
 
-t_data *ft_check_map_data(t_data *data)
+t_data	*ft_check_map_data(t_data *data)
 {
-	if (data->t_no.texture_path ==NULL || data->t_we.texture_path ==NULL || \
-		data->t_so.texture_path ==NULL||data->t_ea.texture_path ==NULL)
+	if (data->t_no.texture_path == NULL || data->t_we.texture_path == NULL || \
+		data->t_so.texture_path == NULL || data->t_ea.texture_path == NULL)
 	{
 		free(data);
 		return (ft_show_parse_error("Missing texture direction"));
 	}
-	if (data->c_celing.r ==-1 || data->c_celing.g ==-1 || \
-		data->c_celing.b ==-1)
+	if (data->c_celing.r == -1 || data->c_celing.g == -1 || \
+		data->c_celing.b == -1)
 	{
 		free(data);
 		return (ft_show_parse_error("Missing/Wrong ceiling R.G.B. color"));
 	}
-	if (data->c_floor.r ==-1 || data->c_floor.g ==-1 || \
-		data->c_floor.b ==-1)
+	if (data->c_floor.r == -1 || data->c_floor.g == -1 || \
+		data->c_floor.b == -1)
 	{
 		free(data);
 		return (ft_show_parse_error("Missing/Wrong floor R.G.B. color"));
 	}
-return (data);
+	if (data->p_x == -1 || data->p_y == -1)
+	{
+		free(data);
+		return (ft_show_parse_error("Missing spawn point."));
+	}
+	return (data);
 }
 
 /**
@@ -61,6 +66,8 @@ t_data	*ft_parse_map(char *filename)
 	data->c_floor.r = -1;
 	data->c_floor.g = -1;
 	data->c_floor.b = -1;
+	data->p_x = -1;
+	data->p_y = -1;
 	ft_parse_map_lines(data->map2d, filename);
 	ft_parse_map_texture(&data->t_no.texture_path, filename, "NO");
 	ft_parse_map_texture(&data->t_so.texture_path, filename, "SO");
@@ -69,8 +76,7 @@ t_data	*ft_parse_map(char *filename)
 	ft_parse_map_color(&data->c_floor, filename, "F");
 	ft_parse_map_color(&data->c_celing, filename, "C");
 	ft_parse_map_player(&data->p_x, &data->p_y, filename);
-	data->w_map = 1920;
-	data->h_map = 1080;
-	
+	data->w_map = W_RESOL;
+	data->h_map = H_RESOL;
 	return (ft_check_map_data(data));
 }

@@ -6,19 +6,19 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 11:10:49 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/20 13:55:47 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/20 16:18:03 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "map.h"
 
-int ft_is_valid_color_or_texture(const char *line)
+int	ft_is_valid_color_or_texture(const char *line)
 {
 	if (ft_is_valid_texture_line("NO", line) + \
 		ft_is_valid_texture_line("SO", line) + \
-		ft_is_valid_texture_line("WE", line)+ \
-		ft_is_valid_texture_line("EA", line)+ \
-		ft_is_color_line("F", line)+ \
+		ft_is_valid_texture_line("WE", line) + \
+		ft_is_valid_texture_line("EA", line) + \
+		ft_is_color_line("F", line) + \
 		ft_is_color_line("C", line) != TRUE)
 	{
 		return (ft_show_error("Incorrect texture/color section."));
@@ -50,12 +50,9 @@ int ft_is_valid_color_or_texture(const char *line)
  */
 int	ft_is_valid_line(int position, const char *line, int n_lines)
 {
-
 	if (position < 7 && ft_is_valid_color_or_texture(line) == FALSE)
 		return (FALSE);
 	if (position > 6 && ft_is_valid_map_line(position, line, n_lines) == FALSE)
 		return (FALSE);
-
 	return (TRUE);
-	
 }

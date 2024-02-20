@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 16:06:34 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/20 15:26:58 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/20 16:17:10 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ static int	ft_check_lines(const char *filename, int nlines)
 				count += ft_count_directions(line, 'E');
 			}
 		}
-		else if (pos >6)
+		else if (pos > 7)
 		{
 			close (fd),
 			free(line);

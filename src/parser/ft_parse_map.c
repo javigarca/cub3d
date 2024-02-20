@@ -78,5 +78,6 @@ t_data	*ft_parse_map(char *filename)
 	ft_parse_map_player(&data->p_x, &data->p_y, filename);
 	data->w_map = W_RESOL;
 	data->h_map = H_RESOL;
+	data->map2d[data->p_x][data->p_y]= 'J';
 	return (ft_check_map_data(data));
 }

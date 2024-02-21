@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 13:50:26 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/20 16:21:33 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/21 15:02:43 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,24 +18,24 @@ t_data	*ft_check_map_data(t_data *data)
 	if (data->t_no.texture_path == NULL || data->t_we.texture_path == NULL || \
 		data->t_so.texture_path == NULL || data->t_ea.texture_path == NULL)
 	{
-		free(data);
+		ft_free_data(data);
 		return (ft_show_parse_error("Missing texture direction"));
 	}
 	if (data->c_celing.r == -1 || data->c_celing.g == -1 || \
 		data->c_celing.b == -1)
 	{
-		free(data);
+		ft_free_data(data);
 		return (ft_show_parse_error("Missing/Wrong ceiling R.G.B. color"));
 	}
 	if (data->c_floor.r == -1 || data->c_floor.g == -1 || \
 		data->c_floor.b == -1)
 	{
-		free(data);
+		ft_free_data(data);
 		return (ft_show_parse_error("Missing/Wrong floor R.G.B. color"));
 	}
 	if (data->p_x == -1 || data->p_y == -1)
 	{
-		free(data);
+		ft_free_data(data);
 		return (ft_show_parse_error("Missing spawn point."));
 	}
 	return (data);

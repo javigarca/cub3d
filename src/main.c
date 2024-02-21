@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 13:45:06 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/21 14:06:40 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/21 14:59:01 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,7 @@ int	main(int argn, char *argv[])
 			if (game != NULL)
 			{
 				ft_print(*game);
-				free(game);
+				ft_free_data(game);
 			}
 				
 			//printf("%d",ft_check_closed_map(game));
@@ -45,43 +45,4 @@ int	main(int argn, char *argv[])
 		}
 	}
 	exit(0);
-}
-int		main2(int argc, char *argv[])
-{
-	int	fd1;
-	char	*line;
-
-	fd1 = open(argv[1], O_RDONLY);
-	if (argc > 1)
-	{
-		while ((line = get_next_line(fd1)))
-		{
-			printf("%s\n", line);
-			free(line);
-		}
-		close(fd1);
-	}
-	system("leaks -quiet cub3d");
-	return (0);
-}
-int main3(int argc, char *argv[])
-{
-	char	*line;
-	int		fd;
-	int		pos;
-
-	(void)argc;
-	pos = 1;
-	fd = open(argv[1], O_RDONLY);
-	line = get_next_line(fd);
-	while (line != NULL)
-	{
-		free(line);
-		line = get_next_line(fd);
-		
-		pos++;
-	}
-	close(fd);
-
-	return (pos - 1);
 }

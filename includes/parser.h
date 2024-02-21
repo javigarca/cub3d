@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 13:53:41 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/21 14:13:41 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/21 14:58:49 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,4 +26,5 @@ int		ft_count_map_lines(char *filename);
 void	ft_parse_map_player(int *pos_x, int *pos_y, char *filename);
 t_data	*ft_show_parse_error(const char *error_text);
 void	ft_free_split(char **split);
+void	ft_free_data(t_data *data);
 #endif

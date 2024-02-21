@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 16:01:07 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/20 11:13:28 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/21 14:20:59 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,12 +49,14 @@ char	*ft_parse_map_color(t_color *color, char *filename, char *type)
 			color->r = ft_atoi(colors[0]);
 			color->g = ft_atoi(colors[1]);
 			color->b = ft_atoi(colors[2]);
+			ft_free_split(colors);
+			ft_free_split(elements);
+			free(line);
 			break ;
 		}
+		free(line);
 		line = get_next_line(fd);
+		ft_free_split(elements);
 	}
-	free(elements);
-	free(colors);
-	free(line);
 	return (NULL);
 }

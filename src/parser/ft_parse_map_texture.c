@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 16:04:24 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/20 11:10:29 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/21 14:24:43 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,11 +46,14 @@ char	*ft_parse_map_texture(char **texture, char *filename, char *direction)
 		if (ft_strncmp(elements[0], direction, 2) == 0)
 		{
 			*texture = ft_strdup(elements[1]);
+			free(line);
+			ft_free_split(elements);
 			break ;
 		}
+		free(line);
+		ft_free_split(elements);
 		line = get_next_line(fd);
 	}
-	free(elements);
-	free(line);
+	close(fd);
 	return (NULL);
 }

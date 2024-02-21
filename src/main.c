@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 13:45:06 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/21 14:03:43 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/21 14:06:40 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -28,13 +28,13 @@ int	main(int argn, char *argv[])
 		if (ft_is_valid_map(argv[1]) == TRUE)
 		{
 			printf(KGRN"Parsing %s ...\n"KNRM"",argv[1]);
-			(void)game;
-			//game = ft_parse_map(argv[1]);
-			//if (game != NULL)
-			//{
-			//	ft_print(*game);
-			//	free(game);
-			//}
+			
+			game = ft_parse_map(argv[1]);
+			if (game != NULL)
+			{
+				ft_print(*game);
+				free(game);
+			}
 				
 			//printf("%d",ft_check_closed_map(game));
 			//printf("%d\n", game->c_celing.b);

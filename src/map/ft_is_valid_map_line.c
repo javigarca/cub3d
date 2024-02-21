@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 12:15:28 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/20 16:18:24 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/21 15:50:14 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,7 +42,7 @@ int	ft_line_has_only_1(const char *str)
 {
 	while (*str)
 	{
-		if (*str != '1' && *str != ' ' && *str != '\n')
+		if (*str != '1' && *str != ' ' && *str != '\n' && *str != '0')
 			return (FALSE);
 		str++;
 	}

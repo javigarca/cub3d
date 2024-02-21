@@ -6,14 +6,13 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 14:05:50 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/21 13:30:46 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/21 21:49:10 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "map.h"
 
 static int	ft_is_color_element(char *argument);
-
 
 /**
  * @brief Validates a line representing a color specification.

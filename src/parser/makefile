@@ -6,7 +6,7 @@
 #    By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/19 12:00:15 by xamayuel          #+#    #+#              #
-#    Updated: 2024/02/21 14:12:43 by xamayuel         ###   ########.fr        #
+#    Updated: 2024/02/21 21:37:56 by xamayuel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -39,7 +39,8 @@ SRC =	$(SRC_DIR)/ft_parse_map.c \
 		$(SRC_DIR)/ft_count_map_lines.c \
 		$(SRC_DIR)/ft_parse_map_player.c\
 		$(SRC_DIR)/ft_show_parse_error.c \
-		$(SRC_DIR)/ft_free.c
+		$(SRC_DIR)/ft_free.c\
+		$(SRC_DIR)/ft_is_region_closed.c
 		
 OBJ = $(patsubst %.c, $(OBJ_DIR)%.o, $(SRC))
 CC = gcc

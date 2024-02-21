@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/20 11:18:37 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/21 14:19:07 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/21 21:49:47 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,8 +54,6 @@ void	ft_parse_map_player(int *pos_x, int*pos_y, char *filename)
 		free(lineclear);
 		line = get_next_line(fd);
 	}
-	
-	
 }
 
 static void	ft_parse_line_player(int *pos_x, int *pos_y, char *line, int row)

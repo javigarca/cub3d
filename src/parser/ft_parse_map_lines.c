@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 16:07:27 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/21 14:20:21 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/21 22:09:45 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,5 +46,4 @@ void	ft_parse_map_lines(char **map2d, char *filename)
 		free(lineclear);
 		line = get_next_line(fd);
 	}
-	
 }

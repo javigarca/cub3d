@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 13:53:41 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/21 14:58:49 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/21 21:47:38 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@
 # include "libft.h"
 # include "get_next_line.h"
 # include "game_struct.h"
+# include <stdbool.h>
 
 t_data	*ft_parse_map(char *filename);
 int		ft_check_closed_map(t_data *game);
@@ -27,4 +28,5 @@ void	ft_parse_map_player(int *pos_x, int *pos_y, char *filename);
 t_data	*ft_show_parse_error(const char *error_text);
 void	ft_free_split(char **split);
 void	ft_free_data(t_data *data);
+bool	ft_is_region_closed(t_data data, char *filename);
 #endif

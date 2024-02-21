@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 16:06:34 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/21 14:05:07 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/21 21:48:40 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,17 +36,7 @@ int	ft_is_valid_map(const char *filename)
 		return (FALSE);
 	return (TRUE);
 }
-void	ft_strdel(char **as)
-{
-	if (as != NULL)
-	{
-		if (*as != NULL)
-		{
-			free(*as);
-			*as = NULL;
-		}
-	}
-}
+
 /**
  * Checks the individual lines of a file to ensure they meet map requirements.
  *

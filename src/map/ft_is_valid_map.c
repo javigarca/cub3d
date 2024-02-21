@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 16:06:34 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/20 16:17:10 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/21 14:05:07 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,17 @@ int	ft_is_valid_map(const char *filename)
 		return (FALSE);
 	return (TRUE);
 }
-
+void	ft_strdel(char **as)
+{
+	if (as != NULL)
+	{
+		if (*as != NULL)
+		{
+			free(*as);
+			*as = NULL;
+		}
+	}
+}
 /**
  * Checks the individual lines of a file to ensure they meet map requirements.
  *
@@ -80,10 +90,10 @@ static int	ft_check_lines(const char *filename, int nlines)
 			}
 			count += ft_count_directions(line, 'N') + ft_count_directions(line, 'S') + ft_count_directions(line, 'W') + ft_count_directions(line, 'E');
 		}
+		free(line);
 		line = get_next_line(fd);
 	}
 	close(fd);
-	free(line);
 	if (count > 1)
 	{
 		printf("%d", count);

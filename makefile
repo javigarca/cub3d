@@ -6,7 +6,7 @@
 #    By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/17 14:24:44 by xamayuel          #+#    #+#              #
-#    Updated: 2024/02/20 13:21:16 by xamayuel         ###   ########.fr        #
+#    Updated: 2024/02/21 12:46:28 by xamayuel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -105,6 +105,7 @@ gnl:
 parser:
 		@make -C $(PARSER_DIR)	
 clean:
+		@$(RM) libraries/*.a
 		@$(RM) $(OBJ_DIR)
 		sleep .1
 		clear

@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 12:16:05 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/21 12:21:18 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/21 13:54:57 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,16 @@
 
 static void	ft_print_map(char **map2d);
 
+/**
+ * Prints detailed map and game configuration information.
+ * 
+ * This function displays on the console the paths to the textures used for
+ * the different sides of the map (north, south, east, west), the RGB colors
+ * for the floor and ceiling, and finally prints the introduced map.
+ * 
+ * @param data A t_data structure containing all the map information
+ * and game configuration to be printed.
+ */
 void	ft_print(t_data data)
 {
 	printf(KCYN"\t Texture NO   : %s", data.t_no.texture_path);

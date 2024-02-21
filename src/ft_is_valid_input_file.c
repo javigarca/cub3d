@@ -6,11 +6,13 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 15:56:17 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/20 16:24:28 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/21 12:38:51 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "map.h"
+
+static int	ft_is_valid_file_extension(const char *file, const char *exten);
 
 /**
  * @brief Checks the validity of program arguments.
@@ -30,9 +32,6 @@
  *
  * @return `TRUE` if arguments are valid, `FALSE` otherwise.
  */
-
-static int	ft_is_valid_file_extension(const char *file, const char *exten);
-
 int	ft_is_valid_input_file(char *arguments[])
 {
 	if (ft_is_valid_file_extension(arguments[1], ".cub") == FALSE)

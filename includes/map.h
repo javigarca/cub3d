@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 14:29:34 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/20 16:14:59 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/21 13:29:20 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,6 @@ int		ft_count_files(const char *filename);
 char	*ft_str_remove_newline(char *str);
 int		ft_line_all_spaces(const char *line);
 int		ft_show_error(const char *error_text);
+
+void	ft_free_split(char **split);
 #endif

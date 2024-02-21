@@ -59,7 +59,13 @@ t_data	*ft_parse_map(char *filename)
 	t_data	*data;
 
 	data = ft_calloc(1, sizeof(t_data));
-	data->map2d = ft_calloc(ft_count_map_lines(filename) + 1, sizeof(char *));
+	int i;
+	int num_lines = ft_count_map_lines(filename) + 1;
+	data->map2d = ft_calloc(num_lines, sizeof(char *));
+	for (i = 0; i < num_lines; i++)
+	{
+		data->map2d[i] = NULL;
+	}
 	data->c_celing.r = -1;
 	data->c_celing.g = -1;
 	data->c_celing.b = -1;
@@ -78,6 +84,6 @@ t_data	*ft_parse_map(char *filename)
 	ft_parse_map_player(&data->p_x, &data->p_y, filename);
 	data->w_map = W_RESOL;
 	data->h_map = H_RESOL;
-	data->map2d[data->p_x][data->p_y]= 'J';
+	
 	return (ft_check_map_data(data));
 }

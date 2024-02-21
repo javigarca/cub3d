@@ -72,7 +72,7 @@ static int	ft_check_lines(const char *filename, int nlines)
 				free(line);
 				return (FALSE);
 			}
-			if (pos > 6)
+			if (pos > 7)
 			{
 				count += ft_count_directions(line, 'N');
 				count += ft_count_directions(line, 'S');
@@ -91,7 +91,11 @@ static int	ft_check_lines(const char *filename, int nlines)
 	close(fd);
 	free(line);
 	if (count > 1)
+	{
+		printf("%d", count);
 		return (ft_show_error("Too many spawn points."));
+	}
+		
 	return (TRUE);
 }
 

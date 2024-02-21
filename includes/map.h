@@ -27,9 +27,17 @@
 # define KBLU  "\x1B[34m"
 # define KMAG  "\x1B[35m"
 # define KCYN  "\x1B[36m"
-# define KWHT   "\x1B[37m"
-# define KNON   "\033[0m"
-# define KBLA   "\x1b[40m"
+# define KWHT  "\x1B[37m"
+# define KBLK  "\x1B[30m"
+# define KBRD  "\x1B[91m"
+# define KBGRN "\x1B[92m"
+# define KBYEL "\x1B[93m"
+# define KBBLU "\x1B[94m"
+# define KBMAG "\x1B[95m"
+# define KBCYN "\x1B[96m"
+# define KBWHT "\x1B[97m"
+# define KNON  "\033[0m"
+# define KBLA  "\x1b[40m"
 /******************************************************************************/
 // checks
 

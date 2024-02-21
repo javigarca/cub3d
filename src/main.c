@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 13:45:06 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/21 21:39:55 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/21 22:57:26 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 int	main(int argn, char *argv[])
 {
 	t_data	*game;
-	
+
 	ft_show_logo();
 	if (argn != 2)
 		printf(KRED"Error\n"KWHT"CUBE3D:\
@@ -27,8 +27,7 @@ int	main(int argn, char *argv[])
 		printf(KBLU"\nLoading %s ...\n",argv[1]);
 		if (ft_is_valid_map(argv[1]) == TRUE)
 		{
-			printf(KGRN"Parsing %s ...\n"KNRM"",argv[1]);
-			
+			printf(KGRN"Parsing %s ...\n"KNRM"", argv[1]);
 			game = ft_parse_map(argv[1]);
 			if (game != NULL)
 			{
@@ -38,6 +37,5 @@ int	main(int argn, char *argv[])
 			}
 		}
 	}
-	system("leask cube3d");
 	exit(0);
 }

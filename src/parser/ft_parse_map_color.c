@@ -6,12 +6,14 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 16:01:07 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/21 14:20:59 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/21 23:03:09 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "parser.h"
 #include "game_struct.h"
+
+static void	assign_color_values(t_color *color, char **colors);
 
 /**
  * Extracts a color value from a map file for a given type.
@@ -46,9 +48,7 @@ char	*ft_parse_map_color(t_color *color, char *filename, char *type)
 		if (ft_strncmp(elements[0], type, 1) == 0)
 		{
 			colors = ft_split(elements[1], ',');
-			color->r = ft_atoi(colors[0]);
-			color->g = ft_atoi(colors[1]);
-			color->b = ft_atoi(colors[2]);
+			assign_color_values(color, colors);
 			ft_free_split(colors);
 			ft_free_split(elements);
 			free(line);
@@ -59,4 +59,11 @@ char	*ft_parse_map_color(t_color *color, char *filename, char *type)
 		ft_free_split(elements);
 	}
 	return (NULL);
+}
+
+static void	assign_color_values(t_color *color, char **colors)
+{
+	color->r = ft_atoi(colors[0]);
+	color->g = ft_atoi(colors[1]);
+	color->b = ft_atoi(colors[2]);
 }

@@ -1,2 +1,4 @@
 textures/nopermission.xpm
 *.o
+*.a
+./cube3d

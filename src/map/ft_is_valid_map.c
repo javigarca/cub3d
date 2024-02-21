@@ -62,29 +62,23 @@ static int	ft_check_lines(const char *filename, int nlines)
 	pos = 1;
 	line = get_next_line(fd);
 	count = 0;
-	while (line != NULL)
+	while (line)
 	{
-		if (ft_line_all_spaces(line) == FALSE)
+		if (!ft_line_all_spaces(line) && ft_is_valid_line(pos++, line, nlines) == FALSE)
 		{
-			if (ft_is_valid_line(pos++, line, nlines) == FALSE)
+			close(fd);
+			free(line);
+			return (FALSE);
+		}
+		if (pos > 7)
+		{
+			if (ft_line_all_spaces(line))
 			{
 				close(fd);
 				free(line);
-				return (FALSE);
+				return (ft_show_error("Blank line in map section."));
 			}
-			if (pos > 7)
-			{
-				count += ft_count_directions(line, 'N');
-				count += ft_count_directions(line, 'S');
-				count += ft_count_directions(line, 'W');
-				count += ft_count_directions(line, 'E');
-			}
-		}
-		else if (pos > 7)
-		{
-			close (fd),
-			free(line);
-			return (ft_show_error("Blank line in map section."));
+			count += ft_count_directions(line, 'N') + ft_count_directions(line, 'S') + ft_count_directions(line, 'W') + ft_count_directions(line, 'E');
 		}
 		line = get_next_line(fd);
 	}
@@ -95,7 +89,6 @@ static int	ft_check_lines(const char *filename, int nlines)
 		printf("%d", count);
 		return (ft_show_error("Too many spawn points."));
 	}
-		
 	return (TRUE);
 }
 

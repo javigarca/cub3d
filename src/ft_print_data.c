@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 12:16:05 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/21 22:57:07 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/22 12:59:42 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -39,6 +39,16 @@ void	ft_print(t_data data)
 	printf("\n");
 }
 
+/**
+ * Prints the 2D map to the console.
+ * 
+ * This function iterates through the provided 2D map and prints it to the console.
+ * The '1' characters are printed in cyan to represent walls, the '0' characters
+ * are printed in blue to represent empty spaces, and any other character
+ * is printed in red, indicating non-mappable or special elements.
+ * 
+ * @param map2d The 2D map to print.
+ */
 static void	ft_print_map(char **map2d)
 {
 	int	cont;
@@ -64,4 +74,5 @@ static void	ft_print_map(char **map2d)
 		cont++;
 		printf("\t ");
 	}
+	printf(KNRM"\n");
 }

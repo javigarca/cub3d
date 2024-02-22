@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 16:01:07 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/21 23:03:09 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/22 11:48:16 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,6 +61,12 @@ char	*ft_parse_map_color(t_color *color, char *filename, char *type)
 	return (NULL);
 }
 
+/**
+ * Assigns RGB color values to a t_color structure.
+ *
+ * @param color A pointer to a t_color structure.
+ * @param colors An array of strings representing RGB values.
+ */
 static void	assign_color_values(t_color *color, char **colors)
 {
 	color->r = ft_atoi(colors[0]);

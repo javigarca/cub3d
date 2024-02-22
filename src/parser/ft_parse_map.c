@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 13:50:26 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/21 22:19:36 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/22 11:41:31 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,6 +81,26 @@ static t_data	*ft_init_data(char *filename)
 	return (data);
 }
 
+/**
+ * Checks the validity of the map data loaded into the t_data structure.
+ *
+ * This function performs several checks to ensure that all necessary data 
+ * for the map have been correctly loaded into the t_data structure.
+ * The checks include:
+ * - That all texture paths (north, south, east, west) are not NULL.
+ * - That the floor and ceiling colors (RGB) are correctly specified (not -1).
+ * - That the initial player position is defined (not -1).
+ * - That the map region is closed, 
+ * 	 meaning the player cannot exit the map boundaries.
+ *
+ * @param data Pointer to the t_data structure containing the map data.
+ * @param filename Name of the map file.
+ * @return Returns the pointer to the t_data structure 
+ * 		   if all checks are successful.
+ *         If an error in the data is found,
+ * 		   it frees the allocated memory for t_data and returns NULL 
+ * 		   or the result of ft_show_parse_error.
+ */
 static t_data	*ft_check_map_data(t_data *data, char *filename)
 {
 	if (data->t_no.texture_path == NULL || data->t_we.texture_path == NULL || \
@@ -104,7 +124,7 @@ static t_data	*ft_check_map_data(t_data *data, char *filename)
 	if (!ft_is_region_closed(*data, filename))
 	{
 		ft_free_data(data);
-		return (ft_show_parse_error("Open map."));
+		return (NULL);
 	}
 	return (data);
 }

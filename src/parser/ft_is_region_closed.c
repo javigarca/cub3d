@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 21:36:48 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/21 23:33:39 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/22 10:02:29 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -56,8 +56,12 @@ static bool	floodfillutil(char **pantalla, int x, int y, bool *isclosed)
 	rows = ft_2d_array_size(pantalla);
 	if (x < 0 || x > (rows - 1))
 		return (false);
-	if (y < 0 || y > (int)ft_strlen(pantalla[x]) - 2)
+	if (y < 0 )
 		return (false);
+	if (y > (int)ft_strlen(pantalla[x]) - 1)
+	{
+		*isclosed = false;
+	}
 	if (pantalla[x][y] == 'H')
 	{
 		*isclosed = false;
@@ -116,7 +120,12 @@ static void	print_pantalla(char **pantalla, int rows)
 		j = 0;
 		while (j < (int)ft_strlen(pantalla[i]))
 		{
-			printf("%c", pantalla[i][j]);
+			if (pantalla[i][j] == 'C')
+				printf("\x1B[31m%s", "▓");
+			else if (pantalla[i][j] == '1')
+				printf("\x1B[36m%s", "█");
+			else 
+				printf("%c", pantalla[i][j]);
 			j++;
 		}
 		i++;

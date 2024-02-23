@@ -6,7 +6,7 @@
 #    By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/17 14:24:44 by xamayuel          #+#    #+#              #
-#    Updated: 2024/02/21 12:46:28 by xamayuel         ###   ########.fr        #
+#    Updated: 2024/02/23 19:19:25 by xamayuel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -17,7 +17,7 @@
 # - libraries --> folder with library files *.a
 # - includes --> folder with *.h files
 # **************************************************************************** #
-NAME = cube3d
+NAME = cub3d
 SRC_DIR = src
 OBJ_DIR = .objs
 LIBRARIES_DIR = libraries

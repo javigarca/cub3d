@@ -16,7 +16,7 @@ def run_test(file, test_type, test_number):
     """Ejecuta una prueba en el archivo dado y escribe el resultado en la salida."""
     print(f"TEST {test_number} {test_type}: File {file}", end=' ' * (90 - len(f"TEST {test_number} {test_type}: File {file}")))
     with open(f"salida_{test_type}_{test_number}.txt", "w") as output_file:
-        process = subprocess.Popen(["./cube3d", file], stdout=output_file, stderr=subprocess.STDOUT)
+        process = subprocess.Popen(["./cub3d", file], stdout=output_file, stderr=subprocess.STDOUT)
         time.sleep(1)
         process.kill()
     with open(f"salida_{test_type}_{test_number}.txt", "r") as output_file:
@@ -31,12 +31,16 @@ def run_test(file, test_type, test_number):
             print("\033[32mOK\033[0m")
 
 def run_leaks_test(file, test_number):
+    terminado = False
     """Ejecuta una prueba de fugas de memoria en el archivo dado y escribe el resultado en la salida."""
     print(f"TEST LEAKS {test_number}: File {file}", end=' ' * (90 - len(f"TEST LEAKS {test_number}: File {file}")))
     with open(f"salida_leaks_{test_number}.txt", "w") as output_file:
-        process = subprocess.Popen(["valgrind","./cube3d", file], stdout=output_file, stderr=subprocess.STDOUT)
+        process = subprocess.Popen(["valgrind","./cub3d", file], stdout=output_file, stderr=subprocess.STDOUT)
+    while terminado == False:
         time.sleep(2)
-        process.kill()
+        with open(f"salida_leaks_{test_number}.txt", "r") as salida_file:
+            if "ERROR SUMMARY" in salida_file.read():
+                terminado = True    
     with open(f"salida_leaks_{test_number}.txt", "r") as output_file:
         content = output_file.read()
         if "no leaks are possible" in content:

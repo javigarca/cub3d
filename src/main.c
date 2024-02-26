@@ -13,6 +13,7 @@
 #include "cube3d.h"
 #include "parser.h"
 #include "game_struct.h"
+#include "game.h"
 
 int	main(int argn, char *argv[])
 {
@@ -32,7 +33,7 @@ int	main(int argn, char *argv[])
 			if (game != NULL)
 			{
 				ft_print(*game);
-				// start_the_game(game); 
+				start_the_game(game, argv[1]);
 				ft_free_data(game);
 			}
 		}

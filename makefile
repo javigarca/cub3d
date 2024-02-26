@@ -6,7 +6,7 @@
 #    By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/17 14:24:44 by xamayuel          #+#    #+#              #
-#    Updated: 2024/02/23 19:19:25 by xamayuel         ###   ########.fr        #
+#    Updated: 2024/02/26 19:34:44 by xamayuel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,10 +25,12 @@ LIBFT_DIR = src/libft
 MAP_DIR = src/map
 GNL_DIR = src/gnl
 PARSER_DIR = src/parser
+GAME_DIR = src/game
 LIBFT = $(LIBRARIES_DIR)/libft.a
 MAP = $(LIBRARIES_DIR)/map.a
 GNL = $(LIBRARIES_DIR)/gnl.a
 PARSER = $(LIBRARIES_DIR)/parser.a
+GAME = $(LIBRARIES_DIR)/game.a
 MINILIBX = $(LIBRARIES_DIR)/libmlx.a
 # ------------- COLORS 
 # https://talyian.github.io/ansicolors/
@@ -60,6 +62,7 @@ LFLAGS = -L . $(LIBFT) \
 		 -L . $(GNL) \
 		 -L . $(MAP)\
 		 -L . $(PARSER) \
+		 -L . $(GAME) \
 		 -L . $(MINILIBX) -lXext -lX11 -lm
 
 # Address sanitizing flags
@@ -88,7 +91,7 @@ minilibx:
 	$(MV) minilibx_linux/libmlx.a libraries/
 	
 
-$(NAME): $(OBJ) libraries minilibx libft gnl map parser
+$(NAME): $(OBJ) libraries minilibx libft gnl map parser game
 		
 		$(CC) $(OBJ) $(HEAD) $(CFLAGS) $(LFLAGS)  -o $(NAME)
 		#$(CC) $(OBJ) $(HEAD) $(CFLAGS) $(LFLAGS) $(ASAN) -o $(NAME)
@@ -115,6 +118,9 @@ gnl:
 		@make -C $(GNL_DIR)	
 parser:
 		@make -C $(PARSER_DIR)	
+
+game:
+		@make -C $(GAME_DIR)	
 clean:
 		@$(RM) libraries/*.a
 		@$(RM) $(OBJ_DIR)

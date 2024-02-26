@@ -29,6 +29,7 @@ LIBFT = $(LIBRARIES_DIR)/libft.a
 MAP = $(LIBRARIES_DIR)/map.a
 GNL = $(LIBRARIES_DIR)/gnl.a
 PARSER = $(LIBRARIES_DIR)/parser.a
+MINILIBX = $(LIBRARIES_DIR)/libmlx.a
 # ------------- COLORS 
 # https://talyian.github.io/ansicolors/
 RESET			= 	\033[0m
@@ -58,7 +59,8 @@ CFLAGS = -Wall -Werror -Wextra #-g -fsanitize=address
 LFLAGS = -L . $(LIBFT) \
 		 -L . $(GNL) \
 		 -L . $(MAP)\
-		 -L . $(PARSER)
+		 -L . $(PARSER) \
+		 -L . $(MINILIBX) -lXext -lX11 -lm
 
 # Address sanitizing flags
 ASAN := -fsanitize=address -fsanitize-recover=address
@@ -73,11 +75,20 @@ TSAN := -fsanitize=thread
 # Memory sanitizing flags
 MSAN := -fsanitize=memory -fsanitize-memory-track-origins
 RM = /bin/rm -rf
-
+MV = /bin/mv
 all: $(NAME)
-bonus: all
 
-$(NAME): $(OBJ) libraries libft gnl map parser
+minilibx:
+	@if [ "$(shell uname)" = "Linux" ]; then \
+		echo "Generando para Linux..."; \
+		make -C minilibx_linux/; \
+	else \
+		make -C minilibx_opengl/; \
+	fi
+	$(MV) minilibx_linux/libmlx.a libraries/
+	
+
+$(NAME): $(OBJ) libraries minilibx libft gnl map parser
 		
 		$(CC) $(OBJ) $(HEAD) $(CFLAGS) $(LFLAGS)  -o $(NAME)
 		#$(CC) $(OBJ) $(HEAD) $(CFLAGS) $(LFLAGS) $(ASAN) -o $(NAME)
@@ -107,6 +118,8 @@ parser:
 clean:
 		@$(RM) libraries/*.a
 		@$(RM) $(OBJ_DIR)
+		@$(RM) -rf minilibx_linux/obj
+		@$(RM) -rf minilibx_opengl/obj
 		sleep .1
 		clear
 

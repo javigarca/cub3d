@@ -26,14 +26,12 @@ MAP_DIR = src/map
 GNL_DIR = src/gnl
 PARSER_DIR = src/parser
 GAME_DIR = src/game
-MLX_DIR = minilibx
 LIBFT = $(LIBRARIES_DIR)/libft.a
 MAP = $(LIBRARIES_DIR)/map.a
 GNL = $(LIBRARIES_DIR)/gnl.a
 PARSER = $(LIBRARIES_DIR)/parser.a
 GAME = $(LIBRARIES_DIR)/game.a
-#MINILIBX = $(LIBRARIES_DIR)/libmlx.a
-MLX = $(MLX_DIR)/libmlx.a
+MINILIBX = $(LIBRARIES_DIR)/libmlx.a
 # ------------- COLORS 
 # https://talyian.github.io/ansicolors/
 RESET			= 	\033[0m
@@ -65,8 +63,7 @@ LFLAGS = -L . $(LIBFT) \
 		 -L . $(MAP)\
 		 -L . $(PARSER) \
 		 -L . $(GAME) \
-		 -L . $(MLX) -framework OpenGL -framework AppKit\
-		# -L . $(MINILIBX) -lXext -lX11 -lm
+		 -L . $(MINILIBX) -lXext -lX11 -lm
 
 # Address sanitizing flags
 ASAN := -fsanitize=address -fsanitize-recover=address
@@ -94,7 +91,7 @@ minilibx:
 	$(MV) minilibx_linux/libmlx.a libraries/
 	
 
-$(NAME): $(OBJ) libraries mlx libft gnl map parser game #minilibx
+$(NAME): $(OBJ) libraries minilibx libft gnl map parser game
 		
 		$(CC) $(OBJ) $(HEAD) $(CFLAGS) $(LFLAGS)  -o $(NAME)
 		#$(CC) $(OBJ) $(HEAD) $(CFLAGS) $(LFLAGS) $(ASAN) -o $(NAME)
@@ -124,8 +121,6 @@ parser:
 
 game:
 		@make -C $(GAME_DIR)	
-mlx:	
-		@make -C $(MLX_DIR)	
 clean:
 		@$(RM) libraries/*.a
 		@$(RM) $(OBJ_DIR)

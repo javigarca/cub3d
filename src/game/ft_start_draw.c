@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 19:58:12 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/27 13:56:30 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/27 15:59:38 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,7 +20,7 @@ void	ft_start_draw(t_gamedata *gdata)
 	t_coord start;
 	t_coord end;
 
-    (void)start;
+	printf("\n %f", gdata->player.pos.x);
 	start.x = 0;
 	start.y = 0;
 	end.x = gdata->img_size.x;

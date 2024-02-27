@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 13:45:06 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/21 22:57:26 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/27 14:47:39 by javi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	main(int argn, char *argv[])
 {
 	t_data	*game;
 
-	ft_show_logo();
+//	ft_show_logo();
 	if (argn != 2)
 		printf(KRED"Error\n"KWHT"CUBE3D:\
 				Incorrect number of arguments."KNRM"\n");
@@ -32,7 +32,7 @@ int	main(int argn, char *argv[])
 			game = ft_parse_map(argv[1]);
 			if (game != NULL)
 			{
-				ft_print(*game);
+//				ft_print(*game);
 				start_the_game(game, argv[1]);
 				ft_free_data(game);
 			}

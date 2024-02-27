@@ -6,7 +6,7 @@
 #    By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/17 14:24:44 by xamayuel          #+#    #+#              #
-#    Updated: 2024/02/27 11:29:42 by xamayuel         ###   ########.fr        #
+#    Updated: 2024/02/27 14:46:41 by javi             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,6 +22,7 @@ SRC_DIR = src
 OBJ_DIR = .objs
 LIBRARIES_DIR = libraries
 LIBFT_DIR = src/libft
+MLX_DIR = minilibx
 MAP_DIR = src/map
 GNL_DIR = src/gnl
 PARSER_DIR = src/parser
@@ -31,7 +32,7 @@ MAP = $(LIBRARIES_DIR)/map.a
 GNL = $(LIBRARIES_DIR)/gnl.a
 PARSER = $(LIBRARIES_DIR)/parser.a
 GAME = $(LIBRARIES_DIR)/game.a
-MINILIBX = $(LIBRARIES_DIR)/libmlx.a
+MLX = $(MLX_DIR)/libmlx.a
 # ------------- COLORS 
 # https://talyian.github.io/ansicolors/
 RESET			= 	\033[0m
@@ -46,9 +47,7 @@ BLUE			= 	\033[38;5;39m
 DARK_BLUE		=   \033[38;5;57m
 # -----------------SRC
 SRC =	$(SRC_DIR)/main.c \
-		$(SRC_DIR)/ft_is_valid_input_file.c \
-		$(SRC_DIR)/ft_show_logo.c \
-		$(SRC_DIR)/ft_print_data.c
+		$(SRC_DIR)/ft_is_valid_input_file.c
 
 OBJ = $(patsubst $(SRC_DIR)%.c, $(OBJ_DIR)%.o, $(SRC))
 
@@ -63,7 +62,7 @@ LFLAGS = -L . $(LIBFT) \
 		 -L . $(MAP)\
 		 -L . $(PARSER) \
 		 -L . $(GAME) \
-		 -L . $(MINILIBX) -lXext -lX11 -lm 
+		 -L . $(MLX) -framework OpenGL -framework AppKit
 
 # Address sanitizing flags
 ASAN := -fsanitize=address -fsanitize-recover=address
@@ -78,26 +77,17 @@ TSAN := -fsanitize=thread
 # Memory sanitizing flags
 MSAN := -fsanitize=memory -fsanitize-memory-track-origins
 RM = /bin/rm -rf
-MV = /bin/mv
+
 all: $(NAME)
+bonus: all
 
-minilibx:
-	@if [ "$(shell uname)" = "Linux" ]; then \
-		echo "Generando para Linux..."; \
-		make -C minilibx_linux/; \
-	else \
-		make -C minilibx_opengl/; \
-	fi
-	$(MV) minilibx_linux/libmlx.a libraries/
-	
-
-$(NAME): $(OBJ) libraries minilibx libft gnl map parser game
+$(NAME): $(OBJ) libraries libft gnl game map parser mlx
 		
-		$(CC) $(OBJ) $(HEAD) $(CFLAGS) $(LFLAGS)  -o $(NAME)
+		$(CC) $(OBJ) $(HEAD) $(CFLAGS) $(LFLAGS) -o $(NAME)
 		#$(CC) $(OBJ) $(HEAD) $(CFLAGS) $(LFLAGS) $(ASAN) -o $(NAME)
 		clear
 		@echo "$(LIGHT_PINK)╔════════════════════════════════════╗"
-		@echo "$(LIGHT_PINK)║${PINK} 🎮🎮🎮🐶 CUBE3D COMPLETE 🐶🎮🎮🎮  ║"
+		@echo "$(LIGHT_PINK)║${PINK} 🎮🎮🎮🐶 CUB3D COMPLETE 🐶🎮🎮🎮  ║"
 		@echo "$(LIGHT_PINK)╚════════════════════════════════════╝ $(RESET)"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
@@ -107,8 +97,6 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 		@echo "$(GREEN)DONE!$(GREY)"
 		@sleep .2
 
-medium:
-		$(CC) medium.c $(HEAD) $(CFLAGS) $(LFLAGS)  -o medium
 libraries:
 	mkdir -p libraries
 libft:
@@ -119,15 +107,13 @@ map:
 gnl:
 		@make -C $(GNL_DIR)	
 parser:
-		@make -C $(PARSER_DIR)	
-
+		@make -C $(PARSER_DIR)
 game:
-		@make -C $(GAME_DIR)	
+		@make -C $(GAME_DIR)
+mlx:	
+		@make -C $(MLX_DIR)	
 clean:
-		@$(RM) libraries/*.a
 		@$(RM) $(OBJ_DIR)
-		@$(RM) -rf minilibx_linux/obj
-		@$(RM) -rf minilibx_opengl/obj
 		sleep .1
 		clear
 

@@ -6,12 +6,12 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 11:24:41 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/27 16:59:15 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/27 18:37:36 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game.h"
-
+#define TEXWIDTH 64
 static void	ft_ray_init(t_raysdt *ray, t_gamedata *gdata);
 static void ft_print_ray_info(t_raysdt *ray, t_gamedata *gdata, int type);
 
@@ -82,6 +82,28 @@ void	ft_raycasting(t_gamedata *gdata)
 		colorin.r= 255;
 		colorin.g = 0;
 		colorin.b = 0;
+		// EMPEZANDO TEXTURAS
+		// 1. calcular la posicion de la pared
+		if (ray->side == 0)
+			ray->wallX = gdata->player.pos.y + ray->walldist * ray->dir.y;
+		else
+			ray->wallX = gdata->player.pos.x + ray->walldist * ray->dir.x;
+		ray->wallX -= floor(ray->wallX);
+
+		printf("wallX: %f	", ray->wallX);
+		// 2. calcular la posicion de la textura
+		ray->texX = (int)(ray->wallX * (double)TEXWIDTH);
+		if (ray->side == 0 && ray->dir.x > 0)
+			ray->texX = TEXWIDTH - ray->texX - 1;
+		if (ray->side == 1 && ray->dir.y < 0)
+			ray->texX = TEXWIDTH - ray->texX - 1;
+		printf("texX: %d\n", ray->texX);
+		// 3. calcular la posicion de la textura en la pared
+		double step = 1.0 * TEXWIDTH / ray->wallheight;
+		printf("step: %f\n", step);
+		// 4. pintar la textura en la pared
+
+
 		ft_draw_ray_wall(gdata, ray, ft_to_color_argb(colorin));
 		ray->pix++;
 	}
@@ -105,6 +127,8 @@ static void	ft_ray_init(t_raysdt *ray, t_gamedata *gdata)
 		ray->delta.y = 1E30;
 	else
 		ray->delta.y = fabs(1 / ray->dir.y);
+	ray->wallX = 0;
+	ray->texX = 0;
 	ray->wallhit = 0;
 	
 }

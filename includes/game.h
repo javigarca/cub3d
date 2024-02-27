@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 15:27:45 by javigarc          #+#    #+#             */
-/*   Updated: 2024/02/27 13:41:10 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/27 18:26:36 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ typedef struct	s_raysdt
 	int		side; // Lado de la pared golpeada (Norte, Sur, Este, Oeste)
 	int		start; // Punto de inicio para el dibujo de la pared en la pantalla
 	int		end; // Punto final para el dibujo de la pared en la pantalla
+	double  wallX; // where exactly the wall was hit
+	int 	texX; // x coordinate on the texture
 }				t_raysdt;
 
 typedef struct s_gamedata

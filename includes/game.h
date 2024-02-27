@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 15:27:45 by javigarc          #+#    #+#             */
-/*   Updated: 2024/02/26 20:06:06 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/27 11:32:11 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,52 +47,12 @@
 # define ROTATION_SPEED 0.045 // rotation speed
 # define PLAYER_SPEED 4	// player speed
 
-/*typedef struct s_coord
-{
-	int	rowx;
-	int	coly;
-	int	color;
-}			t_coord;
-*/typedef struct s_dot
+typedef struct s_dot
 {
 	int	x;
 	int	y;
 }			t_dot;
-/*typedef struct s_map
-{
-	t_dot	**mapdots;
-	t_coord	rowscols;
-}			t_map;
-typedef struct s_maplines
-{
-	char	**lines;
-	char	*line;
-	int		x;
-	int		y;
-	t_dot	**dotstoload;
-}			t_maplines;
-*//*
-typedef struct s_bnum
-{
-	t_coord	delta;
-	t_coord	sign;
-	t_coord	cur;
-	int		error[2];
-}			t_bnum;
 
-typedef struct s_mods
-{
-	int		angle;
-	double	x_angle;
-	double	y_angle;
-	double	z_angle;
-	int		scale;
-	int		xdispl;
-	int		ydispl;
-	int		view;
-	float	z_height;
-}			t_mods;
-++*/
 typedef struct	s_coord
 {	
 	double	x;
@@ -107,22 +67,21 @@ typedef struct s_player
 
 typedef struct	s_raysdt
 {
-	int pix;
+	int 	pix;
 	t_coord	delta;
 	t_coord sidedist;
 	t_coord posray;
-  t_dot map;
-  t_coord step;
-  int stepSize;
-  t_coord	dir;
-  double	camerax;
-  int         wallhit;
-  double      walldist;
-  double 	wallheight;
-  int		side;
-  int		start;
-  int		end;
-	/* data */
+	t_dot	map;
+	t_coord step;
+	int 	stepSize;
+	t_coord	dir;
+	double	camerax;
+	int		wallhit;
+	double	walldist;
+	double	wallheight;
+	int		side;
+	int		start;
+	int		end;
 }				t_raysdt;
 
 typedef struct s_gamedata
@@ -152,4 +111,6 @@ void	ft_show_menu(t_gamedata *gdata, char *line);
 void	ft_start_draw(t_gamedata *gdata);
 //
 int ft_to_color_argb(t_color color);
+//
+void  ft_raycasting(t_gamedata *gdata);
 #endif

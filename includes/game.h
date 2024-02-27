@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 15:27:45 by javigarc          #+#    #+#             */
-/*   Updated: 2024/02/27 18:26:36 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/27 19:51:48 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ typedef struct s_gamedata
 	void	*mlx;
 	void	*win;
 	void	*img;
+	int 	*addr;
 	char	*imgadd;
 	int		pixel_b;
 	int		lines_b;
@@ -101,6 +102,9 @@ typedef struct s_gamedata
 	t_dot	win_size;
 	t_dot	img_size;
 	t_player	player;
+	int		**textures;
+	int size;
+	
 }			t_gamedata;
 
 /// game.c///
@@ -117,4 +121,6 @@ int ft_to_color_argb(t_color color);
 void  ft_raycasting(t_gamedata *gdata);
 //
 void	ft_draw_ray_wall(t_gamedata *gdata, t_raysdt *ray, int color);
+//
+void ft_load_textures(t_gamedata *gdata);
 #endif

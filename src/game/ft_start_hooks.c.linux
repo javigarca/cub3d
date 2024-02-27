@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "game.h"
-#define XK_Escape                        53
+#define XK_Escape                        0xff1b
 int	ft_key_press(t_gamedata *gdata);
 int	ft_button_close(t_gamedata *gdata);
 
@@ -21,43 +21,29 @@ int	key_hook(int keycode, t_gamedata *data)
 	//printf("\n key = %d", keycode);
 	if (keycode == XK_Escape)
 	{
-		printf("salida de escape. hacer frees\n");
 		mlx_destroy_window(data->mlx, data->win);
 		exit(0);
 	}
-	if (keycode == 13 || keycode == 126) // move forward
+	if (keycode == 119) // move forward
 	{
 		printf("W");
 		data->player.pos.y += .3 * data->player.dir.y;
 	
 	}
-	if (keycode == 0) 
+	if (keycode == 97) 
 	{
 		printf("A");
 		data->player.pos.x -= .3* data->player.dir.x;
 	}
-	if (keycode == 1 || keycode == 125) //move back
+	if (keycode == 115) //move back
 	{
 		printf("S");
 		data->player.pos.y -= .3* data->player.dir.y;
 	}
-	if (keycode == 2)
+	if (keycode == 100)
 	{
 		printf("D");
 		data->player.pos.x += .3* data->player.dir.x;
-	}
-	if (keycode == 123)
-	{
-		ft_rotate_player(&data->player, 0.1);
-	}
-	if (keycode == 124)
-	{
-		ft_rotate_player(&data->player, -0.1);
-	}
-	if (keycode == 49)
-	{
-		printf("SPACE");
-		
 	}
 	ft_start_draw(data);
 	printf("salida pos.x = %f pos.y = %f\n", data->player.pos.x, data->player.pos.y);
@@ -66,9 +52,9 @@ int	key_hook(int keycode, t_gamedata *data)
 
 void	ft_start_hooks(t_gamedata *gdata)
 {
-	mlx_hook(gdata->win, 2,1L<<0, key_hook, gdata);
+	//mlx_hook(gdata->win, 2,0, ft_key_press, gdata);
 	//mlx_hook(gdata->win, 33, 0L,  ft_key_press, gdata);
-	//mlx_key_hook(gdata->win, key_hook, gdata);
+	mlx_key_hook(gdata->win, key_hook, gdata);
 	mlx_hook(gdata->win, 17, 0, ft_button_close, gdata);
 }
 

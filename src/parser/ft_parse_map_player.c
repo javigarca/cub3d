@@ -81,7 +81,7 @@ static void	ft_parse_line_player(int *pos_x, int *pos_y, char *line, int row)
 
 	i = 0;
 	if (ft_strchrc(line, 'N') != 0 || ft_strchrc(line, 'S') != 0 || \
-		ft_strchrc(line, 'W') != 0 || ft_strchrc(line, 'W') != 0)
+		ft_strchrc(line, 'E') != 0 || ft_strchrc(line, 'W') != 0)
 	{
 		*pos_x = row;
 		while (i < ft_strlen(line))

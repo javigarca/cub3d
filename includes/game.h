@@ -63,6 +63,7 @@ typedef struct s_player
     t_coord pos; // Posición del jugador
     t_coord dir; // Dirección de la vista del jugador
     t_coord plane; // El plano de la cámara, perpendicular a la dirección de la vista
+	double	rot_angle; // Ángulo de rotación del jugador
 } t_player;
 
 typedef struct	s_raysdt
@@ -115,4 +116,6 @@ int ft_to_color_argb(t_color color);
 void  ft_raycasting(t_gamedata *gdata);
 //
 void	ft_draw_ray_wall(t_gamedata *gdata, t_raysdt *ray, int color);
+//
+void	ft_rotate_player(t_player *player, double rot_speed);
 #endif

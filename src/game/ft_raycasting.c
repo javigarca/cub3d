@@ -63,9 +63,9 @@ void	ft_raycasting(t_gamedata *gdata)
 			}
 			if (gdata->map->map2d[ray->map.x][ray->map.y] == '1')
 			{
-				printf("\n %c - ", gdata->map->map2d[ray->map.x][ray->map.y]);
+				//printf("\n %c - ", gdata->map->map2d[ray->map.x][ray->map.y]);
 				ray->wallhit = 1;
-				ft_print_ray_info(ray, gdata,1);
+				//ft_print_ray_info(ray, gdata,1);
 			}
 			if (ray->side == 0)
 				ray->walldist = ray->sidedist.x - ray->delta.x;
@@ -76,7 +76,7 @@ void	ft_raycasting(t_gamedata *gdata)
 			ray->wallheight = 690;
 		else
 			ray->wallheight = 700 / ray->walldist;
-		printf("  wallheight: %f \n", ray->wallheight);
+	//	printf("  wallheight: %f \n", ray->wallheight);
 		t_color colorin;
 
 		colorin.r= 255;
@@ -85,6 +85,7 @@ void	ft_raycasting(t_gamedata *gdata)
 		ft_draw_ray_wall(gdata, ray, ft_to_color_argb(colorin));
 		ray->pix++;
 	}
+	ft_print_ray_info(ray, gdata,1);
 }
 
 static void	ft_ray_init(t_raysdt *ray, t_gamedata *gdata)

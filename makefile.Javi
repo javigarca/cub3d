@@ -6,7 +6,7 @@
 #    By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/17 14:24:44 by xamayuel          #+#    #+#              #
-#    Updated: 2024/02/27 10:58:54 by xamayuel         ###   ########.fr        #
+#    Updated: 2024/02/27 10:54:03 by xamayuel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -26,12 +26,14 @@ MAP_DIR = src/map
 GNL_DIR = src/gnl
 PARSER_DIR = src/parser
 GAME_DIR = src/game
+MLX_DIR = minilibx
 LIBFT = $(LIBRARIES_DIR)/libft.a
 MAP = $(LIBRARIES_DIR)/map.a
 GNL = $(LIBRARIES_DIR)/gnl.a
 PARSER = $(LIBRARIES_DIR)/parser.a
 GAME = $(LIBRARIES_DIR)/game.a
-MINILIBX = $(LIBRARIES_DIR)/libmlx.a
+#MINILIBX = $(LIBRARIES_DIR)/libmlx.a
+MLX = $(MLX_DIR)/libmlx.a
 # ------------- COLORS 
 # https://talyian.github.io/ansicolors/
 RESET			= 	\033[0m
@@ -63,7 +65,9 @@ LFLAGS = -L . $(LIBFT) \
 		 -L . $(MAP)\
 		 -L . $(PARSER) \
 		 -L . $(GAME) \
-		 -L . $(MINILIBX) -lXext -lX11 -lm -lmlx -lXext -lX11
+		 -L . $(MINILIBX) -lXext -lX11 -lm
+		#-L . $(MLX) -framework OpenGL -framework AppKit\
+
 
 # Address sanitizing flags
 ASAN := -fsanitize=address -fsanitize-recover=address
@@ -91,7 +95,7 @@ minilibx:
 	$(MV) minilibx_linux/libmlx.a libraries/
 	
 
-$(NAME): $(OBJ) libraries minilibx libft gnl map parser game
+$(NAME): $(OBJ) libraries mlx libft gnl map parser game #minilibx
 		
 		$(CC) $(OBJ) $(HEAD) $(CFLAGS) $(LFLAGS)  -o $(NAME)
 		#$(CC) $(OBJ) $(HEAD) $(CFLAGS) $(LFLAGS) $(ASAN) -o $(NAME)
@@ -106,6 +110,7 @@ $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c
 		@$(CC) $(CFLAGS) $(HEAD)  -c $< -o $@
 		@echo "$(GREEN)DONE!$(GREY)"
 		@sleep .2
+
 
 medium:
 		$(CC) medium.c $(HEAD) $(CFLAGS) $(LFLAGS)  -o medium
@@ -123,6 +128,8 @@ parser:
 
 game:
 		@make -C $(GAME_DIR)	
+mlx:	
+		@make -C $(MLX_DIR)	
 clean:
 		@$(RM) libraries/*.a
 		@$(RM) $(OBJ_DIR)

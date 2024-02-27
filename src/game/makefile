@@ -37,7 +37,7 @@ SRC = $(SRC_DIR)/game.c\
 	$(SRC_DIR)/ft_start_draw.c\
 	$(SRC_DIR)/ft_color_argb.c\
 	$(SRC_DIR)/ft_raycasting.c\
-	$(SRC_DIR)/ft_rotations.c\
+	$(SRC_DIR)/ft_movement.c\
 	 # $(SRC_DIR)/game_raycaster.c\
 	  #$(SRC_DIR)/game_calculus.c\
 	  #$(SRC_DIR)/game_color.c\

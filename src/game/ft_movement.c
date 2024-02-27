@@ -26,3 +26,15 @@ void	ft_rotate_player(t_player *player, double rot_speed)
     player->plane.x = player->plane.x * cos(rot_speed) - player->plane.y * sin(rot_speed);
     player->plane.y = oldPlaneX * sin(rot_speed) + player->plane.y * cos(rot_speed);
 }
+
+void ft_strafe_left(t_player *player, double strafe_speed)
+{
+    player->pos.x -= player->plane.x * strafe_speed;
+    player->pos.y -= player->plane.y * strafe_speed;
+}
+
+void ft_strafe_right(t_player *player, double strafe_speed)
+{
+    player->pos.x += player->plane.x * strafe_speed;
+    player->pos.y += player->plane.y * strafe_speed;
+}

@@ -44,8 +44,9 @@
 
 # define TILE_SIZE 30 // tile size
 # define FOV 60 // field of view
-# define ROTATION_SPEED 0.045 // rotation speed
-# define PLAYER_SPEED 4	// player speed
+# define ROTATION_SPEED 0.1 // rotation speed
+# define MOVE_SPEED 0.3	// player speed
+# define STRAFE_SPEED 0.3	// player strafe speed
 
 typedef struct s_dot
 {
@@ -118,4 +119,6 @@ void  ft_raycasting(t_gamedata *gdata);
 void	ft_draw_ray_wall(t_gamedata *gdata, t_raysdt *ray, int color);
 //
 void	ft_rotate_player(t_player *player, double rot_speed);
+void ft_strafe_left(t_player *player, double strafe_speed);
+void ft_strafe_right(t_player *player, double strafe_speed);
 #endif

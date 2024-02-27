@@ -34,7 +34,8 @@ int	key_hook(int keycode, t_gamedata *data)
 	if (keycode == 0) 
 	{
 		printf("A");
-		data->player.pos.x -= .3* data->player.dir.x;
+		ft_strafe_left(&data->player, STRAFE_SPEED);
+		//data->player.pos.x -= .3* data->player.dir.x;
 	}
 	if (keycode == 1 || keycode == 125) //move back
 	{
@@ -44,15 +45,16 @@ int	key_hook(int keycode, t_gamedata *data)
 	if (keycode == 2)
 	{
 		printf("D");
-		data->player.pos.x += .3* data->player.dir.x;
+		ft_strafe_right(&data->player, STRAFE_SPEED);
+		//data->player.pos.x += .3* data->player.dir.x;
 	}
 	if (keycode == 123)
 	{
-		ft_rotate_player(&data->player, 0.1);
+		ft_rotate_player(&data->player, ROTATION_SPEED);
 	}
 	if (keycode == 124)
 	{
-		ft_rotate_player(&data->player, -0.1);
+		ft_rotate_player(&data->player, -ROTATION_SPEED);
 	}
 	if (keycode == 49)
 	{

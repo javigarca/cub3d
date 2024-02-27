@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 15:27:45 by javigarc          #+#    #+#             */
-/*   Updated: 2024/02/27 11:32:11 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/27 13:41:10 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -67,21 +67,21 @@ typedef struct s_player
 
 typedef struct	s_raysdt
 {
-	int 	pix;
-	t_coord	delta;
-	t_coord sidedist;
-	t_coord posray;
-	t_dot	map;
-	t_coord step;
-	int 	stepSize;
-	t_coord	dir;
-	double	camerax;
-	int		wallhit;
-	double	walldist;
-	double	wallheight;
-	int		side;
-	int		start;
-	int		end;
+	int 	pix; // Índice del píxel actual en el eje X
+	t_coord	delta; // Distancia que se debe mover en el mapa por cada paso en X o Y
+	t_coord sidedist; // Distancia al próximo lado en X o Y
+	t_coord posray; // Posición actual del rayo
+	t_dot	map; // Coordenadas del mapa en el que se encuentra el rayo
+	t_coord step; // Dirección del paso en X o Y (1 o -1)
+	int 	stepSize; // Tamaño del paso
+	t_coord	dir; // Dirección del rayo
+	double	camerax; // Posición X de la cámara en el espacio de la cámara
+	int		wallhit; // Indica si el rayo ha golpeado una pared
+	double	walldist; // Distancia desde la posición del jugador hasta la pared golpeada
+	double	wallheight; // Altura de la pared golpeada
+	int		side; // Lado de la pared golpeada (Norte, Sur, Este, Oeste)
+	int		start; // Punto de inicio para el dibujo de la pared en la pantalla
+	int		end; // Punto final para el dibujo de la pared en la pantalla
 }				t_raysdt;
 
 typedef struct s_gamedata
@@ -113,4 +113,6 @@ void	ft_start_draw(t_gamedata *gdata);
 int ft_to_color_argb(t_color color);
 //
 void  ft_raycasting(t_gamedata *gdata);
+//
+void	ft_draw_ray_wall(t_gamedata *gdata, t_raysdt *ray, int color);
 #endif

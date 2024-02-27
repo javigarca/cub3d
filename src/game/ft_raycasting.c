@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 11:24:41 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/27 13:23:31 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/27 13:54:25 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ void	ft_raycasting(t_gamedata *gdata)
 	ray = ft_calloc(1, sizeof (t_raysdt));
 	
 	ray->wallhit = 0;
-	while (ray->pix < 800)
+	while (ray->pix < gdata->win_size.x)
 	{
 		ft_ray_init(ray, gdata);
 		if (ray->dir.x < 0)
@@ -75,6 +75,12 @@ void	ft_raycasting(t_gamedata *gdata)
 		else
 			ray->wallheight = 700 / ray->walldist;
 		printf("  wallheight: %f \n", ray->wallheight);
+		t_color colorin;
+
+		colorin.r= 255;
+		colorin.g = 0;
+		colorin.b = 0;
+		ft_draw_ray_wall(gdata, ray, ft_to_color_argb(colorin));
 		ray->pix++;
 	}
 }

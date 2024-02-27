@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 19:58:12 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/27 11:25:14 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/27 13:56:30 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -92,4 +92,19 @@ void	ft_light_rect(t_gamedata *gdata, t_coord begin, t_coord end, int color)
 		}
 		i++;
 	}
+}
+void	ft_draw_ray_wall(t_gamedata *gdata, t_raysdt *ray, int color)
+{
+	int	i;
+	ray-> start = gdata->img_size.y / 2 - ray->wallheight / 2;
+	ray-> end = gdata->img_size.y / 2 + ray->wallheight / 2;
+	ft_putnbr_fd(color,1);
+	if (ray->side == 1)
+		color = color / 2;
+	i = ray->start;
+		while (i <= ray->end)
+		{
+			ft_light_my_pixel(gdata, ray->pix, i, color);
+			i++;
+		}
 }

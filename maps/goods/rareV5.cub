@@ -1,6 +1,12 @@
-F 255,255,255
+
 WE textures/barrel.xpm
-C 0,0,0
+F 173,255,47
+
+
+
+
+
+C 173,216,230
 
 NO textures/barrel.xpm
 SO textures/barrel.xpm

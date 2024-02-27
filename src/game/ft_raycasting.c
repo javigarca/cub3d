@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 11:24:41 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/27 13:18:01 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/27 13:23:31 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -70,7 +70,10 @@ void	ft_raycasting(t_gamedata *gdata)
 			else
 				ray->walldist = ray->sidedist.y - ray->delta.y;
 		}
-		ray->wallheight = 700 / ray->walldist;
+		if (ray->walldist == 0)
+			ray->wallheight = 690;
+		else
+			ray->wallheight = 700 / ray->walldist;
 		printf("  wallheight: %f \n", ray->wallheight);
 		ray->pix++;
 	}

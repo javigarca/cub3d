@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 19:30:47 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/27 16:34:26 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/27 17:08:29 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,12 +30,12 @@ int	key_hook(int keycode, t_gamedata *data)
 		data->player.pos.y += .3 * data->player.dir.y;
 	
 	}
-	if (keycode == 97) // move back
+	if (keycode == 97) 
 	{
 		printf("A");
 		data->player.pos.x -= .3* data->player.dir.x;
 	}
-	if (keycode == 115)
+	if (keycode == 115) //move back
 	{
 		printf("S");
 		data->player.pos.y -= .3* data->player.dir.y;

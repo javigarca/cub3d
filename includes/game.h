@@ -121,4 +121,6 @@ void	ft_draw_ray_wall(t_gamedata *gdata, t_raysdt *ray, int color);
 void	ft_rotate_player(t_player *player, double rot_speed);
 void ft_strafe_left(t_player *player, double strafe_speed);
 void ft_strafe_right(t_player *player, double strafe_speed);
+void ft_move_forward(t_player *player, double strafe_speed);
+void ft_move_backwards(t_player *player, double strafe_speed);
 #endif

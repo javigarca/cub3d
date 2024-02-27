@@ -38,3 +38,15 @@ void ft_strafe_right(t_player *player, double strafe_speed)
     player->pos.x += player->plane.x * strafe_speed;
     player->pos.y += player->plane.y * strafe_speed;
 }
+
+void    ft_move_forward(t_player *player, double movement_speed)
+{
+    player->pos.x += player->dir.x * movement_speed;
+    player->pos.y += player->dir.y * movement_speed;
+}
+
+void    ft_move_backwards(t_player *player, double movement_speed)
+{
+    player->pos.x -= player->dir.x * movement_speed;
+    player->pos.y -= player->dir.y * movement_speed;
+}

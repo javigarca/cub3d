@@ -28,7 +28,8 @@ int	key_hook(int keycode, t_gamedata *data)
 	if (keycode == 13 || keycode == 126) // move forward
 	{
 		printf("W");
-		data->player.pos.y += .3 * data->player.dir.y;
+		ft_move_forward(&data->player, MOVE_SPEED);
+		//data->player.pos.y += .3 * data->player.dir.y;
 	
 	}
 	if (keycode == 0) 
@@ -40,7 +41,8 @@ int	key_hook(int keycode, t_gamedata *data)
 	if (keycode == 1 || keycode == 125) //move back
 	{
 		printf("S");
-		data->player.pos.y -= .3* data->player.dir.y;
+		ft_move_backwards(&data->player, MOVE_SPEED);
+		//data->player.pos.y -= .3* data->player.dir.y;
 	}
 	if (keycode == 2)
 	{

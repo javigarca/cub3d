@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 11:24:41 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/27 13:54:25 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/27 16:59:15 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,9 +20,11 @@ void	ft_raycasting(t_gamedata *gdata)
 	t_raysdt	*ray;
 
 	ray = ft_calloc(1, sizeof (t_raysdt));
+	if (!ray)
+		printf("Error: failed to allocate memory for raycasting");
 	
-	ray->wallhit = 0;
-	while (ray->pix < gdata->win_size.x)
+	//ray->wallhit = 0;
+	while (ray->pix < gdata->img_size.x)
 	{
 		ft_ray_init(ray, gdata);
 		if (ray->dir.x < 0)

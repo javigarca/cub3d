@@ -6,7 +6,7 @@
 #    By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/17 14:24:44 by xamayuel          #+#    #+#              #
-#    Updated: 2024/02/27 14:46:41 by javi             ###   ########.fr        #
+#    Updated: 2024/02/27 15:34:01 by javi             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,9 @@ BLUE			= 	\033[38;5;39m
 DARK_BLUE		=   \033[38;5;57m
 # -----------------SRC
 SRC =	$(SRC_DIR)/main.c \
-		$(SRC_DIR)/ft_is_valid_input_file.c
+		$(SRC_DIR)/ft_is_valid_input_file.c\
+		$(SRC_DIR)/ft_print_data.c\
+		$(SRC_DIR)/ft_show_logo.c\
 
 OBJ = $(patsubst $(SRC_DIR)%.c, $(OBJ_DIR)%.o, $(SRC))
 

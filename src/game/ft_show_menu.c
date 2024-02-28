@@ -6,11 +6,11 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 19:53:36 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/28 18:27:10 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/28 18:54:37 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include	"game.h"
+#include "game.h"
 
 void	ft_show_menu(t_gamedata *gdata, char *line)
 {

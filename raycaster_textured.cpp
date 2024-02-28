@@ -265,23 +265,23 @@ int main(int /*argc*/, char */*argv*/[])
     if(keyDown(SDLK_RIGHT))
     {
       //both camera direction and camera plane must be rotated
-      double oldDirX = dirX;
+      double olddirx = dirX;
       dirX = dirX * cos(-rotSpeed) - dirY * sin(-rotSpeed);
-      dirY = oldDirX * sin(-rotSpeed) + dirY * cos(-rotSpeed);
-      double oldPlaneX = planeX;
+      dirY = olddirx * sin(-rotSpeed) + dirY * cos(-rotSpeed);
+      double oldplanex = planeX;
       planeX = planeX * cos(-rotSpeed) - planeY * sin(-rotSpeed);
-      planeY = oldPlaneX * sin(-rotSpeed) + planeY * cos(-rotSpeed);
+      planeY = oldplanex * sin(-rotSpeed) + planeY * cos(-rotSpeed);
     }
     //rotate to the left
     if(keyDown(SDLK_LEFT))
     {
       //both camera direction and camera plane must be rotated
-      double oldDirX = dirX;
+      double olddirx = dirX;
       dirX = dirX * cos(rotSpeed) - dirY * sin(rotSpeed);
-      dirY = oldDirX * sin(rotSpeed) + dirY * cos(rotSpeed);
-      double oldPlaneX = planeX;
+      dirY = olddirx * sin(rotSpeed) + dirY * cos(rotSpeed);
+      double oldplanex = planeX;
       planeX = planeX * cos(rotSpeed) - planeY * sin(rotSpeed);
-      planeY = oldPlaneX * sin(rotSpeed) + planeY * cos(rotSpeed);
+      planeY = oldplanex * sin(rotSpeed) + planeY * cos(rotSpeed);
     }
     if(keyDown(SDLK_ESCAPE))
     {

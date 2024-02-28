@@ -6,13 +6,14 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 11:24:41 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/28 15:57:48 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/28 18:48:17 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game.h"
 #define TEXWIDTH 64
 #define FACTOR .66
+
 static void	ft_ray_init(t_raysdt *ray, t_gamedata *gdata);
 //static void ft_print_ray_info(t_raysdt *ray, t_gamedata *gdata, int type);
 
@@ -39,7 +40,8 @@ void	ft_ray_calculate_sidedist(t_raysdt *ray, t_gamedata *gdata)
 		ray->sidedist.y = (ray->map.y + 1.0 - gdata->player.pos.y) * ray->delta.y;
 	}
 }
-void ft_ray_calculate_walldist(t_raysdt *ray, t_gamedata *gdata)
+
+void	ft_ray_calculate_walldist(t_raysdt *ray, t_gamedata *gdata)
 {
 	while (ray->wallhit == 0)
 	{
@@ -63,30 +65,30 @@ void ft_ray_calculate_walldist(t_raysdt *ray, t_gamedata *gdata)
 			ray->walldist = ray->sidedist.y - ray->delta.y;
 	}
 	if (ray->walldist == 0)
-		ray->wallheight = FACTOR* gdata->img_size.y ;
+		ray->wallheight = FACTOR * gdata->img_size.y ;
 	else
-		ray->wallheight = FACTOR* gdata->img_size.y / ray->walldist;
+		ray->wallheight = FACTOR * gdata->img_size.y / ray->walldist;
 }
 
-void ft_ray_calculate_stripe(t_raysdt *ray)
+void	ft_ray_calculate_stripe(t_raysdt *ray)
 {
-	ray->stripStart = - ray->wallheight / 2 + H_RESOL / 2 + ray->pitch;
-	ray->stripEnd = + ray->wallheight / 2 + H_RESOL / 2 + ray->pitch;
+	ray->stripStart = -ray->wallheight / 2 + H_RESOL / 2 + ray->pitch;
+	ray->stripEnd = +ray->wallheight / 2 + H_RESOL / 2 + ray->pitch;
 	if (ray->stripStart < 0)
 		ray->stripStart = 0;
 	if (ray->stripEnd >= H_RESOL)
-		ray->stripEnd = H_RESOL -	1;
+		ray->stripEnd = H_RESOL - 1;
 }
 
-void ft_ray_calculate_wallX(t_raysdt *ray, t_gamedata *gdata)
+void	ft_ray_calculate_wallx(t_raysdt *ray, t_gamedata *gdata)
 {
 	if (ray->side == 0)
 		ray->wallX = gdata->player.pos.y + ray->walldist * ray->dir.y;
 	else
 		ray->wallX = gdata->player.pos.x + ray->walldist * ray->dir.x;
 	ray->wallX -= floor(ray->wallX);
-
 }
+
 void	ft_light_my_pixel_n(t_gamedata *gdata, int x, int y, int color)
 {
 	int	lpixel;
@@ -104,7 +106,7 @@ void	ft_light_my_pixel_n(t_gamedata *gdata, int x, int y, int color)
 	}
 }
 
-int ft_get_wall_direction(t_raysdt *ray)
+int	ft_get_wall_direction(t_raysdt *ray)
 {
 	if (ray->side == 0)
 	{
@@ -117,10 +119,10 @@ int ft_get_wall_direction(t_raysdt *ray)
 	{
 		if (ray->dir.y > 0)
 			return (SOUTH);
-		return(NORTH);
+		return (NORTH);
 	}
 }
-void ft_draw_ray_wall_texture(t_gamedata *gdata ,t_raysdt *ray)
+void	ft_draw_ray_wall_texture(t_gamedata *gdata ,t_raysdt *ray)
 {
 	int	y;
 	int	color;
@@ -128,15 +130,16 @@ void ft_draw_ray_wall_texture(t_gamedata *gdata ,t_raysdt *ray)
 	y = ray->stripStart;
 	while (y < ray->stripEnd)
 	{
-		ray->texY = (int)ray->texpos & (TEXWIDTH-1); //cambiar 64 por tamaño textura 
+		ray->texY = (int)ray->texpos & (TEXWIDTH - 1); //cambiar 64 por tamaño textura 
 		ray->texpos += ray->texture_step;
 		color = gdata->textures[ft_get_wall_direction(ray)][TEXWIDTH * ray->texY + ray->texX];
 		if (ray->pix == 799)
 		{
 			printf("\n pixel-> X:%d Y:%d texpos: pixel x:%d y:%d color:%d", ray->pix, y, ray->texX, ray->texY, color);
 		}
-
-		if (ft_get_wall_direction(ray) == NORTH || ft_get_wall_direction(ray) == EAST)
+		if (ft_get_wall_direction(ray) == NORTH)
+			color = (color >> 1) & 8355711;
+		if (ft_get_wall_direction(ray) == EAST)
 			color = (color >> 1) & 8355711;
 		ft_light_my_pixel_n(gdata, ray->pix, y, color);
 		y++;
@@ -161,22 +164,19 @@ void	ft_raycasting(t_gamedata *gdata)
 {
 	t_raysdt	*ray;
 
-
 	ray = ft_calloc(1, sizeof (t_raysdt));
 	if (!ray)
 		printf("Error: failed to allocate memory for raycasting");
-	
-	//ray->wallhit = 0;
 	while (ray->pix < gdata->img_size.x)
 	{
 		ft_ray_init(ray, gdata);
 		ft_ray_calculate_sidedist(ray, gdata);
 		ft_ray_calculate_walldist(ray, gdata);
 		ft_ray_calculate_stripe(ray);
-		printf("\n pix: %d wallheight: %f", ray->pix,ray->wallheight);
-		printf("\tstripe Start:%d End:%d", ray->stripStart, ray->stripEnd);
+		//printf("\n pix: %d wallheight: %f", ray->pix,ray->wallheight);
+		//printf("\tstripe Start:%d End:%d", ray->stripStart, ray->stripEnd);
 		// EMPEZANDO TEXTURAS
-		ft_ray_calculate_wallX(ray, gdata);
+		ft_ray_calculate_wallx(ray, gdata);
 		printf("\twallX: %f	", ray->wallX);
 		ft_ray_calculate_texture(ray, gdata);
 		ft_draw_ray_wall_texture(gdata, ray);
@@ -190,10 +190,8 @@ static void	ft_ray_init(t_raysdt *ray, t_gamedata *gdata)
 	//cameraX is the x-coordinate on the camera plane that the current x-coordinate of the screen represents, done this way so that the right side of the screen will get coordinate 1, the center of the screen gets coordinate 0, and the left side of the screen gets coordinate -1. Out of this, the direction of the ray can be calculated as was explained earlier: as the sum of the direction vector, and a part of the plane vector. This has to be done both for the x and y coordinate of the vector (since adding two vectors is adding their x-coordinates, and adding their y-coordinates).
 	ray->dir.x = (gdata->player.dir.x + gdata->player.plane.x * ray->camerax);
 	ray->dir.y = gdata->player.dir.y + gdata->player.plane.y * ray->camerax;
-	
 	ray->map.x = (int)gdata->player.pos.x;
 	ray->map.y = (int)gdata->player.pos.y;
-	
 	if (ray->dir.x == 0)
 		ray->delta.x = 1E30;
 	else
@@ -208,7 +206,6 @@ static void	ft_ray_init(t_raysdt *ray, t_gamedata *gdata)
 	ray->stripStart = 0;
 	ray->stripEnd = 0;
 	ray->pitch = 0; // se puede cambiar a 100
-	
 }
 /*
 static void ft_print_ray_info(t_raysdt *ray, t_gamedata *gdata, int type)

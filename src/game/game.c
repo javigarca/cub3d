@@ -54,16 +54,28 @@ static void	ft_init_player(t_gamedata *gdata)
 	initdir = gdata->map->map2d[gdata->map->p_x][gdata->map->p_y];
 	gdata->player.dir.x = 0;
 	gdata->player.dir.y = 0;
-	if (ft_strncmp(&initdir, "N", 1) == 0)
-		gdata->player.dir.x = -1;
-	if (ft_strncmp(&initdir, "E", 1) == 0)
-		gdata->player.dir.y = 1;
-	if (ft_strncmp(&initdir, "S", 1) == 0)
-		gdata->player.dir.x = 1;
-	if (ft_strncmp(&initdir, "W", 1) == 0)
-		gdata->player.dir.y = -1;
-	gdata->player.plane.x = 0.66;
+	gdata->player.plane.x = 0;
 	gdata->player.plane.y = 0;
+	if (ft_strncmp(&initdir, "N", 1) == 0)
+	{
+		gdata->player.dir.y = -1;
+		gdata->player.plane.x = 0.66;
+	}
+	if (ft_strncmp(&initdir, "E", 1) == 0)
+	{
+		gdata->player.dir.x = 1;
+		gdata->player.plane.y = 0.66;
+	}
+	if (ft_strncmp(&initdir, "S", 1) == 0)
+	{
+		gdata->player.dir.y = 1;
+		gdata->player.plane.x = 0.66;
+	}
+	if (ft_strncmp(&initdir, "W", 1) == 0)
+	{
+		gdata->player.dir.x = -1;
+		gdata->player.plane.y = 0.66;
+	}
 	gdata->player.pos.x = gdata->map->p_x;
 	gdata->player.pos.y = gdata->map->p_y;
 }

@@ -25,7 +25,7 @@ int	key_hook(int keycode, t_gamedata *data)
 		mlx_destroy_window(data->mlx, data->win); //leaks?
 		exit(0);
 	}
-	if (keycode == K_W) // move forward
+	if (keycode == K_W || keycode == K_AR_U) // move forward
 	{
 		ft_move_forward(&data->player, MOVE_SPEED);
 		//data->player.pos.y += .3 * data->player.dir.y;
@@ -37,7 +37,7 @@ int	key_hook(int keycode, t_gamedata *data)
 		ft_strafe_left(&data->player, STRAFE_SPEED);
 		//data->player.pos.x -= .3* data->player.dir.x;
 	}
-	if (keycode == K_S) //move back
+	if (keycode == K_S || keycode == K_AR_D) //move back
 	{
 		printf("S");
 		ft_move_backwards(&data->player, MOVE_SPEED);
@@ -49,11 +49,11 @@ int	key_hook(int keycode, t_gamedata *data)
 		ft_strafe_right(&data->player, STRAFE_SPEED);
 		//data->player.pos.x += .3* data->player.dir.x;
 	}
-	if (keycode ==  K_AR_R)
+	if (keycode ==  K_AR_L)
 	{
 		ft_rotate_player(&data->player, ROTATION_SPEED);
 	}
-	if (keycode == K_AR_L)
+	if (keycode == K_AR_R)
 	{
 		ft_rotate_player(&data->player, -ROTATION_SPEED);
 	}

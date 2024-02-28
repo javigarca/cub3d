@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 19:30:47 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/27 17:08:29 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/28 18:00:02 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,43 +22,42 @@ int	key_hook(int keycode, t_gamedata *data)
 	if (keycode == XK_Escape)
 	{
 		printf("salida de escape. hacer frees\n");
-		mlx_destroy_window(data->mlx, data->win);
+		mlx_destroy_window(data->mlx, data->win); //leaks?
 		exit(0);
 	}
-	if (keycode == 13 || keycode == 126) // move forward
+	if (keycode == K_W) // move forward
 	{
-		printf("W");
 		ft_move_forward(&data->player, MOVE_SPEED);
 		//data->player.pos.y += .3 * data->player.dir.y;
 	
 	}
-	if (keycode == 0) 
+	if (keycode == K_A) 
 	{
 		printf("A");
 		ft_strafe_left(&data->player, STRAFE_SPEED);
 		//data->player.pos.x -= .3* data->player.dir.x;
 	}
-	if (keycode == 1 || keycode == 125) //move back
+	if (keycode == K_S) //move back
 	{
 		printf("S");
 		ft_move_backwards(&data->player, MOVE_SPEED);
 		//data->player.pos.y -= .3* data->player.dir.y;
 	}
-	if (keycode == 2)
+	if (keycode == K_D)
 	{
 		printf("D");
 		ft_strafe_right(&data->player, STRAFE_SPEED);
 		//data->player.pos.x += .3* data->player.dir.x;
 	}
-	if (keycode == 123)
+	if (keycode ==  K_AR_R)
 	{
 		ft_rotate_player(&data->player, ROTATION_SPEED);
 	}
-	if (keycode == 124)
+	if (keycode == K_AR_L)
 	{
 		ft_rotate_player(&data->player, -ROTATION_SPEED);
 	}
-	if (keycode == 49)
+	if (keycode == K_SP)
 	{
 		printf("SPACE");
 		

@@ -6,7 +6,7 @@
 #    By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/17 14:24:44 by xamayuel          #+#    #+#              #
-#    Updated: 2024/02/27 15:34:01 by javi             ###   ########.fr        #
+#    Updated: 2024/02/28 17:48:20 by javi             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,7 +32,8 @@ MAP = $(LIBRARIES_DIR)/map.a
 GNL = $(LIBRARIES_DIR)/gnl.a
 PARSER = $(LIBRARIES_DIR)/parser.a
 GAME = $(LIBRARIES_DIR)/game.a
-MLX = $(MLX_DIR)/libmlx.a
+MINILIBX = minilibx_linux/libmlx.a
+MLX = minilibx/libmlx.a
 # ------------- COLORS 
 # https://talyian.github.io/ansicolors/
 RESET			= 	\033[0m
@@ -57,7 +58,12 @@ CC = gcc
 
 HEAD = -I./includes \
 	   -I./$(LIBFT_DIR) \
+	   -I./minilibx
 
+HEAD_LINUX = -I./includes \
+	   -I./$(LIBFT_DIR) \
+	   -I./minilibx_linux 
+	   
 CFLAGS = -Wall -Werror -Wextra #-g -fsanitize=address
 LFLAGS = -L . $(LIBFT) \
 		 -L . $(GNL) \
@@ -66,6 +72,12 @@ LFLAGS = -L . $(LIBFT) \
 		 -L . $(GAME) \
 		 -L . $(MLX) -framework OpenGL -framework AppKit
 
+LFLAGS_LINUX = -L . $(LIBFT) \
+		 -L . $(GNL) \
+		 -L . $(MAP)\
+		 -L . $(PARSER) \
+		 -L . $(GAME) \
+		 -L . $(MINILIBX) -lXext -lX11 -lm 
 # Address sanitizing flags
 ASAN := -fsanitize=address -fsanitize-recover=address
 ASAN += -fno-omit-frame-pointer -fno-common
@@ -83,10 +95,22 @@ RM = /bin/rm -rf
 all: $(NAME)
 bonus: all
 
-$(NAME): $(OBJ) libraries libft gnl game map parser mlx
-		
-		$(CC) $(OBJ) $(HEAD) $(CFLAGS) $(LFLAGS) -o $(NAME)
-		#$(CC) $(OBJ) $(HEAD) $(CFLAGS) $(LFLAGS) $(ASAN) -o $(NAME)
+minilibx:
+	@if [ "$(shell uname)" = "Linux" ]; then \
+		echo "Generando para Linux..."; \
+		make -C minilibx_linux/; \
+	else \
+		make -C minilibx_opengl/; \
+	fi
+	
+
+$(NAME): $(OBJ) libraries minilibx libft gnl map parser game
+		@if [ "$(shell uname)" = "Linux" ]; then \
+			echo "$(ORANGE)Compiling for Linux."; \
+			$(CC) $(OBJ) $(HEAD_LINUX) $(CFLAGS) $(LFLAGS_LINUX)  -o $(NAME);\
+		else \
+			$(CC) $(OBJ) $(HEAD) $(CFLAGS) $(LFLAGS)  -o $(NAME); \
+		fi
 		clear
 		@echo "$(LIGHT_PINK)╔════════════════════════════════════╗"
 		@echo "$(LIGHT_PINK)║${PINK} 🎮🎮🎮🐶 CUB3D COMPLETE 🐶🎮🎮🎮  ║"

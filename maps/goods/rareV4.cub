@@ -1,10 +1,10 @@
 F 255,255,255
 C 0,0,0
 
-NO textures/barrel.xpm
-SO textures/barrel.xpm
+NO textures/colorstone.xpm
+SO textures/colorstone.xpm
 WE textures/barrel.xpm
-EA textures/barrel.xpm
+EA textures/colorstone.xpm
 
 
 

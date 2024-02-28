@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 13:45:06 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/27 14:47:39 by javi             ###   ########.fr       */
+/*   Updated: 2024/02/28 18:20:02 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ int	main(int argn, char *argv[])
 				Incorrect number of arguments."KNRM"\n");
 	else if (ft_is_valid_input_file(argv) == TRUE)
 	{
-		printf(KBLU"\nLoading %s ...\n",argv[1]);
+		printf(KBLU"\nLoading %s ...\n", argv[1]);
 		if (ft_is_valid_map(argv[1]) == TRUE)
 		{
 			printf(KGRN"Parsing %s ...\n"KNRM"", argv[1]);

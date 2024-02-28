@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 15:21:39 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/26 19:50:35 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/28 16:11:16 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 # define GAME_STRUCT_H
 
 # define W_RESOL 800
-# define H_RESOL 700
+# define H_RESOL 600
 
 typedef struct s_texture
 {

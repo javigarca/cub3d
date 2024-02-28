@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 16:04:24 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/28 09:41:47 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/28 18:19:12 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,7 @@
 #include "game_struct.h"
 
 char	*ft_remove_newline(char *str);
+
 /**
  * Extracts a texture path from a map file for a given direction.
  *
@@ -47,7 +48,7 @@ char	*ft_parse_map_texture(char **texture, char *filename, char *direction)
 		if (ft_strncmp(elements[0], direction, 2) == 0)
 		{
 			*texture = ft_strdup(elements[1]);
-			*texture = ft_remove_newline(*texture); 
+			*texture = ft_remove_newline(*texture);
 			free(line);
 			ft_free_split(elements);
 			break ;

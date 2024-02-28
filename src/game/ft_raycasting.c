@@ -6,13 +6,13 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 11:24:41 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/28 13:42:35 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/28 15:31:40 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game.h"
 #define TEXWIDTH 64
-#define FACTOR 1
+#define FACTOR .66
 static void	ft_ray_init(t_raysdt *ray, t_gamedata *gdata);
 //static void ft_print_ray_info(t_raysdt *ray, t_gamedata *gdata, int type);
 
@@ -77,10 +77,71 @@ void ft_ray_calculate_stripe(t_raysdt *ray)
 	if (ray->stripEnd >= H_RESOL)
 		ray->stripEnd = H_RESOL -	1;
 }
+
+void ft_ray_calculate_wallX(t_raysdt *ray, t_gamedata *gdata)
+{
+	if (ray->side == 0)
+		ray->wallX = gdata->player.pos.y + ray->walldist * ray->dir.y;
+	else
+		ray->wallX = gdata->player.pos.x + ray->walldist * ray->dir.x;
+	ray->wallX -= floor(ray->wallX);
+
+}
+void	ft_light_my_pixel_n(t_gamedata *gdata, int x, int y, int color)
+{
+	int	lpixel;
+	int	width;
+	int	height;
+
+	width = gdata->img_size.x;
+	height = gdata->img_size.y;
+	if (x >= 0 && x < width && y >= 0 && y < height)
+	{
+		lpixel = (x * gdata->pixel_b / 8) + (y * gdata->lines_b);
+		gdata->imgadd[lpixel] = color;
+		gdata->imgadd[++lpixel] = color >> 8;
+		gdata->imgadd[++lpixel] = color >> 16;
+	}
+}
+
+void ft_draw_ray_wall_texture(t_gamedata *gdata ,t_raysdt *ray)
+{
+	int	y;
+	int	color;
+
+	y = ray->stripStart;
+	while (y < ray->stripEnd)
+	{
+		ray->texY = (int)ray->texpos & (TEXWIDTH-1); //cambiar 64 por tamaño textura 
+		ray->texpos += ray->texture_step;
+		color = gdata->textures[1][TEXWIDTH * ray->texY + ray->texX];
+		if (ray->pix == 799)
+		{
+			printf("\n pixel-> X:%d Y:%d texpos: pixel x:%d y:%d color:%d", ray->pix, y, ray->texX, ray->texY, color);
+		}
+		ft_light_my_pixel_n(gdata, ray->pix, y, color);
+		y++;
+	}		
+	
+}
+
+void ft_ray_calculate_texture(t_raysdt *ray, t_gamedata *gdata)
+{
+	ray->texX = (int)(ray->wallX * (double)TEXWIDTH);	
+	if (ray->side == 0 && ray->dir.x > 0)
+		ray->texX = TEXWIDTH - ray->texX - 1;
+	if (ray->side == 1 && ray->dir.y < 0)
+		ray->texX = TEXWIDTH - ray->texX - 1;
+	printf("\t texX: %d", ray->texX);
+	ray->texture_step = 1.0 * TEXWIDTH / ray->wallheight;
+	printf("\t step: %f", ray->texture_step);
+	ray->texpos = (ray->stripStart - ray->pitch - gdata->img_size.y/2 + ray->wallheight / 2)* ray->texture_step;
+	printf("\t texpos: %f", ray->texpos);
+}
 void	ft_raycasting(t_gamedata *gdata)
 {
 	t_raysdt	*ray;
-	int y;
+
 
 	ray = ft_calloc(1, sizeof (t_raysdt));
 	if (!ray)
@@ -96,48 +157,10 @@ void	ft_raycasting(t_gamedata *gdata)
 		printf("\n pix: %d wallheight: %f", ray->pix,ray->wallheight);
 		printf("\tstripe Start:%d End:%d", ray->stripStart, ray->stripEnd);
 		// EMPEZANDO TEXTURAS
-		// 1. calcular la posicion de la pared
-		if (ray->side == 0)
-			ray->wallX = gdata->player.pos.y + ray->walldist * ray->dir.y;
-		else
-			ray->wallX = gdata->player.pos.x + ray->walldist * ray->dir.x;
-		ray->wallX -= floor(ray->wallX);
-
+		ft_ray_calculate_wallX(ray, gdata);
 		printf("\twallX: %f	", ray->wallX);
-		// 2. calcular la posicion de la textura
-		ray->texX = (int)(ray->wallX * (double)TEXWIDTH);
-		if (ray->side == 0 && ray->dir.x > 0)
-			ray->texX = TEXWIDTH - ray->texX - 1;
-		if (ray->side == 1 && ray->dir.y < 0)
-			ray->texX = TEXWIDTH - ray->texX - 1;
-		//printf("texX: %d\n", ray->texX);
-		// 3. calcular la posicion de la textura en la pared
-		
-		//printf("step: %f\n", step);
-		// 4. pintar la textura en la pared
-		int pitch = 0;
-		int drawStart = -ray->wallheight/2 + gdata->img_size.y/2 + pitch;
-		if (drawStart == 0)
-			drawStart = 0;
-		int drawEnd = ray->wallheight/2 + gdata->img_size.y/2 + pitch;
-		if (drawEnd > gdata->img_size.y)
-			drawEnd = gdata->img_size.y -1;
-
-		double step = 1.0 * TEXWIDTH / ray->wallheight;
-		ray->texpos = (drawStart - pitch - gdata->img_size.y/2 + ray->wallheight / 2)* step;
-		
-		int color;
-
-		y = drawStart;
-		while (y < drawEnd)
-		{
-			ray->texY = (int)ray->texpos & (64 -1); //cambiar 64 por tamaño textura 
-			ray->texpos += step;
-			color = gdata->textures[1][64 * ray->texY + ray->texX];
-			y++;
-		}
-		
-		ft_draw_ray_wall(gdata, ray, color);
+		ft_ray_calculate_texture(ray, gdata);
+		ft_draw_ray_wall_texture(gdata, ray);
 		ray->pix++;
 	}
 }

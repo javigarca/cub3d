@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 15:27:45 by javigarc          #+#    #+#             */
-/*   Updated: 2024/02/28 13:37:13 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/28 14:06:37 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,6 +99,7 @@ typedef struct	s_raysdt
 	int		stripStart;
 	int		stripEnd;
 	int 	pitch;
+	double	texture_step;
 }				t_raysdt;
 
 typedef struct s_img

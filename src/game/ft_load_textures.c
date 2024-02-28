@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 19:10:51 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/28 12:19:37 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/28 14:26:59 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,7 @@ void		ft_clear_img(t_img *image);
  */
 void	ft_load_textures(t_gamedata *gdata)
 {
-	gdata->textures = malloc(sizeof(int *) * 5);
+	gdata->textures = malloc(sizeof(int *) * 6);
 	if (!gdata->textures)
 		printf("Error\nMalloc failed\n"); //poner otra forma de salir quitando leaks
 	printf("Iniciando texturas\n");
@@ -32,6 +32,16 @@ void	ft_load_textures(t_gamedata *gdata)
 	gdata->textures[SOUTH] = ft_xpm_to_array(gdata, SOUTH);
 	gdata->textures[EAST] = ft_xpm_to_array(gdata, EAST);
 	gdata->textures[WEST] = ft_xpm_to_array(gdata, WEST);
+
+	gdata->textures[4] = malloc(sizeof(int) * 64 * 64);
+	if (!gdata->textures[4])
+		printf("Error\nMalloc failed\n"); //poner otra forma de salir quitando leaks
+	// Populate the 2D array of colors
+	for (int i = 0; i < 64; i++) {
+		for (int j = 0; j < 64; j++) {
+			gdata->textures[4][i * 64 + j] = 65536 * 254 * (i != j && i != 64 - j);
+		}
+	}
 }
 
 /**

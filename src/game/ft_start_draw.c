@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 19:58:12 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/28 11:15:26 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/28 14:19:55 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,6 +93,7 @@ void	ft_light_rect(t_gamedata *gdata, t_coord begin, t_coord end, int color)
 		i++;
 	}
 }
+/*
 void	ft_draw_ray_wall(t_gamedata *gdata, t_raysdt *ray, int color)
 {
 	int	i;
@@ -103,6 +104,21 @@ void	ft_draw_ray_wall(t_gamedata *gdata, t_raysdt *ray, int color)
 		color = color / 2;
 	i = ray->start;
 		while (i <= ray->end)
+		{
+			ft_light_my_pixel(gdata, ray->pix, i, color);
+			i++;
+		}
+}
+*/
+void	ft_draw_ray_wall(t_gamedata *gdata, t_raysdt *ray, int color)
+{
+	int	i;
+	
+	//ft_putnbr_fd(color,1);
+	if (ray->side == 1)
+		color = color / 2;
+	i = ray->stripStart;
+		while (i <= ray->stripEnd)
 		{
 			ft_light_my_pixel(gdata, ray->pix, i, color);
 			i++;

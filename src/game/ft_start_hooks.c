@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 19:30:47 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/28 09:59:12 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/28 10:00:27 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ int	ft_button_close(t_gamedata *gdata);
 int	key_hook(int keycode, t_gamedata *data)
 {
 	//printf("\n key = %d", keycode);
-	if (keycode == XK_Escape)
+	if (keycode == K_ESC)
 	{
 		mlx_destroy_window(data->mlx, data->win);
 		exit(0);

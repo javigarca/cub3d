@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 19:58:12 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/27 17:05:07 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/28 11:15:26 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,7 +29,7 @@ void	ft_start_draw(t_gamedata *gdata)
 	ft_light_rect(gdata, start, end, ft_to_color_argb(gdata->map->c_celing));
 	start.y = end.y;
 	end.y = gdata->img_size.y;
-	ft_putstr_fd("\ndibujando elsuelo ahora..", 1);
+	//ft_putstr_fd("\ndibujando elsuelo ahora..", 1);
 	ft_light_rect(gdata, start, end, ft_to_color_argb(gdata->map->c_floor));
 	ft_raycasting(gdata);
 	//ft_start_line_row(gdata);

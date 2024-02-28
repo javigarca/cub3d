@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 15:27:45 by javigarc          #+#    #+#             */
-/*   Updated: 2024/02/28 09:57:36 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/28 12:07:36 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,6 +29,12 @@
 # define TXT_CLR_A 0xF7F7DA
 # define TXT_CLR_B 0xAC0FAC
 
+// defines para gestion de texturas
+# define NORTH 0
+# define SOUTH 1
+# define EAST 2
+# define WEST 3
+//
 # include <unistd.h>
 # include <stdlib.h>
 # include <string.h>
@@ -90,6 +96,15 @@ typedef struct	s_raysdt
 	int 	texX; // x coordinate on the texture
 }				t_raysdt;
 
+typedef struct s_img
+{
+	void *img;
+	int	 *addr;
+	int pixel_bits;
+	int size_line;
+	int endian;
+
+} t_img;
 typedef struct s_gamedata
 {
 	void	*mlx;

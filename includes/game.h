@@ -56,8 +56,9 @@
 # define TILE_SIZE 30 // tile size
 # define FOV 60 // field of view
 # define ROTATION_SPEED 0.1 // rotation speed
-# define MOVE_SPEED 0.3	// player speed
-# define STRAFE_SPEED 0.3	// player strafe speed
+# define MOVE_SPEED 0.25	// player speed
+# define STRAFE_SPEED 0.25	// player strafe speed
+# define OFFSET 1 // .5 no está mal, probando con mas por el "diagonal", queda mas o menos igual, quizas se puede hacer una comprobacion si hay choque, demaisado tiempo nonecesario?
 //
 
 typedef struct s_dot
@@ -75,7 +76,7 @@ typedef struct s_player
 {
     t_coord pos; // Posición del jugador
     t_coord dir; // Dirección de la vista del jugador
-    t_coord plane; // El plano de la cámara, perpendicular a la dirección de la vista
+    t_coord plane; // El plano de la cámara, debe de ser simerpe perpendicular a la dirección de la vista
 	double	rot_angle; // Ángulo de rotación del jugador
 } t_player;
 
@@ -152,11 +153,12 @@ void  ft_raycasting(t_gamedata *gdata);
 void	ft_draw_ray_wall(t_gamedata *gdata, t_raysdt *ray, int color);
 //
 void ft_load_textures(t_gamedata *gdata);
-
-void	ft_rotate_player(t_player *player, double rot_speed);
-void ft_strafe_left(t_player *player, double strafe_speed);
-void ft_strafe_right(t_player *player, double strafe_speed);
-void ft_move_forward(t_player *player, double strafe_speed);
-void ft_move_backwards(t_player *player, double strafe_speed);
-
+//
+void	ft_rotate_player(t_gamedata *gdata, double rot_speed);
+void ft_strafe_left(t_gamedata *gdata, double strafe_speed);
+void ft_strafe_right(t_gamedata *gdata, double strafe_speed);
+void ft_move_forward(t_gamedata *gdatar, double strafe_speed);
+void ft_move_backwards(t_gamedata *gdata, double strafe_speed);
+//
+int ft_check_collision(t_data *map, t_coord new);
 #endif

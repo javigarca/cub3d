@@ -1,7 +1,7 @@
 {
     "files.associations": {
 		"numbers": "c",
-		"cube3d.h": "c",
+		"cubed.h": "c",
 		"game_struct.h": "c",
 		"random": "c",
 		"parser.h": "c",

@@ -76,6 +76,6 @@ static void	ft_init_player(t_gamedata *gdata)
 		gdata->player.dir.y = -1;
 		gdata->player.plane.x = 0.66;
 	}
-	gdata->player.pos.x = gdata->map->p_x;
-	gdata->player.pos.y = gdata->map->p_y;
+	gdata->player.pos.x = gdata->map->p_x + OFFSET;
+	gdata->player.pos.y = gdata->map->p_y + OFFSET;
 }

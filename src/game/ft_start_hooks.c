@@ -27,35 +27,35 @@ int	key_hook(int keycode, t_gamedata *data)
 	}
 	if (keycode == K_W || keycode == K_AR_U) // move forward
 	{
-		ft_move_forward(&data->player, MOVE_SPEED);
+		ft_move_forward(data, MOVE_SPEED);
 		//data->player.pos.y += .3 * data->player.dir.y;
 	
 	}
 	if (keycode == K_A) 
 	{
 		printf("A");
-		ft_strafe_left(&data->player, STRAFE_SPEED);
+		ft_strafe_left(data, STRAFE_SPEED);
 		//data->player.pos.x -= .3* data->player.dir.x;
 	}
 	if (keycode == K_S || keycode == K_AR_D) //move back
 	{
 		printf("S");
-		ft_move_backwards(&data->player, MOVE_SPEED);
+		ft_move_backwards(data, MOVE_SPEED);
 		//data->player.pos.y -= .3* data->player.dir.y;
 	}
 	if (keycode == K_D)
 	{
 		printf("D");
-		ft_strafe_right(&data->player, STRAFE_SPEED);
+		ft_strafe_right(data, STRAFE_SPEED);
 		//data->player.pos.x += .3* data->player.dir.x;
 	}
 	if (keycode ==  K_AR_L)
 	{
-		ft_rotate_player(&data->player, ROTATION_SPEED);
+		ft_rotate_player(data, ROTATION_SPEED);
 	}
 	if (keycode == K_AR_R)
 	{
-		ft_rotate_player(&data->player, -ROTATION_SPEED);
+		ft_rotate_player(data, -ROTATION_SPEED);
 	}
 	if (keycode == K_SP)
 	{
@@ -69,18 +69,18 @@ int	key_hook(int keycode, t_gamedata *data)
 
 void	ft_start_hooks(t_gamedata *gdata)
 {
-	mlx_hook(gdata->win, 2,1L<<0, key_hook, gdata);
+	mlx_hook(gdata->win, 2,0, key_hook, gdata);
 	//mlx_hook(gdata->win, 33, 0L,  ft_key_press, gdata);
 	//mlx_key_hook(gdata->win, key_hook, gdata);
 	mlx_hook(gdata->win, 17, 0, ft_button_close, gdata);
 }
 
-int	ft_key_press(t_gamedata *gdata)
-{
-	printf("\n\nKEY\n %c", gdata->map->map2d[0][0]);
+//int	ft_key_press(t_gamedata *gdata)
+//{
+	//printf("\n\nKEY\n %c", gdata->map->map2d[0][0]);
 	
-	return (0);
-}
+//	return (0);
+//}
 
 int	ft_button_close(t_gamedata *gdata)
 {

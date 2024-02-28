@@ -135,7 +135,7 @@ void	ft_draw_ray_wall_texture(t_gamedata *gdata ,t_raysdt *ray)
 		color = gdata->textures[ft_get_wall_direction(ray)][TEXWIDTH * ray->texY + ray->texX];
 		if (ray->pix == 799)
 		{
-			printf("\n pixel-> X:%d Y:%d texpos: pixel x:%d y:%d color:%d", ray->pix, y, ray->texX, ray->texY, color);
+		//	printf("\n pixel-> X:%d Y:%d texpos: pixel x:%d y:%d color:%d", ray->pix, y, ray->texX, ray->texY, color);
 		}
 		if (ft_get_wall_direction(ray) == NORTH)
 			color = (color >> 1) & 8355711;
@@ -154,11 +154,11 @@ void ft_ray_calculate_texture(t_raysdt *ray, t_gamedata *gdata)
 		ray->texX = TEXWIDTH - ray->texX - 1;
 	if (ray->side == 1 && ray->dir.y < 0)
 		ray->texX = TEXWIDTH - ray->texX - 1;
-	printf("\t texX: %d", ray->texX);
+	//printf("\t texX: %d", ray->texX);
 	ray->texture_step = 1.0 * TEXWIDTH / ray->wallheight;
-	printf("\t step: %f", ray->texture_step);
+//	printf("\t step: %f", ray->texture_step);
 	ray->texpos = (ray->stripStart - ray->pitch - gdata->img_size.y/2 + ray->wallheight / 2)* ray->texture_step;
-	printf("\t texpos: %f", ray->texpos);
+//	printf("\t texpos: %f", ray->texpos);
 }
 void	ft_raycasting(t_gamedata *gdata)
 {
@@ -177,7 +177,7 @@ void	ft_raycasting(t_gamedata *gdata)
 		//printf("\tstripe Start:%d End:%d", ray->stripStart, ray->stripEnd);
 		// EMPEZANDO TEXTURAS
 		ft_ray_calculate_wallx(ray, gdata);
-		printf("\twallX: %f	", ray->wallX);
+		//printf("\twallX: %f	", ray->wallX);
 		ft_ray_calculate_texture(ray, gdata);
 		ft_draw_ray_wall_texture(gdata, ray);
 		ray->pix++;

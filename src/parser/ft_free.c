@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 13:28:25 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/27 17:11:28 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/28 17:21:06 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,7 +27,7 @@
 void	ft_free_data(t_data *data)
 {
 	int	i;
-	printf("LIMPIANDO BASURA\n\n");
+
 	if (!data)
 		return ;
 	if (data->map2d)

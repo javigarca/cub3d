@@ -6,7 +6,7 @@
 #    By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/13 15:38:08 by javigarc          #+#    #+#              #
-#    Updated: 2024/02/28 15:36:00 by xamayuel         ###   ########.fr        #
+#    Updated: 2024/02/28 16:40:10 by xamayuel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -38,6 +38,7 @@ SRC = $(SRC_DIR)/game.c\
 	$(SRC_DIR)/ft_color_argb.c\
 	$(SRC_DIR)/ft_raycasting.c\
 	$(SRC_DIR)/ft_load_textures.c\
+	$(SRC_DIR)/ft_movement.c\
 	 # $(SRC_DIR)/game_draw_light.c\
 	 # $(SRC_DIR)/game_raycaster.c\
 	  #$(SRC_DIR)/game_calculus.c\
@@ -65,7 +66,7 @@ LFLAGS = -L ./$(LIBFT_DIR)
 RM = /bin/rm -rf
 
 # Linker flags for final binary linking, not for object files
-LFLAGS = -L$(LIBFT_DIR) -L$(GNL_DIR) -L../minilibx_linux -lmlx
+LFLAGS = -L$(LIBFT_DIR) -L$(GNL_DIR) -L$(MINILIBX_DIR) -lmlx
 LLFLAGS = -framework OpenGL -framework AppKit
 
 # Remove command

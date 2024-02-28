@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 15:27:03 by javigarc          #+#    #+#             */
-/*   Updated: 2024/02/28 10:42:39 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/28 17:04:12 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -60,13 +60,13 @@ static void	ft_init_player(t_gamedata *gdata)
 	gdata->player.dir.x = 0;
 	gdata->player.dir.y = 0;
 	if (ft_strncmp(&initdir, "N", 1) == 0)
-		gdata->player.dir.y = -1;
-	if (ft_strncmp(&initdir, "E", 1) == 0)
-		gdata->player.dir.x = 1;
-	if (ft_strncmp(&initdir, "S", 1) == 0)
-		gdata->player.dir.y = 1;
-	if (ft_strncmp(&initdir, "W", 1) == 0)
 		gdata->player.dir.x = -1;
+	if (ft_strncmp(&initdir, "E", 1) == 0)
+		gdata->player.dir.y = 1;
+	if (ft_strncmp(&initdir, "S", 1) == 0)
+		gdata->player.dir.x = 1;
+	if (ft_strncmp(&initdir, "W", 1) == 0)
+		gdata->player.dir.y = -1;
 	gdata->player.plane.x = 0.66;
 	gdata->player.plane.y = 0;
 	gdata->player.pos.x = gdata->map->p_x;

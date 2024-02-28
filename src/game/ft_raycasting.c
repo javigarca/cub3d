@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 11:24:41 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/28 15:31:40 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/28 15:51:42 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,6 +104,22 @@ void	ft_light_my_pixel_n(t_gamedata *gdata, int x, int y, int color)
 	}
 }
 
+int ft_get_wall_direction(t_raysdt *ray)
+{
+	if (ray->side == 0)
+	{
+		if (ray->dir.x < 0)
+			return (WEST);
+		else
+			return (EAST);
+	}
+	else
+	{
+		if (ray->dir.y > 0)
+			return (SOUTH);
+		return(NORTH);
+	}
+}
 void ft_draw_ray_wall_texture(t_gamedata *gdata ,t_raysdt *ray)
 {
 	int	y;
@@ -114,7 +130,7 @@ void ft_draw_ray_wall_texture(t_gamedata *gdata ,t_raysdt *ray)
 	{
 		ray->texY = (int)ray->texpos & (TEXWIDTH-1); //cambiar 64 por tamaño textura 
 		ray->texpos += ray->texture_step;
-		color = gdata->textures[1][TEXWIDTH * ray->texY + ray->texX];
+		color = gdata->textures[ft_get_wall_direction(ray)][TEXWIDTH * ray->texY + ray->texX];
 		if (ray->pix == 799)
 		{
 			printf("\n pixel-> X:%d Y:%d texpos: pixel x:%d y:%d color:%d", ray->pix, y, ray->texX, ray->texY, color);

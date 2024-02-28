@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 19:30:47 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/28 17:35:56 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/28 18:00:02 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,7 @@ int	key_hook(int keycode, t_gamedata *data)
 	if (keycode == XK_Escape)
 	{
 		printf("salida de escape. hacer frees\n");
-		mlx_destroy_window(data->mlx, data->win);
+		mlx_destroy_window(data->mlx, data->win); //leaks?
 		exit(0);
 	}
 	if (keycode == K_W) // move forward
@@ -49,11 +49,11 @@ int	key_hook(int keycode, t_gamedata *data)
 		ft_strafe_right(&data->player, STRAFE_SPEED);
 		//data->player.pos.x += .3* data->player.dir.x;
 	}
-	if (keycode ==  K_AR_L)
+	if (keycode ==  K_AR_R)
 	{
 		ft_rotate_player(&data->player, ROTATION_SPEED);
 	}
-	if (keycode == K_AR_R)
+	if (keycode == K_AR_L)
 	{
 		ft_rotate_player(&data->player, -ROTATION_SPEED);
 	}

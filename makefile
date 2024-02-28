@@ -6,7 +6,7 @@
 #    By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/17 14:24:44 by xamayuel          #+#    #+#              #
-#    Updated: 2024/02/28 15:47:45 by xamayuel         ###   ########.fr        #
+#    Updated: 2024/02/28 16:12:41 by xamayuel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -55,7 +55,8 @@ OBJ = $(patsubst $(SRC_DIR)%.c, $(OBJ_DIR)%.o, $(SRC))
 CC = gcc
 
 HEAD = -I./includes \
-	   -I./$(LIBFT_DIR) 
+	   -I./$(LIBFT_DIR) \
+	   -I./minilibx_opengl 
 
 HEAD_LINUX = -I./includes \
 	   -I./$(LIBFT_DIR) \

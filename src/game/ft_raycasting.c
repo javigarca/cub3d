@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 11:24:41 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/28 15:51:42 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/28 15:57:48 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,9 @@ void ft_draw_ray_wall_texture(t_gamedata *gdata ,t_raysdt *ray)
 		{
 			printf("\n pixel-> X:%d Y:%d texpos: pixel x:%d y:%d color:%d", ray->pix, y, ray->texX, ray->texY, color);
 		}
+
+		if (ft_get_wall_direction(ray) == NORTH || ft_get_wall_direction(ray) == EAST)
+			color = (color >> 1) & 8355711;
 		ft_light_my_pixel_n(gdata, ray->pix, y, color);
 		y++;
 	}		

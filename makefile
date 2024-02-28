@@ -6,7 +6,7 @@
 #    By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/17 14:24:44 by xamayuel          #+#    #+#              #
-#    Updated: 2024/02/28 16:12:41 by xamayuel         ###   ########.fr        #
+#    Updated: 2024/02/28 17:48:20 by javi             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -32,6 +32,7 @@ GNL = $(LIBRARIES_DIR)/gnl.a
 PARSER = $(LIBRARIES_DIR)/parser.a
 GAME = $(LIBRARIES_DIR)/game.a
 MINILIBX = minilibx_linux/libmlx.a
+MLX = minilibx/libmlx.a
 # ------------- COLORS 
 # https://talyian.github.io/ansicolors/
 RESET			= 	\033[0m
@@ -56,7 +57,7 @@ CC = gcc
 
 HEAD = -I./includes \
 	   -I./$(LIBFT_DIR) \
-	   -I./minilibx_opengl 
+	   -I./minilibx
 
 HEAD_LINUX = -I./includes \
 	   -I./$(LIBFT_DIR) \

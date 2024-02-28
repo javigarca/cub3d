@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 19:30:47 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/28 11:24:13 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/28 13:43:08 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,7 +26,7 @@ int	key_hook(int keycode, t_gamedata *data)
 	}
 	if (keycode == K_W) // move forward
 	{
-		data->player.pos.y += .3 * data->player.dir.y;
+		data->player.pos.y += .1 * data->player.dir.y;
 	
 	}
 	if (keycode == K_A) 

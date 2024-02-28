@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 15:27:45 by javigarc          #+#    #+#             */
-/*   Updated: 2024/02/28 12:07:36 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/28 13:37:13 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,12 @@ typedef struct	s_raysdt
 	int		start; // Punto de inicio para el dibujo de la pared en la pantalla
 	int		end; // Punto final para el dibujo de la pared en la pantalla
 	double  wallX; // where exactly the wall was hit
+	double 	texpos;
 	int 	texX; // x coordinate on the texture
+	int		texY;
+	int		stripStart;
+	int		stripEnd;
+	int 	pitch;
 }				t_raysdt;
 
 typedef struct s_img

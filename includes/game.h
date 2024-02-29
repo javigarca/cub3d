@@ -162,4 +162,6 @@ void ft_move_backwards(t_gamedata *gdata, double strafe_speed);
 //
 int ft_check_collision(t_data *map, t_coord new);
 int ft_check_doble_col(t_data *map, t_coord new);
+//
+int ft_mouse_rotation(int x, int y, t_gamedata *gdata);
 #endif

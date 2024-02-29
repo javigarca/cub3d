@@ -58,7 +58,7 @@
 # define ROTATION_SPEED 0.1 // rotation speed
 # define MOVE_SPEED 0.25	// player speed
 # define STRAFE_SPEED 0.25	// player strafe speed
-# define OFFSET .5 // para el buffer de colision
+# define OFFSET .2 // para el buffer de colision
 //
 
 typedef struct s_dot
@@ -161,4 +161,5 @@ void ft_move_forward(t_gamedata *gdatar, double strafe_speed);
 void ft_move_backwards(t_gamedata *gdata, double strafe_speed);
 //
 int ft_check_collision(t_data *map, t_coord new);
+int ft_check_doble_col(t_data *map, t_coord new);
 #endif

@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 15:27:45 by javigarc          #+#    #+#             */
-/*   Updated: 2024/02/29 10:13:33 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/29 14:46:43 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -130,7 +130,16 @@ typedef struct s_gamedata
 	t_dot		img_size;
 	t_player	player;
 	int			**textures;
-	int			size;
+	int			N_size_x;
+	int			N_size_y;
+	int			S_size_x;
+	int			S_size_y;
+	int			W_size_x;
+	int			W_size_y;
+	int			E_size_x;
+	int			E_size_y;
+	int			size_x;
+	int			size_y;
 }			t_gamedata;
 
 /// game.c///
@@ -158,4 +167,6 @@ void	ft_move_backwards(t_gamedata *gdata, double strafe_speed);
 //
 int		ft_check_collision(t_data *map, t_coord new);
 int		ft_check_doble_col(t_data *map, t_coord new);
+//
+void	ft_exit_game(t_gamedata *data, char *output);
 #endif

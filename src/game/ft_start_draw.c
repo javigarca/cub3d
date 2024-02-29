@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 19:58:12 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/28 18:23:12 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/29 14:19:44 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ void	ft_light_rect(t_gamedata *gdata, t_coord begin, t_coord end, int color)
 	double	i;
 	double	j;
 
-	ft_putnbr_fd(color, 1);
 	i = begin.x;
 	while (i <= end.x)
 	{

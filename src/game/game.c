@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 15:27:03 by javigarc          #+#    #+#             */
-/*   Updated: 2024/02/29 09:47:08 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/29 14:13:44 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,7 @@ int	start_the_game(t_data *valmap, char *level)
 	t_gamedata	gdata;
 
 	gdata.map = valmap;
+	
 	gdata.map_name = level;
 	ft_gamedata_init(&gdata);
 	ft_load_textures(&gdata);
@@ -28,7 +29,6 @@ int	start_the_game(t_data *valmap, char *level)
 	ft_start_hooks(&gdata);
 	ft_show_menu(&gdata, level);
 	mlx_loop(gdata.mlx);
-	//close_game();
 	return (0);
 }
 

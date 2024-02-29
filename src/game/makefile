@@ -6,7 +6,7 @@
 #    By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/13 15:38:08 by javigarc          #+#    #+#              #
-#    Updated: 2024/02/28 16:40:10 by xamayuel         ###   ########.fr        #
+#    Updated: 2024/02/29 12:51:28 by xamayuel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,6 +40,7 @@ SRC = $(SRC_DIR)/game.c\
 	$(SRC_DIR)/ft_load_textures.c\
 	$(SRC_DIR)/ft_movement.c\
 	$(SRC_DIR)/ft_collisions.c\
+	$(SRC_DIR)/ft_exit_game.c\
 	 # $(SRC_DIR)/game_raycaster.c\
 	  #$(SRC_DIR)/game_calculus.c\
 	  #$(SRC_DIR)/game_color.c\

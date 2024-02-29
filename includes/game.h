@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 15:27:45 by javigarc          #+#    #+#             */
-/*   Updated: 2024/02/28 16:41:11 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/29 10:13:33 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -52,14 +52,12 @@
 #  include <key_linux.h>
 # endif
 
-
 # define TILE_SIZE 30 // tile size
 # define FOV 60 // field of view
 # define ROTATION_SPEED 0.1 // rotation speed
 # define MOVE_SPEED 0.25	// player speed
 # define STRAFE_SPEED 0.25	// player strafe speed
 # define OFFSET .2 // para el buffer de colision
-//
 
 typedef struct s_dot
 {
@@ -67,74 +65,72 @@ typedef struct s_dot
 	int	y;
 }			t_dot;
 
-typedef struct	s_coord
-{	
+typedef struct s_coord
+{
 	double	x;
 	double	y;
 }				t_coord;
 typedef struct s_player
 {
-    t_coord pos; // Posición del jugador
-    t_coord dir; // Dirección de la vista del jugador
-    t_coord plane; // El plano de la cámara, debe de ser simerpe perpendicular a la dirección de la vista
+	t_coord	pos; // Posición del jugador
+	t_coord	dir; // Dirección de la vista del jugador
+	t_coord	plane;	// El plano de la cámara.
 	double	rot_angle; // Ángulo de rotación del jugador
-} t_player;
+}	t_player;
 
-typedef struct	s_raysdt
+typedef struct s_raysdt
 {
-	int 	pix; // Índice del píxel actual en el eje X
-	t_coord	delta; // Distancia que se debe mover en el mapa por cada paso en X o Y
-	t_coord sidedist; // Distancia al próximo lado en X o Y
-	t_coord posray; // Posición actual del rayo
+	int		pix;	// Índice del píxel actual en el eje X
+	t_coord	delta; // Distancia a mover en el mapa por cada paso en X o Y
+	t_coord	sidedist; // Distancia al próximo lado en X o Y
+	t_coord	posray; // Posición actual del rayo
 	t_dot	map; // Coordenadas del mapa en el que se encuentra el rayo
-	t_coord step; // Dirección del paso en X o Y (1 o -1)
-	int 	stepSize; // Tamaño del paso
+	t_coord	step; // Dirección del paso en X o Y (1 o -1)
+	int		stepSize; // Tamaño del paso
 	t_coord	dir; // Dirección del rayo
 	double	camerax; // Posición X de la cámara en el espacio de la cámara
 	int		wallhit; // Indica si el rayo ha golpeado una pared
-	double	walldist; // Distancia desde la posición del jugador hasta la pared golpeada
+	double	walldist; // Distancia desde jugador hasta la pared golpeada
 	double	wallheight; // Altura de la pared golpeada
 	int		side; // Lado de la pared golpeada (Norte, Sur, Este, Oeste)
 	int		start; // Punto de inicio para el dibujo de la pared en la pantalla
 	int		end; // Punto final para el dibujo de la pared en la pantalla
-	double  wallX; // where exactly the wall was hit
-	double 	texpos;
-	int 	texX; // x coordinate on the texture
+	double	wallX; // where exactly the wall was hit
+	double	texpos;
+	int		texX; // x coordinate on the texture
 	int		texY;
 	int		stripStart;
 	int		stripEnd;
-	int 	pitch;
+	int		pitch;
 	double	texture_step;
 }				t_raysdt;
 
 typedef struct s_img
 {
-	void *img;
-	int	 *addr;
-	int pixel_bits;
-	int size_line;
-	int endian;
+	void	*img;
+	int		*addr;
+	int		pixel_bits;
+	int		size_line;
+	int		endian;
 
-} t_img;
+}	t_img;
 typedef struct s_gamedata
 {
-	void	*mlx;
-	void	*win;
-	void	*img;
-	int 	*addr;
-	char	*imgadd;
-	int		pixel_b;
-	int		lines_b;
-	int		endian;
-	char	*map_name;
-	t_data	*map;
-	//t_mods	hookmods;
-	t_dot	win_size;
-	t_dot	img_size;
+	void		*mlx;
+	void		*win;
+	void		*img;
+	int			*addr;
+	char		*imgadd;
+	int			pixel_b;
+	int			lines_b;
+	int			endian;
+	char		*map_name;
+	t_data		*map;
+	t_dot		win_size;
+	t_dot		img_size;
 	t_player	player;
-	int		**textures;
-	int size;
-	
+	int			**textures;
+	int			size;
 }			t_gamedata;
 
 /// game.c///
@@ -146,20 +142,20 @@ void	ft_show_menu(t_gamedata *gdata, char *line);
 //
 void	ft_start_draw(t_gamedata *gdata);
 //
-int ft_to_color_argb(t_color color);
+int		ft_to_color_argb(t_color color);
 //
-void  ft_raycasting(t_gamedata *gdata);
+void	ft_raycasting(t_gamedata *gdata);
 //
 void	ft_draw_ray_wall(t_gamedata *gdata, t_raysdt *ray, int color);
 //
-void ft_load_textures(t_gamedata *gdata);
+void	ft_load_textures(t_gamedata *gdata);
 //
 void	ft_rotate_player(t_gamedata *gdata, double rot_speed);
-void ft_strafe_left(t_gamedata *gdata, double strafe_speed);
-void ft_strafe_right(t_gamedata *gdata, double strafe_speed);
-void ft_move_forward(t_gamedata *gdatar, double strafe_speed);
-void ft_move_backwards(t_gamedata *gdata, double strafe_speed);
+void	ft_strafe_left(t_gamedata *gdata, double strafe_speed);
+void	ft_strafe_right(t_gamedata *gdata, double strafe_speed);
+void	ft_move_forward(t_gamedata *gdatar, double strafe_speed);
+void	ft_move_backwards(t_gamedata *gdata, double strafe_speed);
 //
-int ft_check_collision(t_data *map, t_coord new);
-int ft_check_doble_col(t_data *map, t_coord new);
+int		ft_check_collision(t_data *map, t_coord new);
+int		ft_check_doble_col(t_data *map, t_coord new);
 #endif

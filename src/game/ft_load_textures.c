@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 19:10:51 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/28 18:40:34 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/29 09:54:16 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,6 @@ void	ft_load_textures(t_gamedata *gdata)
 	gdata->textures = malloc(sizeof(int *) * 5);
 	if (!gdata->textures)
 		printf("Error\nMalloc failed\n"); //poner otra forma de salir quitando leaks
-	printf("Iniciando texturas\n");
-	printf("%s<---\n\n", gdata->map->t_no.texture_path);
 	gdata->textures[NORTH] = ft_xpm_to_array(gdata, NORTH);
 	gdata->textures[SOUTH] = ft_xpm_to_array(gdata, SOUTH);
 	gdata->textures[EAST] = ft_xpm_to_array(gdata, EAST);

@@ -6,12 +6,18 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 21:31:34 by javi              #+#    #+#             */
-/*   Updated: 2024/02/28 19:02:55 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/29 10:00:59 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game.h"
 
+/**
+ * Rotate the player's direction by a given rotation speed.
+ * 
+ * @param gdata The game data structure
+ * @param rot_speed The speed of rotation
+ */
 void	ft_rotate_player(t_gamedata *gdata, double rot_speed)
 {
 	double	olddirx;
@@ -20,7 +26,8 @@ void	ft_rotate_player(t_gamedata *gdata, double rot_speed)
 	olddirx = gdata->player.dir.x;
 	gdata->player.dir.x = gdata->player.dir.x * cos(rot_speed) \
 					- gdata->player.dir.y * sin(rot_speed);
-	gdata->player.dir.y = olddirx * sin(rot_speed) + gdata->player.dir.y * cos(rot_speed);
+	gdata->player.dir.y = olddirx * sin(rot_speed) \
+					+ gdata->player.dir.y * cos(rot_speed);
 	oldplanex = gdata->player.plane.x;
 	gdata->player.plane.x = gdata->player.plane.x * cos(rot_speed) \
 					- gdata->player.plane.y * sin(rot_speed);
@@ -28,22 +35,34 @@ void	ft_rotate_player(t_gamedata *gdata, double rot_speed)
 						+ gdata->player.plane.y * cos(rot_speed);
 }
 
+/**
+ * Move the player to the left by a given strafe speed.
+ * 
+ * @param gdata The game data structure
+ * @param strafe_speed The speed of strafing
+ */
 void	ft_strafe_left(t_gamedata *gdata, double strafe_speed)
 {
-	t_coord new;
+	t_coord	new;
 
 	new.x = gdata->player.pos.x - (gdata->player.plane.x * strafe_speed);
-	new.y = gdata->player.pos.y - (gdata->player.plane.y * strafe_speed); 
+	new.y = gdata->player.pos.y - (gdata->player.plane.y * strafe_speed);
 	if (ft_check_doble_col(gdata->map, new) == 0)
 	{
 		gdata->player.pos.x = new.x;
-		gdata->player.pos.y = new.y; 
+		gdata->player.pos.y = new.y;
 	}
 }
 
+/**
+ * Move the player to the right by a given strafe speed.
+ * 
+ * @param gdata The game data structure
+ * @param strafe_speed The speed of strafing
+ */
 void	ft_strafe_right(t_gamedata *gdata, double strafe_speed)
 {
-	t_coord new;
+	t_coord	new;
 
 	new.x = gdata->player.pos.x + (gdata->player.plane.x * strafe_speed);
 	new.y = gdata->player.pos.y + (gdata->player.plane.y * strafe_speed);
@@ -54,28 +73,48 @@ void	ft_strafe_right(t_gamedata *gdata, double strafe_speed)
 	}
 }
 
+/**
+ * Move the player forward by a given movement speed.
+ * 
+ * @param gdata The game data structure
+ * @param movement_speed The speed of movement
+ */
 void	ft_move_forward(t_gamedata *gdata, double movement_speed)
 {
-	t_coord new;
+	t_coord	new;
 
-	new.x = gdata->player.pos.x + gdata->player.dir.x * movement_speed + gdata->player.dir.x * OFFSET;
-	new.y = gdata->player.pos.y + gdata->player.dir.y * movement_speed + gdata->player.dir.y * OFFSET;
+	new.x = gdata->player.pos.x + gdata->player.dir.x * movement_speed \
+			+ gdata->player.dir.x * OFFSET;
+	new.y = gdata->player.pos.y + gdata->player.dir.y * movement_speed \
+			+ gdata->player.dir.y * OFFSET;
 	if (ft_check_collision(gdata->map, new) == 0)
 	{
-		gdata->player.pos.x = gdata->player.pos.x + gdata->player.dir.x * movement_speed;
-		gdata->player.pos.y = gdata->player.pos.y + gdata->player.dir.y * movement_speed;
+		gdata->player.pos.x = gdata->player.pos.x \
+								+ gdata->player.dir.x * movement_speed;
+		gdata->player.pos.y = gdata->player.pos.y \
+								+ gdata->player.dir.y * movement_speed;
 	}
 }
 
+/**
+ * Move the player backwards by a given movement speed.
+ * 
+ * @param gdata The game data structure
+ * @param movement_speed The speed of movement
+ */
 void	ft_move_backwards(t_gamedata *gdata, double movement_speed)
 {
-	t_coord new;
-	
-	new.x = gdata->player.pos.x - gdata->player.dir.x * movement_speed - gdata->player.dir.x * OFFSET;
-	new.y =	gdata->player.pos.y - gdata->player.dir.y * movement_speed - gdata->player.dir.y * OFFSET;
+	t_coord	new;
+
+	new.x = gdata->player.pos.x - gdata->player.dir.x * movement_speed \
+			- gdata->player.dir.x * OFFSET;
+	new.y = gdata->player.pos.y - gdata->player.dir.y * movement_speed \
+			- gdata->player.dir.y * OFFSET;
 	if (ft_check_collision(gdata->map, new) == 0)
 	{
-		gdata->player.pos.x = gdata->player.pos.x - gdata->player.dir.x * movement_speed;
-		gdata->player.pos.y = gdata->player.pos.y - gdata->player.dir.y * movement_speed;
+		gdata->player.pos.x = gdata->player.pos.x \
+								- gdata->player.dir.x * movement_speed;
+		gdata->player.pos.y = gdata->player.pos.y \
+								- gdata->player.dir.y * movement_speed;
 	}
 }

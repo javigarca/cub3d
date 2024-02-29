@@ -6,7 +6,7 @@
 #    By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/17 14:24:44 by xamayuel          #+#    #+#              #
-#    Updated: 2024/02/28 17:48:20 by javi             ###   ########.fr        #
+#    Updated: 2024/02/29 10:02:52 by xamayuel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -113,7 +113,7 @@ $(NAME): $(OBJ) libraries minilibx libft gnl map parser game
 		fi
 		clear
 		@echo "$(LIGHT_PINK)╔════════════════════════════════════╗"
-		@echo "$(LIGHT_PINK)║${PINK} 🎮🎮🎮🐶 CUB3D COMPLETE 🐶🎮🎮🎮  ║"
+		@echo "$(LIGHT_PINK)║${PINK} 🎮🎮🎮🐶 CUB3D COMPLETE 🐶🎮🎮🎮  $(LIGHT_PINK) ║"
 		@echo "$(LIGHT_PINK)╚════════════════════════════════════╝ $(RESET)"
 
 $(OBJ_DIR)/%.o: $(SRC_DIR)/%.c

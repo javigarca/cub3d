@@ -6,17 +6,38 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 11:24:41 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/28 18:48:17 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/29 16:11:11 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game.h"
-#define TEXWIDTH 64
+
 #define FACTOR .66
 
 static void	ft_ray_init(t_raysdt *ray, t_gamedata *gdata);
 //static void ft_print_ray_info(t_raysdt *ray, t_gamedata *gdata, int type);
 
+
+int	ft_get_texture_dimension(t_gamedata data, int direction, int type)
+{
+	if (direction == NORTH && type == 0)
+		return (data.N_size_x);
+	if (direction == NORTH && type == 1)
+		return (data.N_size_y);
+	if (direction == SOUTH && type == 0)
+		return (data.S_size_x);
+	if (direction == SOUTH && type == 1)
+		return (data.S_size_y);
+	if (direction == WEST && type == 0)
+		return (data.W_size_x);
+	if (direction == WEST && type == 1)
+		return (data.W_size_y);
+	if (direction == EAST && type == 0)
+		return (data.E_size_x);
+	if (direction == EAST && type == 1)
+		return (data.E_size_y);
+	return (data.E_size_y);
+}
 void	ft_ray_calculate_sidedist(t_raysdt *ray, t_gamedata *gdata)
 {
 	if (ray->dir.x < 0)
@@ -126,17 +147,15 @@ void	ft_draw_ray_wall_texture(t_gamedata *gdata ,t_raysdt *ray)
 {
 	int	y;
 	int	color;
+	int	tex_width;
 
+	tex_width= ft_get_texture_dimension(*gdata, ft_get_wall_direction(ray), 1); //CAMBIAR NORTH
 	y = ray->stripStart;
 	while (y < ray->stripEnd)
 	{
-		ray->texY = (int)ray->texpos & (TEXWIDTH - 1); //cambiar 64 por tamaño textura 
+		ray->texY = (int)ray->texpos & (tex_width - 1); //cambiar 64 por tamaño textura 
 		ray->texpos += ray->texture_step;
-		color = gdata->textures[ft_get_wall_direction(ray)][TEXWIDTH * ray->texY + ray->texX];
-		if (ray->pix == 799)
-		{
-		//	printf("\n pixel-> X:%d Y:%d texpos: pixel x:%d y:%d color:%d", ray->pix, y, ray->texX, ray->texY, color);
-		}
+		color = gdata->textures[ft_get_wall_direction(ray)][tex_width * ray->texY + ray->texX];
 		if (ft_get_wall_direction(ray) == NORTH)
 			color = (color >> 1) & 8355711;
 		if (ft_get_wall_direction(ray) == EAST)
@@ -149,16 +168,18 @@ void	ft_draw_ray_wall_texture(t_gamedata *gdata ,t_raysdt *ray)
 
 void ft_ray_calculate_texture(t_raysdt *ray, t_gamedata *gdata)
 {
-	ray->texX = (int)(ray->wallX * (double)TEXWIDTH);	
+	int	tex_width;
+	int tex_height;
+
+	tex_height = ft_get_texture_dimension(*gdata,ft_get_wall_direction(ray), 1); //CAMBIAR NORTH
+	tex_width= ft_get_texture_dimension(*gdata,ft_get_wall_direction(ray), 0); //CAMBIAR NORTH
+	ray->texX = (int)(ray->wallX * (double)tex_width);	
 	if (ray->side == 0 && ray->dir.x > 0)
-		ray->texX = TEXWIDTH - ray->texX - 1;
+		ray->texX = tex_width - ray->texX - 1;
 	if (ray->side == 1 && ray->dir.y < 0)
-		ray->texX = TEXWIDTH - ray->texX - 1;
-	//printf("\t texX: %d", ray->texX);
-	ray->texture_step = 1.0 * TEXWIDTH / ray->wallheight;
-//	printf("\t step: %f", ray->texture_step);
-	ray->texpos = (ray->stripStart - ray->pitch - gdata->img_size.y/2 + ray->wallheight / 2)* ray->texture_step;
-//	printf("\t texpos: %f", ray->texpos);
+		ray->texX = tex_width - ray->texX - 1;
+	ray->texture_step = 1.0 * tex_height / ray->wallheight;
+	ray->texpos = (ray->stripStart - ray->pitch - gdata->img_size.y / 2 + ray->wallheight / 2)* ray->texture_step;
 }
 void	ft_raycasting(t_gamedata *gdata)
 {
@@ -173,16 +194,12 @@ void	ft_raycasting(t_gamedata *gdata)
 		ft_ray_calculate_sidedist(ray, gdata);
 		ft_ray_calculate_walldist(ray, gdata);
 		ft_ray_calculate_stripe(ray);
-		//printf("\n pix: %d wallheight: %f", ray->pix,ray->wallheight);
-		//printf("\tstripe Start:%d End:%d", ray->stripStart, ray->stripEnd);
-		// EMPEZANDO TEXTURAS
 		ft_ray_calculate_wallx(ray, gdata);
-		//printf("\twallX: %f	", ray->wallX);
 		ft_ray_calculate_texture(ray, gdata);
 		ft_draw_ray_wall_texture(gdata, ray);
 		ray->pix++;
 	}
-	//ft_print_ray_info(ray, gdata,1);
+	free(ray);
 }
 
 static void	ft_ray_init(t_raysdt *ray, t_gamedata *gdata)

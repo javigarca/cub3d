@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 15:27:03 by javigarc          #+#    #+#             */
-/*   Updated: 2024/02/28 18:26:20 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/29 14:13:44 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,12 +14,14 @@
 
 static void	ft_gamedata_init(t_gamedata *gdata);
 static void	ft_init_player(t_gamedata *gdata);
+static void	ft_init_player_direction(t_gamedata *gdata, char dir);
 
 int	start_the_game(t_data *valmap, char *level)
 {
 	t_gamedata	gdata;
 
 	gdata.map = valmap;
+	
 	gdata.map_name = level;
 	ft_gamedata_init(&gdata);
 	ft_load_textures(&gdata);
@@ -27,7 +29,6 @@ int	start_the_game(t_data *valmap, char *level)
 	ft_start_hooks(&gdata);
 	ft_show_menu(&gdata, level);
 	mlx_loop(gdata.mlx);
-	//close_game();
 	return (0);
 }
 
@@ -56,26 +57,31 @@ static void	ft_init_player(t_gamedata *gdata)
 	gdata->player.dir.y = 0;
 	gdata->player.plane.x = 0;
 	gdata->player.plane.y = 0;
-	if (ft_strncmp(&initdir, "N", 1) == 0)
+	ft_init_player_direction (gdata, initdir);
+	gdata->player.pos.x = gdata->map->p_x + OFFSET;
+	gdata->player.pos.y = gdata->map->p_y + OFFSET;
+}
+
+static void	ft_init_player_direction(t_gamedata *gdata, char dir)
+{
+	if (ft_strncmp(&dir, "N", 1) == 0)
 	{
 		gdata->player.dir.x = -1;
 		gdata->player.plane.y = 0.66;
 	}
-	if (ft_strncmp(&initdir, "E", 1) == 0)
+	if (ft_strncmp(&dir, "E", 1) == 0)
 	{
 		gdata->player.dir.y = 1;
 		gdata->player.plane.x = 0.66;
 	}
-	if (ft_strncmp(&initdir, "S", 1) == 0)
+	if (ft_strncmp(&dir, "S", 1) == 0)
 	{
 		gdata->player.dir.x = 1;
 		gdata->player.plane.y = -0.66;
 	}
-	if (ft_strncmp(&initdir, "W", 1) == 0)
+	if (ft_strncmp(&dir, "W", 1) == 0)
 	{
 		gdata->player.dir.y = -1;
 		gdata->player.plane.x = -0.66;
 	}
-	gdata->player.pos.x = gdata->map->p_x + OFFSET;
-	gdata->player.pos.y = gdata->map->p_y + OFFSET;
 }

@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 13:45:06 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/28 18:20:02 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/02/29 13:55:25 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,7 +34,7 @@ int	main(int argn, char *argv[])
 			{
 //				ft_print(*game);
 				start_the_game(game, argv[1]);
-				ft_free_data(game);
+				//ft_free_data(game);
 			}
 		}
 	}

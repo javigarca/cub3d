@@ -58,7 +58,7 @@
 # define ROTATION_SPEED 0.1 // rotation speed
 # define MOVE_SPEED 0.25	// player speed
 # define STRAFE_SPEED 0.25	// player strafe speed
-# define OFFSET 1 // .5 no está mal, probando con mas por el "diagonal", queda mas o menos igual, quizas se puede hacer una comprobacion si hay choque, demaisado tiempo nonecesario?
+# define OFFSET .5 // para el buffer de colision
 //
 
 typedef struct s_dot

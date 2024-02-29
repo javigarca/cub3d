@@ -11,7 +11,7 @@
 /* ************************************************************************** */
 
 #include "game.h"
-#define XK_Escape                        53
+
 int	ft_key_press(t_gamedata *gdata);
 int	ft_button_close(t_gamedata *gdata);
 
@@ -19,7 +19,7 @@ int	ft_button_close(t_gamedata *gdata);
 int	key_hook(int keycode, t_gamedata *data)
 {
 	//printf("\n key = %d", keycode);
-	if (keycode == XK_Escape)
+	if (keycode == K_ESC)
 	{
 		printf("salida de escape. hacer frees\n");
 		mlx_destroy_window(data->mlx, data->win); //leaks?

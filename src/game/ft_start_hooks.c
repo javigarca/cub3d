@@ -45,7 +45,6 @@ void	ft_start_hooks(t_gamedata *gdata)
 {
 	mlx_hook(gdata->win, 2,0, key_hook, gdata);
 	mlx_hook(gdata->win, 6, 0, ft_mouse_rotation, gdata);
-	mlx_key_hook(gdata->win, key_hook, gdata);
 	mlx_hook(gdata->win, 17, 0, ft_button_close, gdata);
 }
 

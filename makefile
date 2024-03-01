@@ -6,7 +6,7 @@
 #    By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/17 14:24:44 by xamayuel          #+#    #+#              #
-#    Updated: 2024/02/29 10:02:52 by xamayuel         ###   ########.fr        #
+#    Updated: 2024/02/29 17:59:37 by javi             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -22,7 +22,7 @@ SRC_DIR = src
 OBJ_DIR = .objs
 LIBRARIES_DIR = libraries
 LIBFT_DIR = src/libft
-MLX_DIR = minilibx
+MLX_DIR = minilibx_opengl
 MAP_DIR = src/map
 GNL_DIR = src/gnl
 PARSER_DIR = src/parser
@@ -33,7 +33,7 @@ GNL = $(LIBRARIES_DIR)/gnl.a
 PARSER = $(LIBRARIES_DIR)/parser.a
 GAME = $(LIBRARIES_DIR)/game.a
 MINILIBX = minilibx_linux/libmlx.a
-MLX = minilibx/libmlx.a
+MLX = $(MLX_DIR)/libmlx.a
 # ------------- COLORS 
 # https://talyian.github.io/ansicolors/
 RESET			= 	\033[0m
@@ -58,7 +58,7 @@ CC = gcc
 
 HEAD = -I./includes \
 	   -I./$(LIBFT_DIR) \
-	   -I./minilibx
+	   -I./minilibx_opengl
 
 HEAD_LINUX = -I./includes \
 	   -I./$(LIBFT_DIR) \

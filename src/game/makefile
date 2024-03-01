@@ -6,7 +6,7 @@
 #    By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/13 15:38:08 by javigarc          #+#    #+#              #
-#    Updated: 2024/02/29 12:51:28 by xamayuel         ###   ########.fr        #
+#    Updated: 2024/02/29 17:49:48 by javi             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -42,21 +42,6 @@ SRC = $(SRC_DIR)/game.c\
 	$(SRC_DIR)/ft_collisions.c\
 	$(SRC_DIR)/ft_mouse_rot.c\
 	$(SRC_DIR)/ft_exit_game.c\
-	 # $(SRC_DIR)/game_raycaster.c\
-	  #$(SRC_DIR)/game_calculus.c\
-	  #$(SRC_DIR)/game_color.c\
-	  #$(SRC_DIR)/game_draw.c\
-	  #$(SRC_DIR)/game_draw.c\
-	  #$(SRC_DIR)/game_draw_rotations.c\
-	  #$(SRC_DIR)/game_hooks.c\
-	  #$(SRC_DIR)/game_raycaster.c\
-	  #$(SRC_DIR)/game_map.c\
-	  #$(SRC_DIR)/game_map.c\
-	  #$(SRC_DIR)/game_map.c\
-	  #$(SRC_DIR)/game_map.c\
-	  #$(SRC_DIR)/game_map.c\
-	  #$(SRC_DIR)/game_map.c\
-
 
 OBJ = $(patsubst %.c, $(OBJ_DIR)%.o, $(SRC))
 CC = gcc

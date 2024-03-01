@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "game.h"
+
 void	ft_free_data_2(t_data *data)
 {
 	int	i;
@@ -45,16 +46,20 @@ void	ft_free_gamedata(t_gamedata *data)
 		exit(0);
 	
 }
+
 void	ft_exit_game(t_gamedata *data, char *output)
 {
-    if (data->win && data->mlx)
+    if (data->win && data->img)
+		mlx_destroy_image(data->mlx, data->img);
+	if (data->win && data->mlx)
 		mlx_destroy_window(data->mlx, data->win);
 	if (data->mlx)
 	{
-		mlx_destroy_display(data->mlx);
-		mlx_loop_end(data->mlx);
+		//mlx_destroy_display(data->mlx);
+		//mlx_loop_end(data->mlx);
 		free(data->mlx);
 	}
 	ft_free_gamedata(data);
 	printf("%s\n", output);
+	system("leaks cub3d");
 }

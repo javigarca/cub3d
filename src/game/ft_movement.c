@@ -33,6 +33,7 @@ void	ft_rotate_player(t_gamedata *gdata, double rot_speed)
 					- gdata->player.plane.y * sin(rot_speed);
 	gdata->player.plane.y = oldplanex * sin(rot_speed) \
 						+ gdata->player.plane.y * cos(rot_speed);
+						
 }
 
 /**
@@ -47,11 +48,10 @@ void	ft_strafe_left(t_gamedata *gdata, double strafe_speed)
 
 	new.x = gdata->player.pos.x - (gdata->player.plane.x * strafe_speed);
 	new.y = gdata->player.pos.y - (gdata->player.plane.y * strafe_speed);
-	if (ft_check_doble_col(gdata->map, new) == 0)
-	{
+	if (!(ft_check_collision_x(gdata->map, new.x, gdata->player.pos.y)))
 		gdata->player.pos.x = new.x;
+	if (!(ft_check_collision_y(gdata->map, gdata->player.pos.x, new.y)))
 		gdata->player.pos.y = new.y;
-	}
 }
 
 /**
@@ -66,11 +66,10 @@ void	ft_strafe_right(t_gamedata *gdata, double strafe_speed)
 
 	new.x = gdata->player.pos.x + (gdata->player.plane.x * strafe_speed);
 	new.y = gdata->player.pos.y + (gdata->player.plane.y * strafe_speed);
-	if (ft_check_doble_col(gdata->map, new) == 0)
-	{
+	if (!(ft_check_collision_x(gdata->map, new.x, gdata->player.pos.y)))
 		gdata->player.pos.x = new.x;
+	if (!(ft_check_collision_y(gdata->map, gdata->player.pos.x, new.y)))
 		gdata->player.pos.y = new.y;
-	}
 }
 
 /**
@@ -83,17 +82,12 @@ void	ft_move_forward(t_gamedata *gdata, double movement_speed)
 {
 	t_coord	new;
 
-	new.x = gdata->player.pos.x + gdata->player.dir.x * movement_speed \
-			+ gdata->player.dir.x * OFFSET;
-	new.y = gdata->player.pos.y + gdata->player.dir.y * movement_speed \
-			+ gdata->player.dir.y * OFFSET;
-	if (ft_check_collision(gdata->map, new) == 0)
-	{
-		gdata->player.pos.x = gdata->player.pos.x \
-								+ gdata->player.dir.x * movement_speed;
-		gdata->player.pos.y = gdata->player.pos.y \
-								+ gdata->player.dir.y * movement_speed;
-	}
+	new.x = gdata->player.pos.x + gdata->player.dir.x * movement_speed;
+	new.y = gdata->player.pos.y + gdata->player.dir.y * movement_speed;
+	if (!(ft_check_collision_x(gdata->map, new.x, gdata->player.pos.y)))
+		gdata->player.pos.x = new.x;
+	if (!(ft_check_collision_y(gdata->map, gdata->player.pos.x, new.y)))
+		gdata->player.pos.y = new.y;
 }
 
 /**
@@ -106,15 +100,10 @@ void	ft_move_backwards(t_gamedata *gdata, double movement_speed)
 {
 	t_coord	new;
 
-	new.x = gdata->player.pos.x - gdata->player.dir.x * movement_speed \
-			- gdata->player.dir.x * OFFSET;
-	new.y = gdata->player.pos.y - gdata->player.dir.y * movement_speed \
-			- gdata->player.dir.y * OFFSET;
-	if (ft_check_collision(gdata->map, new) == 0)
-	{
-		gdata->player.pos.x = gdata->player.pos.x \
-								- gdata->player.dir.x * movement_speed;
-		gdata->player.pos.y = gdata->player.pos.y \
-								- gdata->player.dir.y * movement_speed;
-	}
+	new.x = gdata->player.pos.x - gdata->player.dir.x * movement_speed;
+	new.y = gdata->player.pos.y - gdata->player.dir.y * movement_speed;
+	if (!(ft_check_collision_x(gdata->map, new.x, gdata->player.pos.y)))
+		gdata->player.pos.x = new.x;
+	if (!(ft_check_collision_y(gdata->map, gdata->player.pos.x, new.y)))
+		gdata->player.pos.y = new.y;
 }

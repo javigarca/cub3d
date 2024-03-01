@@ -15,20 +15,19 @@
 int ft_mouse_rotation(int x, int y, t_gamedata *gdata)
 {
     // Calcular la diferencia de movimiento desde el centro de la ventana
-    int deltaX = x - (gdata->img_size.x / 2);
-    int deltaY = y - (gdata->img_size.y / 2);
-    if (deltaY)
-        deltaY = 0;
-    // Aquí, podrías usar deltaX para ajustar la rotación del jugador
-    // La rotación puede ser más sensible o menos sensible dependiendo de deltaX
-    // Por ejemplo, rotar proporcionalmente a deltaX
-    if (deltaX != 0) {
-        ft_rotate_player(gdata, deltaX * ROTATION_SPEED);
-        printf("ROTORATON");
+    int delta;
+    double normdelta;
+    (void)y;
+    
+    delta = x - (gdata->img_size.x / 2);
+    if (delta != 0) {
+        normdelta = delta / (gdata->win_size.x / 2.0);
+        printf("Rotating: normdelta=%f, rot_speed=%f\n", normdelta, MOUSE_SPEED);
+
+        ft_rotate_player(gdata, normdelta * MOUSE_SPEED);
     }
-
-    // Opcional: Re-centrar el cursor del ratón para evitar salir de la ventana
-    // mlx_mouse_move(data->mlx, data->win, WINDOW_WIDTH / 2, WINDOW_HEIGHT / 2);
-
+    ft_start_draw(gdata);
+	ft_show_menu(gdata, "ALOHA"); //CAMBIAR SI QUEREMOS MOSTRAR MAPA
+    mlx_mouse_move(gdata->mlx, gdata->win, gdata->win_size.x / 2, gdata->win_size.y / 2);
     return 0;
 }

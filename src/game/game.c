@@ -57,6 +57,7 @@ static void	ft_init_player(t_gamedata *gdata)
 	gdata->player.dir.y = 0;
 	gdata->player.plane.x = 0;
 	gdata->player.plane.y = 0;
+	gdata->player.pitch = 0;
 	ft_init_player_direction (gdata, initdir);
 	gdata->player.pos.x = gdata->map->p_x + OFFSET;
 	gdata->player.pos.y = gdata->map->p_y + OFFSET;

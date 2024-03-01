@@ -42,6 +42,7 @@ SRC = $(SRC_DIR)/game.c\
 	$(SRC_DIR)/ft_collisions.c\
 	$(SRC_DIR)/ft_mouse_rot.c\
 	$(SRC_DIR)/ft_exit_game.c\
+	$(SRC_DIR)/ft_sky_floor_draw.c\
 
 OBJ = $(patsubst %.c, $(OBJ_DIR)%.o, $(SRC))
 CC = gcc

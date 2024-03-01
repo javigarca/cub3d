@@ -55,7 +55,8 @@
 # define TILE_SIZE 30 // tile size
 # define FOV 60 // field of view
 # define ROTATION_SPEED 0.1 // rotation speed
-# define MOUSE_SPEED 0.05 // mouse rotation speed
+# define MOUSE_SPEED 0.01 // mouse rotation speed
+# define MOUSE_VERTICAL_SPEED 0.7 // mouse rotation speed
 # define MOVE_SPEED 0.25	// player speed
 # define STRAFE_SPEED 0.25	// player strafe speed
 # define OFFSET .2 // para el buffer de colision
@@ -77,6 +78,7 @@ typedef struct s_player
 	t_coord	dir; // Dirección de la vista del jugador
 	t_coord	plane;	// El plano de la cámara.
 	double	rot_angle; // Ángulo de rotación del jugador
+	double	pitch; // angulo vertical 
 }	t_player;
 
 typedef struct s_raysdt
@@ -102,7 +104,6 @@ typedef struct s_raysdt
 	int		texY;
 	int		stripStart;
 	int		stripEnd;
-	int		pitch;
 	double	texture_step;
 }				t_raysdt;
 
@@ -151,6 +152,7 @@ void	ft_start_hooks(t_gamedata *gdata);
 void	ft_show_menu(t_gamedata *gdata, char *line);
 //
 void	ft_start_draw(t_gamedata *gdata);
+void	ft_light_rect(t_gamedata *gdata, t_coord begin, t_coord end, int color);
 //
 int		ft_to_color_argb(t_color color);
 //
@@ -177,4 +179,6 @@ int		ft_check_collision(t_data *map, t_coord new);
 int		ft_check_doble_col(t_data *map, t_coord new);
 //
 void	ft_exit_game(t_gamedata *data, char *output);
+//
+void    ft_sky_floor_draw(t_gamedata *gdata);
 #endif

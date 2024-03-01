@@ -109,7 +109,7 @@ $(NAME): $(OBJ) libraries minilibx libft gnl map parser game
 			echo "$(ORANGE)Compiling for Linux."; \
 			$(CC) $(OBJ) $(HEAD_LINUX) $(CFLAGS) $(LFLAGS_LINUX)  -o $(NAME);\
 		else \
-			$(CC) $(OBJ) $(HEAD) $(CFLAGS) $(LFLAGS)  -o $(NAME); \
+			$(CC) $(OBJ) $(HEAD) $(CFLAGS) $(LFLAGS) -o $(NAME); \
 		fi
 		clear
 		@echo "$(LIGHT_PINK)╔════════════════════════════════════╗"

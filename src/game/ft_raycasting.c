@@ -91,10 +91,10 @@ void	ft_ray_calculate_walldist(t_raysdt *ray, t_gamedata *gdata)
 		ray->wallheight = FACTOR * gdata->img_size.y / ray->walldist;
 }
 
-void	ft_ray_calculate_stripe(t_raysdt *ray)
+void	ft_ray_calculate_stripe(t_raysdt *ray, t_gamedata *gdata)
 {
-	ray->stripStart = -ray->wallheight / 2 + H_RESOL / 2 + ray->pitch;
-	ray->stripEnd = +ray->wallheight / 2 + H_RESOL / 2 + ray->pitch;
+	ray->stripStart = -ray->wallheight / 2 + H_RESOL / 2 + gdata->player.pitch;
+	ray->stripEnd = +ray->wallheight / 2 + H_RESOL / 2 + gdata->player.pitch;
 	if (ray->stripStart < 0)
 		ray->stripStart = 0;
 	if (ray->stripEnd >= H_RESOL)
@@ -179,7 +179,7 @@ void ft_ray_calculate_texture(t_raysdt *ray, t_gamedata *gdata)
 	if (ray->side == 1 && ray->dir.y < 0)
 		ray->texX = tex_width - ray->texX - 1;
 	ray->texture_step = 1.0 * tex_height / ray->wallheight;
-	ray->texpos = (ray->stripStart - ray->pitch - gdata->img_size.y / 2 + ray->wallheight / 2)* ray->texture_step;
+	ray->texpos = (ray->stripStart - gdata->player.pitch - gdata->img_size.y / 2 + ray->wallheight / 2)* ray->texture_step;
 }
 void	ft_raycasting(t_gamedata *gdata)
 {
@@ -188,12 +188,13 @@ void	ft_raycasting(t_gamedata *gdata)
 	ray = ft_calloc(1, sizeof (t_raysdt));
 	if (!ray)
 		printf("Error: failed to allocate memory for raycasting");
+	ft_sky_floor_draw(gdata);
 	while (ray->pix < gdata->img_size.x)
 	{
 		ft_ray_init(ray, gdata);
 		ft_ray_calculate_sidedist(ray, gdata);
 		ft_ray_calculate_walldist(ray, gdata);
-		ft_ray_calculate_stripe(ray);
+		ft_ray_calculate_stripe(ray, gdata);
 		ft_ray_calculate_wallx(ray, gdata);
 		ft_ray_calculate_texture(ray, gdata);
 		ft_draw_ray_wall_texture(gdata, ray);
@@ -223,7 +224,7 @@ static void	ft_ray_init(t_raysdt *ray, t_gamedata *gdata)
 	ray->wallhit = 0;
 	ray->stripStart = 0;
 	ray->stripEnd = 0;
-	ray->pitch = 0; // se puede cambiar a 100
+	//gdata->player.pitch = -80.0; // se puede cambiar a 100
 }
 /*
 static void ft_print_ray_info(t_raysdt *ray, t_gamedata *gdata, int type)

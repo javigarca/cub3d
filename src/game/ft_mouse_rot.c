@@ -35,7 +35,6 @@ int ft_mouse_rotation(int x, int y, t_gamedata *gdata)
     }
     //printf("\n pitch: %f", gdata->player.pitch);
     ft_start_draw(gdata);
-	ft_show_menu(gdata, "ALOHA"); //CAMBIAR SI QUEREMOS MOSTRAR MAPA
-    mlx_mouse_move(gdata->mlx, gdata->win, gdata->win_size.x / 2, gdata->win_size.y / 2);
+	ft_show_menu(gdata); //CAMBIAR SI QUEREMOS MOSTRAR MAPA
     return 0;
 }

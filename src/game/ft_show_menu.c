@@ -12,12 +12,21 @@
 
 #include "game.h"
 
-void	ft_show_menu(t_gamedata *gdata, char *line)
+void	ft_show_menu(t_gamedata *gdata)
 {
-	mlx_string_put(gdata->mlx, gdata->win, 10, 15, TXT_CLR_A, " MAP: ");
-	mlx_string_put(gdata->mlx, gdata->win, 65, 15, BKG_CLR_A, line);
-	line = "------------------------------";
-	mlx_string_put(gdata->mlx, gdata->win, 10, 30, P00_CLR, line);
+	t_coord start;
+		
+	start.x = 60;
+	start.y = 20;
+	
+	mlx_string_put(gdata->mlx, gdata->win, 10, 15, TXT_CLR_A, " CUB3D: ");
+	mlx_string_put(gdata->mlx, gdata->win, 65, 15, BKG_CLR_A, " MINI MAP");
+	ft_minimap(gdata, start);
+	mlx_put_image_to_window(gdata->mlx, gdata->win, gdata->img, 0, 0);
+	
+	
+	/*
+	mlx_string_put(gdata->ml, gdata->win, 10, 30, P00_CLR, line);
 	line = "    Forward: W | Key UP";
 	mlx_string_put(gdata->mlx, gdata->win, 15, 50, P30_CLR, line);
 	line = "  Backwards: S | Key DOWN";
@@ -36,4 +45,5 @@ void	ft_show_menu(t_gamedata *gdata, char *line)
 	mlx_string_put(gdata->mlx, gdata->win, 15, 190, P80_CLR, line);
 	line = "   Terminate: ESC";
 	mlx_string_put(gdata->mlx, gdata->win, 15, 215, P90_CLR, line);
+	*/
 }

@@ -28,6 +28,8 @@
 # define BKG_CLR_B 0x303030
 # define TXT_CLR_A 0xF7F7DA
 # define TXT_CLR_B 0xAC0FAC
+# define MINI_CLR_W 0x000000
+# define MINI_CLR_F 0xFFFFFF
 
 // defines para gestion de texturas
 # define NORTH 0
@@ -53,6 +55,7 @@
 # endif
 
 # define TILE_SIZE 30 // tile size
+# define MINI_SIZE 6 // tile size
 # define FOV 60 // field of view
 # define ROTATION_SPEED 0.1 // rotation speed
 # define MOUSE_SPEED 0.01 // mouse rotation speed
@@ -149,7 +152,8 @@ int		start_the_game(t_data *validatedmap, char *level);
 //
 void	ft_start_hooks(t_gamedata *gdata);
 //
-void	ft_show_menu(t_gamedata *gdata, char *line);
+void	ft_show_menu(t_gamedata *gdata);
+void	ft_minimap(t_gamedata *gdata, t_coord start);
 //
 void	ft_start_draw(t_gamedata *gdata);
 void	ft_light_rect(t_gamedata *gdata, t_coord begin, t_coord end, int color);

@@ -37,7 +37,7 @@ int	key_hook(int keycode, t_gamedata *data)
 	if (keycode == K_SP)
 		printf("SPACE");
 	ft_start_draw(data);
-	ft_show_menu(data, "jf"); //CAMBIAR SI QUEREMOS MOSTRAR MAPA
+	ft_show_menu(data); //CAMBIAR SI QUEREMOS MOSTRAR MAPA
 	return (keycode);
 }
 

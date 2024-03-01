@@ -27,7 +27,7 @@ int	start_the_game(t_data *valmap, char *level)
 	ft_load_textures(&gdata);
 	ft_start_draw(&gdata);
 	ft_start_hooks(&gdata);
-	ft_show_menu(&gdata, level);
+	ft_show_menu(&gdata);
 	mlx_loop(gdata.mlx);
 	return (0);
 }
@@ -46,6 +46,7 @@ static void	ft_gamedata_init(t_gamedata *gdata)
 			gdata->img_size.y);
 	gdata->imgadd = mlx_get_data_addr(gdata->img, &gdata->pixel_b, \
 			&gdata->lines_b, &gdata->endian);
+	//mlx_mouse_hide(gdata->mlx, gdata->win);
 }
 
 static void	ft_init_player(t_gamedata *gdata)

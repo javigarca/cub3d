@@ -18,9 +18,9 @@ void	ft_light_my_pixel(t_gamedata *gdata, int x, int y, int color);
 
 void	ft_start_draw(t_gamedata *gdata)
 {
-	ft_clear_image(gdata, BKG_CLR_A, BKG_CLR_B);
+	ft_clear_image(gdata, BKG_CLR_A, BKG_CLR_A);
 	ft_raycasting(gdata);
-	mlx_put_image_to_window(gdata->mlx, gdata->win, gdata->img, 0, 0);
+	//mlx_put_image_to_window(gdata->mlx, gdata->win, gdata->img, 0, 0);
 }
 
 void	ft_clear_image(t_gamedata *gdata, int color_a, int color_b)

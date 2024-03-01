@@ -1,13 +1,22 @@
-NO textures/barrel.xpm
-SO textures/barrel.xpm
+SO textures/mossy.xpm
 
-EA textures/barrel.xpm
-F 255,0,0
-C 0,0,255
+NO textures/eagle.xpm
+EA textures/colorstone.xpm
+WE textures/bluestone.xpm
 
 
-WE textures/barrel.xpm
 
+
+
+
+
+F 173,255,47
+
+
+
+
+
+C 173,216,230
 
 11111111111111111111111111
 10000000000000000000000001

@@ -21,7 +21,7 @@ void	ft_minimap(t_gamedata *gdata, t_coord origin)
 	t_coord start;
 
 	cont = 0;
-//	start.x = (int)origin.x;
+	start = origin;
 	map_lines = ft_2d_array_size(gdata->map->map2d);
 	while (cont < map_lines)
 	{
@@ -43,8 +43,8 @@ void	ft_minimap(t_gamedata *gdata, t_coord origin)
 		start.y += 7;
 		cont++;
 	}
-	start.x = (int)((gdata->player.pos.y) * 6) + origin.x;
-	start.y = (int)((gdata->player.pos.x) * 6) + origin.y;
+	start.x = (int)((gdata->player.pos.y) * MINI_SIZE) + origin.x;
+	start.y = (int)((gdata->player.pos.x) * MINI_SIZE) + origin.y;
 	end.x = start.x + 6;
 	end.y = start.y + 6;
 	ft_light_rect(gdata, start, end, P30_CLR);

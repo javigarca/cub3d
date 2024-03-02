@@ -55,7 +55,8 @@
 # endif
 
 # define TILE_SIZE 30 // tile size
-# define MINI_SIZE 6 // tile size
+# define MINI_SIZE 6 // tile size in minimap
+# define MINI_RADIUS 3 // radius for the player in minimap
 # define FOV 60 // field of view
 # define ROTATION_SPEED 0.1 // rotation speed
 # define MOUSE_SPEED 0.01 // mouse rotation speed
@@ -146,9 +147,11 @@ void	ft_start_hooks(t_gamedata *gdata);
 //
 void	ft_show_menu(t_gamedata *gdata);
 void	ft_minimap(t_gamedata *gdata, t_coord start);
+void	ft_draw_circle(t_gamedata *gdata, t_coord center, int radius, int color);
 //
 void	ft_start_draw(t_gamedata *gdata);
 void	ft_light_rect(t_gamedata *gdata, t_coord begin, t_coord end, int color);
+void	ft_light_my_pixel(t_gamedata *gdata, int x, int y, int color);
 //
 int		ft_to_color_argb(t_color color);
 //

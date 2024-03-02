@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 15:27:03 by javigarc          #+#    #+#             */
-/*   Updated: 2024/03/02 10:50:21 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/03/02 20:08:58 by javi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,6 @@ static void	ft_gamedata_init(t_gamedata *gdata)
 			gdata->img_size.y);
 	gdata->imgadd = mlx_get_data_addr(gdata->img, &gdata->pixel_b, \
 			&gdata->lines_b, &gdata->endian);
-	//mlx_mouse_hide(gdata->mlx, gdata->win);
 }
 
 static void	ft_init_player(t_gamedata *gdata)

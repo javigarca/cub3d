@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 19:58:12 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/29 14:19:44 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/03/02 10:47:20 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,19 @@ void	ft_light_my_pixel(t_gamedata *gdata, int x, int y, int color);
 
 void	ft_start_draw(t_gamedata *gdata)
 {
-	ft_clear_image(gdata, BKG_CLR_A, BKG_CLR_A);
+	//ft_clear_image(gdata, BKG_CLR_A, BKG_CLR_A);
 	ft_raycasting(gdata);
 	//mlx_put_image_to_window(gdata->mlx, gdata->win, gdata->img, 0, 0);
 }
 
+/**
+ * Clears the image by filling it with alternating colors specified 
+ * by color_a and color_b.
+ * 
+ * @param gdata Pointer to the game data structure.
+ * @param color_a Color value for pixels at odd y positions.
+ * @param color_b Color value for pixels at even y positions.
+ */
 void	ft_clear_image(t_gamedata *gdata, int color_a, int color_b)
 {
 	int	x;
@@ -44,6 +52,14 @@ void	ft_clear_image(t_gamedata *gdata, int color_a, int color_b)
 	}
 }
 
+/**
+ * Lights up a pixel at coordinates (x, y) with the specified color.
+ * 
+ * @param gdata Pointer to the game data structure.
+ * @param x X-coordinate of the pixel.
+ * @param y Y-coordinate of the pixel.
+ * @param color Color value to set the pixel.
+ */
 void	ft_light_my_pixel(t_gamedata *gdata, int x, int y, int color)
 {
 	int	lpixel;
@@ -61,6 +77,15 @@ void	ft_light_my_pixel(t_gamedata *gdata, int x, int y, int color)
 	}
 }
 
+/**
+ * Lights up a rectangular area defined by the beginning 
+ * and end coordinates with the specified color.
+ * 
+ * @param gdata Pointer to the game data structure.
+ * @param begin Starting coordinates of the rectangle.
+ * @param end Ending coordinates of the rectangle.
+ * @param color Color value to fill the rectangle.
+ */
 void	ft_light_rect(t_gamedata *gdata, t_coord begin, t_coord end, int color)
 {
 	double	i;
@@ -79,11 +104,17 @@ void	ft_light_rect(t_gamedata *gdata, t_coord begin, t_coord end, int color)
 	}
 }
 
+/**
+ * Draws a wall segment represented by the ray with the specified color.
+ * 
+ * @param gdata Pointer to the game data structure.
+ * @param ray Pointer to the ray data structure.
+ * @param color Color value for the wall segment.
+ */
 void	ft_draw_ray_wall(t_gamedata *gdata, t_raysdt *ray, int color)
 {
 	int	i;
 
-	//ft_putnbr_fd(color,1);
 	if (ray->side == 1)
 		color = color / 2;
 	i = ray->stripStart;

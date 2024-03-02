@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 19:58:12 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/03/02 11:01:37 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/03/02 20:10:29 by javi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,9 +18,7 @@ void	ft_light_my_pixel(t_gamedata *gdata, int x, int y, int color);
 
 void	ft_start_draw(t_gamedata *gdata)
 {
-	//ft_clear_image(gdata, BKG_CLR_A, BKG_CLR_A); 
 	ft_raycasting(gdata);
-	//mlx_put_image_to_window(gdata->mlx, gdata->win, gdata->img, 0, 0);
 }
 
 /**

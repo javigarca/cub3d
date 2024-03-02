@@ -6,24 +6,37 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 16:44:46 by javi              #+#    #+#             */
-/*   Updated: 2024/03/02 10:16:25 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/03/02 10:24:55 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game.h"
 
+static void	ft_minimap_walls(t_gamedata *gdata, t_coord origin, int map_lines);
 static void	ft_minimap_player(t_gamedata *data, t_coord origin);
+static void	ft_minimap_walls_draw(char wall, t_gamedata *gdata, \
+								t_coord start, t_coord end);
 
-void	ft_minimap_walls_draw(char wall, t_gamedata *gdata, \
-								t_coord start, t_coord end)
+/**
+ * Displays the minimap by drawing walls and player position
+ * 
+ * @param gdata Game data structure
+ * @param origin Origin coordinates of the minimap
+ */
+void	ft_minimap(t_gamedata *gdata, t_coord origin)
 {
-	if (wall == '1')
-		ft_light_rect(gdata, start, end, MINI_CLR_W);
-	if (wall == '0')
-		ft_light_rect(gdata, start, end, MINI_CLR_F);
+	ft_minimap_walls(gdata, origin, ft_2d_array_size(gdata->map->map2d));
+	ft_minimap_player(gdata, origin);
 }
 
-void	ft_minimap_walls(t_gamedata *gdata, t_coord origin, int map_lines)
+/**
+ * Draws walls on the minimap based on the map data
+ * 
+ * @param gdata Game data structure
+ * @param origin Origin coordinates of the minimap
+ * @param map_lines Number of lines in the map
+ */
+static void	ft_minimap_walls(t_gamedata *gdata, t_coord origin, int map_lines)
 {
 	int		cont;
 	int		col;
@@ -51,12 +64,29 @@ void	ft_minimap_walls(t_gamedata *gdata, t_coord origin, int map_lines)
 	}
 }
 
-void	ft_minimap(t_gamedata *gdata, t_coord origin)
+/**
+ * Draws walls on the minimap based on the wall type
+ * 
+ * @param wall Wall type ('1' for wall, '0' for empty space)
+ * @param gdata Game data structure
+ * @param start Starting coordinates of the wall
+ * @param end Ending coordinates of the wall
+ */
+static void	ft_minimap_walls_draw(char wall, t_gamedata *gdata, \
+								t_coord start, t_coord end)
 {
-	ft_minimap_walls(gdata, origin, ft_2d_array_size(gdata->map->map2d));
-	ft_minimap_player(gdata, origin);
+	if (wall == '1')
+		ft_light_rect(gdata, start, end, MINI_CLR_W);
+	if (wall == '0')
+		ft_light_rect(gdata, start, end, MINI_CLR_F);
 }
 
+/**
+ * Draws a light rectangle at the player's position on the minimap
+ * 
+ * @param data Game data structure
+ * @param origin Origin coordinates of the minimap
+ */
 static void	ft_minimap_player(t_gamedata *data, t_coord origin)
 {
 	t_coord	start;

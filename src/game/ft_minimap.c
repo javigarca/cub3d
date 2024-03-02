@@ -77,6 +77,10 @@ static void	ft_minimap_walls_draw(char wall, t_gamedata *gdata, \
 {
 	if (wall == '1')
 		ft_light_rect(gdata, start, end, MINI_CLR_W);
+	if (wall == '2')
+		ft_light_rect(gdata, start, end, MINI_CLR_D);
+	if (wall == '3')
+		ft_light_rect(gdata, start, end, MINI_CLR_O);
 	if (wall == '0')
 		ft_light_rect(gdata, start, end, MINI_CLR_F);
 	if (wall == 'N' || wall == 'S' || wall == 'E' || wall == 'W')

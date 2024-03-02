@@ -27,7 +27,7 @@ int	ft_check_collision_x(t_data *map, double newX, double currentY)
 
 	x = (int)newX;
 	y = (int)currentY;
-	if (map->map2d[x][y] == '1')
+	if (map->map2d[x][y] == '1' || map->map2d[x][y] == '2')
 		return (1);
 	return (0);
 }
@@ -47,7 +47,7 @@ int	ft_check_collision_y(t_data *map, double currentX, double newY)
 
 	x = (int) currentX;
 	y = (int) newY;
-	if (map->map2d[x][y] == '1')
+	if (map->map2d[x][y] == '1' || map->map2d[x][y] == '2')
 		return (1);
 	return (0);
 }

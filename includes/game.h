@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 15:27:45 by javigarc          #+#    #+#             */
-/*   Updated: 2024/03/02 20:19:54 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/03/02 23:31:49 by javi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,6 +30,8 @@
 # define TXT_CLR_B 0xAC0FAC
 # define MINI_CLR_W 0x000000
 # define MINI_CLR_F 0xFFFFFF
+# define MINI_CLR_D 0x5F9EA0
+# define MINI_CLR_O 0x7FFF00
 
 // defines para gestion de texturas
 # define NORTH 0
@@ -147,7 +149,8 @@ void	ft_start_hooks(t_gamedata *gdata);
 //
 void	ft_show_menu(t_gamedata *gdata);
 void	ft_minimap(t_gamedata *gdata, t_coord start);
-void	ft_draw_circle(t_gamedata *gdata, t_coord center, int radius, int color);
+void	ft_draw_circle(t_gamedata *gdata, t_coord center, int radius, \
+		int color);
 //
 void	ft_start_draw(t_gamedata *gdata);
 void	ft_light_rect(t_gamedata *gdata, t_coord begin, t_coord end, int color);
@@ -167,21 +170,24 @@ void	ft_strafe_right(t_gamedata *gdata, double strafe_speed);
 void	ft_move_forward(t_gamedata *gdatar, double strafe_speed);
 void	ft_move_backwards(t_gamedata *gdata, double strafe_speed);
 //
-int ft_check_collision(t_data *map, t_coord new);
-int ft_check_doble_col(t_data *map, t_coord new);
-int ft_check_collision_x(t_data *map, double newX, double currentY);
-int ft_check_collision_y(t_data *map, double currentX, double newY);
+int		ft_check_collision(t_data *map, t_coord new);
+int		ft_check_doble_col(t_data *map, t_coord new);
+int		ft_check_collision_x(t_data *map, double newX, double currentY);
+int		ft_check_collision_y(t_data *map, double currentX, double newY);
 //
-int ft_mouse_rotation(int x, int y, t_gamedata *gdata);
+int		ft_mouse_rotation(int x, int y, t_gamedata *gdata);
 //
 int		ft_check_collision(t_data *map, t_coord new);
 int		ft_check_doble_col(t_data *map, t_coord new);
 //
 void	ft_exit_game(t_gamedata *data, char *output);
 //
-void    ft_sky_floor_draw(t_gamedata *gdata);
+void	ft_sky_floor_draw(t_gamedata *gdata);
 //
-void ft_calculate_dda(t_raysdt *ray, t_gamedata *gdata);
+void	ft_calculate_dda(t_raysdt *ray, t_gamedata *gdata);
 //
 void	ft_draw_textures(t_raysdt *ray, t_gamedata *data);
+//
+int		ft_door_system(t_gamedata *gdata, double distance);
+int		ft_toogle_door(t_data *map, t_coord new);
 #endif

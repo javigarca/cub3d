@@ -37,7 +37,7 @@ void	ft_parse_map_lines(char **map2d, char *filename)
 	while (line != NULL)
 	{
 		lineclear = ft_strtrim(line, " ");
-		if (lineclear[0] == '1' || lineclear[0] == '0')
+		if (lineclear[0] == '1' || lineclear[0] == '0' || lineclear[0] == '2')
 		{
 			map2d[count] = ft_strdup(lineclear);
 			count ++;

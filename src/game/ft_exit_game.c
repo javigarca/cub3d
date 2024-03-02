@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 12:50:58 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/03/02 10:55:43 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/03/02 10:58:58 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,12 @@
 void	ft_free_gamedata(t_gamedata *data);
 void	ft_free_data_map(t_data *data);
 
+/**
+ * Exit the game and free resources.
+ * 
+ * @param data Pointer to the game data structure.
+ * @param output Message to display upon exit.
+ */
 void	ft_exit_game(t_gamedata *data, char *output)
 {
 	if (data->win && data->img)
@@ -32,6 +38,11 @@ void	ft_exit_game(t_gamedata *data, char *output)
 	system("leaks cub3d");
 }
 
+/**
+ * Free the memory allocated for textures and the map data.
+ * 
+ * @param data Pointer to the game data structure.
+ */
 void	ft_free_gamedata(t_gamedata *data)
 {
 	free(data->textures[0]);
@@ -44,6 +55,29 @@ void	ft_free_gamedata(t_gamedata *data)
 	exit(0);
 }
 
+/**
+ * Free the allocated memory for textures and the map data.
+ * 
+ * @param data Pointer to the game data structure.
+ */
+void	ft_free_gamedata(t_gamedata *data)
+{
+	free(data->textures[0]);
+	free(data->textures[1]);
+	free(data->textures[2]);
+	free(data->textures[3]);
+	free(data->textures);
+	ft_free_data_map(data->map);
+	//free(data->ray);
+	exit(0);
+}
+
+/**
+ * Free the memory allocated for the map data and texture paths.
+ * 
+ * @param data Pointer to the data structure containing the map 
+ * 			   and texture paths.
+ */
 void	ft_free_data_map(t_data *data)
 {
 	int	i;

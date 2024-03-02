@@ -6,12 +6,19 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 10:33:40 by javi              #+#    #+#             */
-/*   Updated: 2024/03/02 10:32:57 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/03/02 10:35:25 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game.h"
 
+/**
+ * Rotate the player based on mouse movement.
+ * 
+ * @param x The x-coordinate of the mouse
+ * @param y The y-coordinate of the mouse
+ * @param gdata The game data structure
+ */
 int	ft_mouse_rotation(int x, int y, t_gamedata *gdata)
 {
 	int		delta;

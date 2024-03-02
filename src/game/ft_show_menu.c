@@ -6,12 +6,17 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 19:53:36 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/03/02 10:37:05 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/03/02 11:01:39 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game.h"
 
+/**
+ * Display the game menu on the screen.
+ * 
+ * @param gdata The game data structure
+ */
 void	ft_show_menu(t_gamedata *gdata)
 {
 	t_coord	start;

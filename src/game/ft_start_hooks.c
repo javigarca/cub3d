@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 19:30:47 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/29 14:19:04 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/03/02 09:25:57 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -45,7 +45,7 @@ void	ft_start_hooks(t_gamedata *gdata)
 {
 	mlx_hook(gdata->win, 2,0, key_hook, gdata);
 	mlx_hook(gdata->win, 6, 0, ft_mouse_rotation, gdata);
-	// mlx_key_hook(gdata->win, key_hook, gdata);// para linux
+	mlx_key_hook(gdata->win, key_hook, gdata);// para linux
 	mlx_hook(gdata->win, 17, 0, ft_button_close, gdata);
 }
 

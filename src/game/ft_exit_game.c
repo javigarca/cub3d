@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 12:50:58 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/03/02 10:58:58 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/03/02 11:02:18 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,23 +36,6 @@ void	ft_exit_game(t_gamedata *data, char *output)
 	ft_free_gamedata(data);
 	printf("%s\n", output);
 	system("leaks cub3d");
-}
-
-/**
- * Free the memory allocated for textures and the map data.
- * 
- * @param data Pointer to the game data structure.
- */
-void	ft_free_gamedata(t_gamedata *data)
-{
-	free(data->textures[0]);
-	free(data->textures[1]);
-	free(data->textures[2]);
-	free(data->textures[3]);
-	free(data->textures);
-	ft_free_data_map(data->map);
-	//free(data->ray);
-	exit(0);
 }
 
 /**

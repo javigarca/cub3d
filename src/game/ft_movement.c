@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 21:31:34 by javi              #+#    #+#             */
-/*   Updated: 2024/02/29 10:00:59 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/03/02 10:51:42 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,7 +33,6 @@ void	ft_rotate_player(t_gamedata *gdata, double rot_speed)
 					- gdata->player.plane.y * sin(rot_speed);
 	gdata->player.plane.y = oldplanex * sin(rot_speed) \
 						+ gdata->player.plane.y * cos(rot_speed);
-						
 }
 
 /**

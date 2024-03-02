@@ -3,18 +3,23 @@
 /*                                                        :::      ::::::::   */
 /*   ft_sky_floor_draw.c                                :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: javi <marvin@42.fr>                        +#+  +:+       +#+        */
+/*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 14:13:04 by javi              #+#    #+#             */
-/*   Updated: 2024/03/01 14:13:16 by javi             ###   ########.fr       */
+/*   Updated: 2024/03/02 10:40:42 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game.h"
 
-void    ft_sky_floor_draw(t_gamedata *gdata)
+/**
+ * Draw the sky and floor in the game window.
+ * 
+ * @param gdata The game data structure
+ */
+void	ft_sky_floor_draw(t_gamedata *gdata)
 {
-    t_coord	start;
+	t_coord	start;
 	t_coord	end;
 
 	start.x = 0;

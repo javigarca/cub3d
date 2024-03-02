@@ -1,8 +1,8 @@
-SO textures/pared.xpm
+SO textures/minecraft_512/bricks_s.xpm
 
-NO textures/pared.xpm
-EA textures/pared.xpm
-WE textures/pared.xpm
+NO textures/minecraft_512/basalt_top_s.xpm
+EA textures/minecraft_512/bricks.xpm
+WE textures/minecraft_512/cracked_stone_bricks_s.xpm
 
 
 

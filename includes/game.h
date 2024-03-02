@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 15:27:45 by javigarc          #+#    #+#             */
-/*   Updated: 2024/02/29 14:46:43 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/03/02 11:10:48 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -135,6 +135,8 @@ typedef struct s_gamedata
 	t_dot		img_size;
 	t_player	player;
 	int			**textures;
+	int			sizee_x[5];
+	int			sizee_y[5];
 	int			N_size_x;
 	int			N_size_y;
 	int			S_size_x;

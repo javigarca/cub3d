@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 19:10:51 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/29 15:24:29 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/03/02 11:28:55 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -76,6 +76,7 @@ static void	ft_init_texture_img(t_gamedata *data, t_img *image, int type)
 {
 	char	*texture_path;
 
+	
 	ft_clear_img(image);
 	if (type == NORTH)
 	{
@@ -84,6 +85,8 @@ static void	ft_init_texture_img(t_gamedata *data, t_img *image, int type)
 										&data->N_size_x, &data->N_size_y);
 		data->size_x = data->N_size_x;
 		data->size_y = data->N_size_y;
+		data->sizee_x[NORTH] = data->N_size_x;
+		data->sizee_y[NORTH] = data->N_size_y;
 	}
 	else if (type == SOUTH)
 	{
@@ -92,6 +95,8 @@ static void	ft_init_texture_img(t_gamedata *data, t_img *image, int type)
 										&data->S_size_x, &data->S_size_y);
 		data->size_x = data->S_size_x;
 		data->size_y = data->S_size_y;
+		data->sizee_x[SOUTH] = data->S_size_x;
+		data->sizee_y[SOUTH] = data->S_size_y;
 	}
 		
 	else if (type == EAST)
@@ -101,6 +106,8 @@ static void	ft_init_texture_img(t_gamedata *data, t_img *image, int type)
 										&data->E_size_x, &data->E_size_y);
 		data->size_x = data->E_size_x;
 		data->size_y = data->E_size_y;
+		data->sizee_x[EAST] = data->E_size_x;
+		data->sizee_y[EAST] = data->E_size_y;
 	}
 	else
 	{
@@ -109,6 +116,8 @@ static void	ft_init_texture_img(t_gamedata *data, t_img *image, int type)
 										&data->W_size_x, &data->W_size_y);
 		data->size_x = data->W_size_x;
 		data->size_y = data->W_size_y;
+		data->sizee_x[WEST] = data->W_size_x;
+		data->sizee_y[WEST] = data->W_size_y;
 	}
 		
 	
@@ -118,7 +127,11 @@ static void	ft_init_texture_img(t_gamedata *data, t_img *image, int type)
 	image->addr = (int *)mlx_get_data_addr(image->img, &image->pixel_bits, \
 											&image->size_line, &image->endian);
 	free(texture_path);
-	printf("\n type= %d size= %d %d %d\n", type,data->size_x, data->size_y, data->W_size_x);
+
+
+	printf("\n type= %d size= %d %d\n", type, data->sizee_x[type], data->sizee_y[type]);
+
+	
 	return ;
 }
 

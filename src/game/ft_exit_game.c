@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 12:50:58 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/03/02 11:02:18 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/03/02 19:59:15 by javi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void	ft_free_data_map(t_data *data);
  * 
  * @param data Pointer to the game data structure.
  * @param output Message to display upon exit.
+ * 	//mlx_destroy_display(data->mlx);
+ *	//mlx_loop_end(data->mlx);
  */
 void	ft_exit_game(t_gamedata *data, char *output)
 {
@@ -28,20 +30,15 @@ void	ft_exit_game(t_gamedata *data, char *output)
 	if (data->win && data->mlx)
 		mlx_destroy_window(data->mlx, data->win);
 	if (data->mlx)
-	{
-		//mlx_destroy_display(data->mlx);
-		//mlx_loop_end(data->mlx);
 		free(data->mlx);
-	}
 	ft_free_gamedata(data);
-	printf("%s\n", output);
-	system("leaks cub3d");
 }
 
 /**
  * Free the allocated memory for textures and the map data.
  * 
  * @param data Pointer to the game data structure.
+ *	//free(data->ray);
  */
 void	ft_free_gamedata(t_gamedata *data)
 {
@@ -51,7 +48,6 @@ void	ft_free_gamedata(t_gamedata *data)
 	free(data->textures[3]);
 	free(data->textures);
 	ft_free_data_map(data->map);
-	//free(data->ray);
 	exit(0);
 }
 

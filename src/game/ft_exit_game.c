@@ -31,6 +31,7 @@ void	ft_exit_game(t_gamedata *data, char *output)
 		mlx_destroy_window(data->mlx, data->win);
 	if (data->mlx)
 		free(data->mlx);
+	printf("Exit: %s", output);
 	ft_free_gamedata(data);
 }
 

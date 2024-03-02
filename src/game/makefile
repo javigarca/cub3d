@@ -6,7 +6,7 @@
 #    By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/13 15:38:08 by javigarc          #+#    #+#              #
-#    Updated: 2024/02/29 17:49:48 by javi             ###   ########.fr        #
+#    Updated: 2024/03/02 20:17:00 by xamayuel         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -44,6 +44,8 @@ SRC = $(SRC_DIR)/game.c\
 	$(SRC_DIR)/ft_exit_game.c\
 	$(SRC_DIR)/ft_sky_floor_draw.c\
 	$(SRC_DIR)/ft_minimap.c\
+	$(SRC_DIR)/ft_calculate_dda.c\
+	$(SRC_DIR)/ft_draw_textures.c \
 
 OBJ = $(patsubst %.c, $(OBJ_DIR)%.o, $(SRC))
 CC = gcc

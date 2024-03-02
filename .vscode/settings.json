@@ -11,6 +11,7 @@
 		"tuple": "c",
 		"type_traits": "c",
 		"utility": "c",
-		"get_next_line.h": "c"
+		"get_next_line.h": "c",
+		"game.h": "c"
 	}
 }

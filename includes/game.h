@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 15:27:45 by javigarc          #+#    #+#             */
-/*   Updated: 2024/03/02 11:10:48 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/03/02 20:19:54 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -138,16 +138,6 @@ typedef struct s_gamedata
 	int			**textures;
 	int			sizee_x[5];
 	int			sizee_y[5];
-	int			N_size_x;
-	int			N_size_y;
-	int			S_size_x;
-	int			S_size_y;
-	int			W_size_x;
-	int			W_size_y;
-	int			E_size_x;
-	int			E_size_y;
-	int			size_x;
-	int			size_y;
 }			t_gamedata;
 
 /// game.c///
@@ -190,4 +180,8 @@ int		ft_check_doble_col(t_data *map, t_coord new);
 void	ft_exit_game(t_gamedata *data, char *output);
 //
 void    ft_sky_floor_draw(t_gamedata *gdata);
+//
+void ft_calculate_dda(t_raysdt *ray, t_gamedata *gdata);
+//
+void	ft_draw_textures(t_raysdt *ray, t_gamedata *data);
 #endif

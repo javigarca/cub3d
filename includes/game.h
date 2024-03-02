@@ -55,7 +55,7 @@
 # endif
 
 # define TILE_SIZE 30 // tile size
-# define MINI_SIZE 6 // tile size
+# define MINI_SIZE 6.2 // tile size
 # define FOV 60 // field of view
 # define ROTATION_SPEED 0.1 // rotation speed
 # define MOUSE_SPEED 0.01 // mouse rotation speed

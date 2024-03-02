@@ -79,6 +79,8 @@ static void	ft_minimap_walls_draw(char wall, t_gamedata *gdata, \
 		ft_light_rect(gdata, start, end, MINI_CLR_W);
 	if (wall == '0')
 		ft_light_rect(gdata, start, end, MINI_CLR_F);
+	if (wall == 'N' || wall == 'S' || wall == 'E' || wall == 'W')
+		ft_light_rect(gdata, start, end, P10_CLR);
 }
 
 /**
@@ -92,9 +94,9 @@ static void	ft_minimap_player(t_gamedata *data, t_coord origin)
 	t_coord	start;
 	t_coord	end;
 
-	start.x = (int)((data->player.pos.y) * MINI_SIZE) + origin.x;
-	start.y = (int)((data->player.pos.x) * MINI_SIZE) + origin.y;
-	end.x = start.x + 6;
-	end.y = start.y + 6;
+	start.x = (int)((data->player.pos.y) * 6) + origin.x;
+	start.y = (int)((data->player.pos.x) * 6) + origin.y;
+	end.x = start.x + 5;
+	end.y = start.y + 5;
 	ft_light_rect(data, start, end, P30_CLR);
 }

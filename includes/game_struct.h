@@ -41,6 +41,5 @@ typedef struct s_data //the data structure
 	t_texture	t_so;		// South texture
 	t_texture	t_we;		// West texture
 	t_texture	t_ea;		// East textue
-	t_texture	t_dc;		// Door Close textue
 }	t_data;
 #endif

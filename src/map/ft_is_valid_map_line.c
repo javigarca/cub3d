@@ -14,9 +14,9 @@
 
 int	ft_is_valid_map_line(int position, const char *line, int nlines)
 {
-	if (position == 8 && ft_is_valid_first_map_line(line) == FALSE)
+	if (position == 7 && ft_is_valid_first_map_line(line) == FALSE)
 		return (ft_show_error("Invalid first map line.\n"));
-	if (position > 8 && position < nlines && \
+	if (position > 7 && position < nlines && \
 						ft_is_valid_inter_map_line(line) == FALSE)
 		return (ft_show_error("Invalid inter map line.\n"));
 	if (position == nlines && ft_is_valid_first_map_line(line) == FALSE)

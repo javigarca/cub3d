@@ -18,7 +18,6 @@ int	ft_is_valid_color_or_texture(const char *line)
 		ft_is_valid_texture_line("SO", line) + \
 		ft_is_valid_texture_line("WE", line) + \
 		ft_is_valid_texture_line("EA", line) + \
-		ft_is_valid_texture_line("DC", line) + \
 		ft_is_color_line("F", line) + \
 		ft_is_color_line("C", line) != TRUE)
 	{

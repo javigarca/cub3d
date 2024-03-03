@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 11:24:41 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/03/03 10:50:02 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/03/03 10:56:56 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,9 +58,9 @@ static void	ft_ray_init(t_raysdt *ray, t_gamedata *gdata)
 		ray->delta.y = 1E30;
 	else
 		ray->delta.y = fabs(1 / ray->dir.y);
-	ray->wallX = 0;
-	ray->texX = 0;
+	ray->wall_x = 0;
+	ray->tex_x = 0;
 	ray->wallhit = 0;
-	ray->stripStart = 0;
-	ray->stripEnd = 0;
+	ray->strip_start = 0;
+	ray->strip_end = 0;
 }

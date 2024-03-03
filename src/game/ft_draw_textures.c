@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 20:16:32 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/03/03 10:38:46 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/03/03 10:56:56 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,12 +19,26 @@ void	ft_light_my_pixel_n(t_gamedata *gdata, int x, int y, int color);
 int		ft_get_wall_direction(t_raysdt *ray);
 void	ft_draw_ray_wall_texture(t_gamedata *gdata, t_raysdt *ray);
 
+/**
+ * Draw the textures on the screen for a given ray.
+ * 
+ * @param ray Pointer to the ray structure
+ * @param data Pointer to the game data structure
+ */
 void	ft_draw_textures(t_raysdt *ray, t_gamedata *data)
 {
 	ft_ray_calculate_texture(ray, data);
 	ft_draw_ray_wall_texture(data, ray);
 }
 
+/**
+ * Set the color of a pixel at a specific position on the screen.
+ * 
+ * @param gdata Pointer to the game data structure
+ * @param x The x-coordinate of the pixel
+ * @param y The y-coordinate of the pixel
+ * @param color The color value to set the pixel to
+ */
 void	ft_light_my_pixel_n(t_gamedata *gdata, int x, int y, int color)
 {
 	int	lpixel;
@@ -42,6 +56,12 @@ void	ft_light_my_pixel_n(t_gamedata *gdata, int x, int y, int color)
 	}
 }
 
+/**
+ * Determine the direction of the wall based on the ray's side and direction.
+ * 
+ * @param ray Pointer to the ray structure
+ * @return The direction of the wall (NORTH, SOUTH, EAST, or WEST)
+ */
 int	ft_get_wall_direction(t_raysdt *ray)
 {
 	if (ray->side == 0)
@@ -59,6 +79,12 @@ int	ft_get_wall_direction(t_raysdt *ray)
 	}
 }
 
+/**
+ * Draw the texture of a ray hitting a wall on the screen.
+ * 
+ * @param gdata Pointer to the game data structure
+ * @param ray Pointer to the ray structure
+ */
 void	ft_draw_ray_wall_texture(t_gamedata *gdata, t_raysdt *ray)
 {
 	int	y;
@@ -68,12 +94,12 @@ void	ft_draw_ray_wall_texture(t_gamedata *gdata, t_raysdt *ray)
 
 	wall = ft_get_wall_direction(ray);
 	tex_width = gdata->sizee_x[wall];
-	y = ray->stripStart;
-	while (y < ray->stripEnd)
+	y = ray->strip_start;
+	while (y < ray->strip_end)
 	{
-		ray->texY = (int)ray->texpos & (tex_width - 1);
+		ray->tex_y = (int)ray->texpos & (tex_width - 1);
 		ray->texpos += ray->texture_step;
-		color = gdata->textures[wall][tex_width * ray->texY + ray->texX];
+		color = gdata->textures[wall][tex_width * ray->tex_y + ray->tex_x];
 		if (ft_get_wall_direction(ray) == NORTH)
 			color = (color >> 1) & 8355711;
 		if (ft_get_wall_direction(ray) == EAST)
@@ -83,6 +109,12 @@ void	ft_draw_ray_wall_texture(t_gamedata *gdata, t_raysdt *ray)
 	}
 }
 
+/**
+ * Calculate the texture coordinates for drawing a ray hitting a wall.
+ * 
+ * @param ray Pointer to the ray structure
+ * @param gdata Pointer to the game data structure
+ */
 void	ft_ray_calculate_texture(t_raysdt *ray, t_gamedata *gdata)
 {
 	int	tex_width;
@@ -92,12 +124,12 @@ void	ft_ray_calculate_texture(t_raysdt *ray, t_gamedata *gdata)
 	wall = ft_get_wall_direction(ray);
 	tex_height = gdata->sizee_y[wall];
 	tex_width = gdata->sizee_x[wall];
-	ray->texX = (int)(ray->wallX * (double)tex_width);
+	ray->tex_x = (int)(ray->wall_x * (double)tex_width);
 	if (ray->side == 0 && ray->dir.x > 0)
-		ray->texX = tex_width - ray->texX - 1;
+		ray->tex_x = tex_width - ray->tex_x - 1;
 	if (ray->side == 1 && ray->dir.y < 0)
-		ray->texX = tex_width - ray->texX - 1;
+		ray->tex_x = tex_width - ray->tex_x - 1;
 	ray->texture_step = 1.0 * tex_height / ray->wallheight;
-	ray->texpos = (ray->stripStart - gdata->player.pitch - \
+	ray->texpos = (ray->strip_start - gdata->player.pitch - \
 			gdata->img_size.y / 2 + ray->wallheight / 2) * ray->texture_step;
 }

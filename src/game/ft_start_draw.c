@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 19:58:12 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/03/02 20:10:29 by javi             ###   ########.fr       */
+/*   Updated: 2024/03/03 10:56:56 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -115,8 +115,8 @@ void	ft_draw_ray_wall(t_gamedata *gdata, t_raysdt *ray, int color)
 
 	if (ray->side == 1)
 		color = color / 2;
-	i = ray->stripStart;
-	while (i <= ray->stripEnd)
+	i = ray->strip_start;
+	while (i <= ray->strip_end)
 	{
 		ft_light_my_pixel(gdata, ray->pix, i, color);
 		i++;

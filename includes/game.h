@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 15:27:45 by javigarc          #+#    #+#             */
-/*   Updated: 2024/03/02 20:19:54 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/03/03 10:53:23 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -93,7 +93,6 @@ typedef struct s_raysdt
 	t_coord	posray; // Posición actual del rayo
 	t_dot	map; // Coordenadas del mapa en el que se encuentra el rayo
 	t_coord	step; // Dirección del paso en X o Y (1 o -1)
-	int		stepSize; // Tamaño del paso
 	t_coord	dir; // Dirección del rayo
 	double	camerax; // Posición X de la cámara en el espacio de la cámara
 	int		wallhit; // Indica si el rayo ha golpeado una pared

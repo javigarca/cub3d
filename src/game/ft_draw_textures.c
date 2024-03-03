@@ -6,35 +6,24 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 20:16:32 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/03/02 20:24:36 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/03/03 10:38:46 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game.h"
 
 void	ft_ray_calculate_texture(t_raysdt *ray, t_gamedata *gdata);
-int	ft_get_texture_dimension(t_gamedata data, int direction, int type);
-int	ft_get_texture_dimension(t_gamedata data, int direction, int type);
+int		ft_get_texture_dimension(t_gamedata data, int direction, int type);
+int		ft_get_texture_dimension(t_gamedata data, int direction, int type);
 void	ft_light_my_pixel_n(t_gamedata *gdata, int x, int y, int color);
-int	ft_get_wall_direction(t_raysdt *ray);
+int		ft_get_wall_direction(t_raysdt *ray);
 void	ft_draw_ray_wall_texture(t_gamedata *gdata, t_raysdt *ray);
-
 
 void	ft_draw_textures(t_raysdt *ray, t_gamedata *data)
 {
 	ft_ray_calculate_texture(ray, data);
 	ft_draw_ray_wall_texture(data, ray);
 }
-
-
-/*
-int	ft_get_texture_dimension(t_gamedata data, int direction, int type)
-{
-	if (type == 0)
-		return (data.sizee_x[direction]);
-	return (data.sizee_y[direction]);
-}*/
-
 
 void	ft_light_my_pixel_n(t_gamedata *gdata, int x, int y, int color)
 {
@@ -101,7 +90,7 @@ void	ft_ray_calculate_texture(t_raysdt *ray, t_gamedata *gdata)
 	int	wall;
 
 	wall = ft_get_wall_direction(ray);
-	tex_height =  gdata->sizee_y[wall];
+	tex_height = gdata->sizee_y[wall];
 	tex_width = gdata->sizee_x[wall];
 	ray->texX = (int)(ray->wallX * (double)tex_width);
 	if (ray->side == 0 && ray->dir.x > 0)

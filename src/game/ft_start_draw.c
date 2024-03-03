@@ -18,7 +18,8 @@ void	ft_light_my_pixel(t_gamedata *gdata, int x, int y, int color);
 
 void	ft_start_draw(t_gamedata *gdata)
 {
-	ft_raycasting(gdata);
+	if (gdata->pause == FALSE)
+		ft_raycasting(gdata);
 }
 
 /**

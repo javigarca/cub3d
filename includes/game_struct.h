@@ -13,8 +13,8 @@
 #ifndef GAME_STRUCT_H
 # define GAME_STRUCT_H
 
-# define W_RESOL 1920
-# define H_RESOL 1080
+# define W_RESOL 800
+# define H_RESOL 600
 
 typedef struct s_texture
 {

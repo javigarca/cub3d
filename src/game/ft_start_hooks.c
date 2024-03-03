@@ -34,6 +34,7 @@ int	key_hook(int keycode, t_gamedata *data)
 		ft_rotate_player(data, ROTATION_SPEED);
 	if (keycode == K_AR_R)
 		ft_rotate_player(data, -ROTATION_SPEED);
+	data->pause = FALSE;
 	ft_start_draw(data);
 	ft_show_menu(data);
 	return (keycode);

@@ -139,6 +139,7 @@ typedef struct s_gamedata
 	int			**textures;
 	int			sizee_x[5];
 	int			sizee_y[5];
+	int			pause;
 }			t_gamedata;
 
 /// game.c///
@@ -185,4 +186,6 @@ void	ft_sky_floor_draw(t_gamedata *gdata);
 void	ft_calculate_dda(t_raysdt *ray, t_gamedata *gdata);
 //
 void	ft_draw_textures(t_raysdt *ray, t_gamedata *data);
+//
+void ft_game_start_screen(t_gamedata *gdata);
 #endif

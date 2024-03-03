@@ -46,6 +46,7 @@ SRC = $(SRC_DIR)/game.c\
 	$(SRC_DIR)/ft_minimap.c\
 	$(SRC_DIR)/ft_calculate_dda.c\
 	$(SRC_DIR)/ft_draw_textures.c \
+	$(SRC_DIR)/ft_game_start_screen.c \
 
 OBJ = $(patsubst %.c, $(OBJ_DIR)%.o, $(SRC))
 CC = gcc

@@ -23,10 +23,11 @@ int	start_the_game(t_data *valmap, char *level)
 	gdata.map = valmap;
 	gdata.map_name = level;
 	ft_gamedata_init(&gdata);
+	ft_game_start_screen(&gdata);
 	ft_load_textures(&gdata);
 	ft_start_draw(&gdata);
 	ft_start_hooks(&gdata);
-	ft_show_menu(&gdata);
+	//ft_show_menu(&gdata);
 	mlx_loop(gdata.mlx);
 	return (0);
 }
@@ -45,6 +46,7 @@ static void	ft_gamedata_init(t_gamedata *gdata)
 			gdata->img_size.y);
 	gdata->imgadd = mlx_get_data_addr(gdata->img, &gdata->pixel_b, \
 			&gdata->lines_b, &gdata->endian);
+	gdata->pause = TRUE;
 }
 
 static void	ft_init_player(t_gamedata *gdata)

@@ -69,7 +69,7 @@ static void	ft_ray_calculate_walldist(t_raysdt *ray, t_gamedata *gdata)
 			ray->map.y += ray->step.y;
 			ray->side = 1;
 		}
-		if (gdata->map->map2d[ray->map.x][ray->map.y] == '1')
+		if (gdata->map->map2d[ray->map.x][ray->map.y] == '1' || gdata->map->map2d[ray->map.x][ray->map.y] == '2')
 			ray->wallhit = 1;
 		if (ray->side == 0)
 			ray->walldist = ray->sidedist.x - ray->delta.x;

@@ -16,7 +16,7 @@ void	ft_ray_calculate_texture(t_raysdt *ray, t_gamedata *gdata);
 int	ft_get_texture_dimension(t_gamedata data, int direction, int type);
 int	ft_get_texture_dimension(t_gamedata data, int direction, int type);
 void	ft_light_my_pixel_n(t_gamedata *gdata, int x, int y, int color);
-int	ft_get_wall_direction(t_raysdt *ray);
+int	ft_get_wall_direction(t_gamedata *gdata, t_raysdt *ray);
 void	ft_draw_ray_wall_texture(t_gamedata *gdata, t_raysdt *ray);
 
 
@@ -53,8 +53,10 @@ void	ft_light_my_pixel_n(t_gamedata *gdata, int x, int y, int color)
 	}
 }
 
-int	ft_get_wall_direction(t_raysdt *ray)
+int	ft_get_wall_direction(t_gamedata *gdata, t_raysdt *ray)
 {
+	if (gdata->map->map2d[ray->map.x][ray->map.y] == '2')
+		return (DOORC);
 	if (ray->side == 0)
 	{
 		if (ray->dir.x < 0)
@@ -77,7 +79,7 @@ void	ft_draw_ray_wall_texture(t_gamedata *gdata, t_raysdt *ray)
 	int	tex_width;
 	int	wall;
 
-	wall = ft_get_wall_direction(ray);
+	wall = ft_get_wall_direction(gdata, ray);
 	tex_width = gdata->sizee_x[wall];
 	y = ray->stripStart;
 	while (y < ray->stripEnd)
@@ -85,9 +87,9 @@ void	ft_draw_ray_wall_texture(t_gamedata *gdata, t_raysdt *ray)
 		ray->texY = (int)ray->texpos & (tex_width - 1);
 		ray->texpos += ray->texture_step;
 		color = gdata->textures[wall][tex_width * ray->texY + ray->texX];
-		if (ft_get_wall_direction(ray) == NORTH)
+		if (ft_get_wall_direction(gdata, ray) == NORTH)
 			color = (color >> 1) & 8355711;
-		if (ft_get_wall_direction(ray) == EAST)
+		if (ft_get_wall_direction(gdata, ray) == EAST)
 			color = (color >> 1) & 8355711;
 		ft_light_my_pixel_n(gdata, ray->pix, y, color);
 		y++;
@@ -100,7 +102,7 @@ void	ft_ray_calculate_texture(t_raysdt *ray, t_gamedata *gdata)
 	int	tex_height;
 	int	wall;
 
-	wall = ft_get_wall_direction(ray);
+	wall = ft_get_wall_direction(gdata, ray);
 	tex_height =  gdata->sizee_y[wall];
 	tex_width = gdata->sizee_x[wall];
 	ray->texX = (int)(ray->wallX * (double)tex_width);

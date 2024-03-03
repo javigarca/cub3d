@@ -38,6 +38,7 @@
 # define SOUTH 1
 # define EAST 2
 # define WEST 3
+# define DOORC 4
 //
 
 # include <unistd.h>

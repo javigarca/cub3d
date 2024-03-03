@@ -39,6 +39,7 @@ t_data	*ft_parse_map(char *filename)
 	ft_parse_map_texture(&data->t_so.texture_path, filename, "SO");
 	ft_parse_map_texture(&data->t_we.texture_path, filename, "WE");
 	ft_parse_map_texture(&data->t_ea.texture_path, filename, "EA");
+	ft_parse_map_texture(&data->t_dc.texture_path, filename, "DC");
 	ft_parse_map_color(&data->c_floor, filename, "F");
 	ft_parse_map_color(&data->c_celing, filename, "C");
 	ft_parse_map_player(&data->p_x, &data->p_y, filename);

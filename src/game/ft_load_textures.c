@@ -23,13 +23,14 @@ void		ft_clear_img(t_img *image);
  */
 void	ft_load_textures(t_gamedata *gdata)
 {
-	gdata->textures = malloc(sizeof(int *) * 5);
+	gdata->textures = malloc(sizeof(int *) * 6);
 	if (!gdata->textures) //hay que arreglar uninitialised values
 		ft_exit_game(gdata, "Malloc failed. exit");
 	gdata->textures[NORTH] = ft_xpm_to_array(gdata, NORTH);
 	gdata->textures[SOUTH] = ft_xpm_to_array(gdata, SOUTH);
 	gdata->textures[EAST] = ft_xpm_to_array(gdata, EAST);
 	gdata->textures[WEST] = ft_xpm_to_array(gdata, WEST);
+	gdata->textures[DOORC] = ft_xpm_to_array(gdata, DOORC);
 }
 
 /**
@@ -87,8 +88,10 @@ static void	ft_init_texture_img(t_gamedata *data, t_img *image, int type)
 		texture_path = ft_strdup(data->map->t_so.texture_path);
 	else if (type == EAST)
 		texture_path = ft_strdup(data->map->t_ea.texture_path);
-	else
+	else if (type == WEST)
 		texture_path = ft_strdup(data->map->t_we.texture_path);
+	else //if (type == DOORC)
+		texture_path = ft_strdup(data->map->t_dc.texture_path);
 	image->img = mlx_xpm_file_to_image(data->mlx, texture_path, \
 										&size_x, &size_y);
 	data->sizee_x[type] = size_x;

@@ -68,7 +68,7 @@
 # define MOUSE_VERTICAL_SPEED 0.7 // mouse rotation speed
 # define MOVE_SPEED 0.25	// player speed
 # define STRAFE_SPEED 0.25	// player strafe speed
-# define OFFSET .2 // para el buffer de colision
+# define OFFSET .3 // para el buffer de colision
 
 typedef struct s_dot
 {
@@ -150,7 +150,7 @@ int		start_the_game(t_data *validatedmap, char *level);
 //
 void	ft_start_hooks(t_gamedata *gdata);
 //
-void	ft_show_menu(t_gamedata *gdata);
+void	ft_show_minimap(t_gamedata *gdata);
 void	ft_minimap(t_gamedata *gdata, t_coord start);
 void	ft_draw_circle(t_gamedata *gdata, t_coord center, int radius, \
 		int color);

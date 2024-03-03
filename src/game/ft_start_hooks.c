@@ -38,7 +38,7 @@ int	key_hook(int keycode, t_gamedata *data)
 		ft_door_system(data, OFFSET);
 	data->pause = FALSE;
 	ft_start_draw(data);
-	ft_show_menu(data);
+	ft_show_minimap(data);
 	return (keycode);
 }
 
@@ -53,7 +53,7 @@ int	key_hook(int keycode, t_gamedata *data)
 void	ft_start_hooks(t_gamedata *gdata)
 {
 	mlx_hook(gdata->win, 2, 0, key_hook, gdata);
-	mlx_key_hook(gdata->win, key_hook, gdata);
+	//mlx_key_hook(gdata->win, key_hook, gdata);
 	mlx_hook(gdata->win, 6, 0, ft_mouse_rotation, gdata);
 	mlx_hook(gdata->win, 17, 0, ft_button_close, gdata);
 }

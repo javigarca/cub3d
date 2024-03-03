@@ -17,14 +17,12 @@
  * 
  * @param gdata The game data structure
  */
-void	ft_show_menu(t_gamedata *gdata)
+void	ft_show_minimap(t_gamedata *gdata)
 {
 	t_coord	start;
 
 	start.x = 60;
 	start.y = 20;
-	mlx_string_put(gdata->mlx, gdata->win, 10, 15, TXT_CLR_A, " CUB3D: ");
-	mlx_string_put(gdata->mlx, gdata->win, 65, 15, BKG_CLR_A, " MINI MAP");
 	ft_minimap(gdata, start);
 	mlx_put_image_to_window(gdata->mlx, gdata->win, gdata->img, 0, 0);
 }

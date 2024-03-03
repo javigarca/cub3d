@@ -38,6 +38,6 @@ int	ft_mouse_rotation(int x, int y, t_gamedata *gdata)
 		gdata->player.pitch = ypitch * MOUSE_VERTICAL_SPEED;
 	}
 	ft_start_draw(gdata);
-	ft_show_menu(gdata);
+	ft_show_minimap(gdata);
 	return (0);
 }

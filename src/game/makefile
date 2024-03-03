@@ -6,7 +6,7 @@
 #    By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/13 15:38:08 by javigarc          #+#    #+#              #
-#    Updated: 2024/03/02 20:17:00 by xamayuel         ###   ########.fr        #
+#    Updated: 2024/03/04 00:53:15 by javi             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -92,7 +92,7 @@ fclean: clean
 		sleep .1
 		clear
 		@echo "$(ORANGE)╔════════════════════════════════════╗"
-		@echo "$(ORANGE)║       ${DARK_BLUE} 🗑️  GAME REMOVED 🗑️ ${ORANGE}         ║"
+		@echo "$(ORANGE)║        ${DARK_BLUE} 🗑️  GAME REMOVED 🗑️ ${ORANGE}         ║"
 		@echo "$(ORANGE)╚════════════════════════════════════╝ $(RESET)"
 
 re: fclean all

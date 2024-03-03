@@ -6,24 +6,22 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 16:06:34 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/21 23:12:50 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/03/03 12:07:22 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "map.h"
 
 static int	ft_check_lines(const char *filename, int nlines);
-static int	ft_count_directions(const char *line, char caracter);
+static int	ft_n_dir(const char *line, char caracter);
+static int	ft_check_lines_text(const char *filename, int nlines);
+static int	ft_check_black_in_map(const char *filename, int nlines);
 
 /**
- * Checks if a given file contains a valid map representation.
- *
- * @param filename  The name of the file to check.
- * @return          TRUE if the file is a valid map, FALSE otherwise.
- *
- *  - Validates that the file has at least 9 lines.
- *  - Calls `ft_check_files` to perform more detailed checks.
- *  - Returns FALSE and displays an error message if the file is invalid.
+ * Validates if the map in the file is valid.
+ * 
+ * @param filename The name of the file containing the map.
+ * @return TRUE if the map is valid, FALSE otherwise.
  */
 int	ft_is_valid_map(const char *filename)
 {
@@ -32,24 +30,88 @@ int	ft_is_valid_map(const char *filename)
 	nlines = ft_count_files(filename);
 	if (nlines < 9)
 		return (ft_show_error("Less than 9 lines in file"));
+	if (ft_check_lines_text(filename, nlines) == FALSE)
+		return (FALSE);
+	if (ft_check_black_in_map(filename, nlines) == FALSE)
+		return (FALSE);
 	if (ft_check_lines(filename, nlines) == FALSE)
 		return (FALSE);
 	return (TRUE);
 }
 
 /**
- * Checks the individual lines of a file to ensure they meet map requirements.
- *
- * @param filename  The name of the file to check.
- * @param nlines    The number of lines in the file.
- * @return          TRUE if all lines are valid, FALSE otherwise.
- *
- *  - Opens the file in read-only mode.
- *  - Iterates through each line of the file:
- *      - Skips lines that only contain spaces.
- *      - Calls `ft_is_valid_line` to check if the line is valid.
- *      - Returns FALSE and closes the file if an invalid line is encountered.
- *  - Returns TRUE if all lines are valid.
+ * Validates if the lines in the file contain valid characters.
+ * 
+ * @param filename The name of the file to check.
+ * @param nlines The total number of lines in the file.
+ * @return FALSE if any line contains invalid characters,
+ * 		   TRUE otherwise.
+ */
+static int	ft_check_lines_text(const char *filename, int nlines)
+{
+	char	*line;
+	int		fd;
+	int		pos;
+
+	fd = open(filename, O_RDONLY);
+	pos = 1;
+	line = get_next_line(fd);
+	while (line)
+	{
+		if (!ft_line_all_spaces(line) && \
+			ft_is_valid_line(pos++, line, nlines) == FALSE)
+		{
+			close(fd);
+			free(line);
+			return (FALSE);
+		}
+		free(line);
+		line = get_next_line(fd);
+	}
+	close(fd);
+	return (TRUE);
+}
+
+/**
+ * Validates if there are any blank lines in the map section of the file.
+ * 
+ * @param filename The name of the file to check.
+ * @param nlines The total number of lines in the file.
+ * @return FALSE if a blank line is found in the map section,
+ * 		   TRUE otherwise.
+ */
+static int	ft_check_black_in_map(const char *filename, int nlines)
+{
+	char	*line;
+	int		fd;
+	int		pos;
+
+	fd = open(filename, O_RDONLY);
+	pos = 1;
+	line = get_next_line(fd);
+	while (line)
+	{
+		if (!ft_line_all_spaces(line) && !ft_is_valid_line(pos++, line, nlines))
+			return (FALSE);
+		if (pos > 7 && ft_line_all_spaces(line))
+		{
+			close(fd);
+			free(line);
+			return (ft_show_error("Blank line in map section."));
+		}
+		free(line);
+		line = get_next_line(fd);
+	}
+	close(fd);
+	return (TRUE);
+}
+
+/**
+ * Checks the lines in the map section of the file for valid content.
+ * 
+ * @param filename The name of the file to check.
+ * @param nlines The total number of lines in the file.
+ * @return FALSE if an invalid line is found, TRUE otherwise.
  */
 static int	ft_check_lines(const char *filename, int nlines)
 {
@@ -64,25 +126,12 @@ static int	ft_check_lines(const char *filename, int nlines)
 	count = 0;
 	while (line)
 	{
-		if (!ft_line_all_spaces(line) && \
-			ft_is_valid_line(pos++, line, nlines) == FALSE)
-		{
-			close(fd);
-			free(line);
+		if (!ft_line_all_spaces(line) && !ft_is_valid_line(pos++, line, nlines))
 			return (FALSE);
-		}
 		if (pos > 7)
 		{
-			if (ft_line_all_spaces(line))
-			{
-				close(fd);
-				free(line);
-				return (ft_show_error("Blank line in map section."));
-			}
-			count += ft_count_directions(line, 'N');
-			count += ft_count_directions(line, 'S');
-			count += ft_count_directions(line, 'W');
-			count += ft_count_directions(line, 'E');
+			count += ft_n_dir(line, 'N') + ft_n_dir(line, 'S');
+			count += ft_n_dir(line, 'E') + ft_n_dir(line, 'W');
 		}
 		free(line);
 		line = get_next_line(fd);
@@ -93,19 +142,26 @@ static int	ft_check_lines(const char *filename, int nlines)
 	return (TRUE);
 }
 
-static int	ft_count_directions(const char *line, char caracter)
+/**
+ * Counts the occurrences of a specific character in a string.
+ * 
+ * @param line The string to search for the character.
+ * @param character The character to count occurrences of.
+ * @return The number of occurrences of the character in the string.
+ */
+static int	ft_n_dir(const char *line, char character)
 {
-	int	contador;
+	int	counter;
 	int	i;
 
 	i = 0;
-	contador = 0;
+	counter = 0;
 	while (line[i] != '\0')
 	{
-		if (line[i++] == caracter)
+		if (line[i++] == character)
 		{
-			contador++;
+			counter++;
 		}
 	}
-	return (contador);
+	return (counter);
 }

@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 20:03:29 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/03/02 20:15:16 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/03/03 10:56:56 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,14 +17,14 @@
 static void	ft_ray_calculate_sidedist(t_raysdt *ray, t_gamedata *gdata);
 static void	ft_ray_calculate_walldist(t_raysdt *ray, t_gamedata *gdata);
 static void	ft_ray_calculate_stripe(t_raysdt *ray, t_gamedata *gdata);
-static void	ft_ray_calculate_wallx(t_raysdt *ray, t_gamedata *gdata);
+static void	ft_ray_calculate_wall_x(t_raysdt *ray, t_gamedata *gdata);
 
 void	ft_calculate_dda(t_raysdt *ray, t_gamedata *gdata)
 {
 	ft_ray_calculate_sidedist(ray, gdata);
 	ft_ray_calculate_walldist(ray, gdata);
 	ft_ray_calculate_stripe(ray, gdata);
-	ft_ray_calculate_wallx(ray, gdata);
+	ft_ray_calculate_wall_x(ray, gdata);
 }
 
 static void	ft_ray_calculate_sidedist(t_raysdt *ray, t_gamedata *gdata)
@@ -84,19 +84,19 @@ static void	ft_ray_calculate_walldist(t_raysdt *ray, t_gamedata *gdata)
 
 static void	ft_ray_calculate_stripe(t_raysdt *ray, t_gamedata *gdata)
 {
-	ray->stripStart = -ray->wallheight / 2 + H_RESOL / 2 + gdata->player.pitch;
-	ray->stripEnd = +ray->wallheight / 2 + H_RESOL / 2 + gdata->player.pitch;
-	if (ray->stripStart < 0)
-		ray->stripStart = 0;
-	if (ray->stripEnd >= H_RESOL)
-		ray->stripEnd = H_RESOL - 1;
+	ray->strip_start = -ray->wallheight / 2 + H_RESOL / 2 + gdata->player.pitch;
+	ray->strip_end = +ray->wallheight / 2 + H_RESOL / 2 + gdata->player.pitch;
+	if (ray->strip_start < 0)
+		ray->strip_start = 0;
+	if (ray->strip_end >= H_RESOL)
+		ray->strip_end = H_RESOL - 1;
 }
 
-static void	ft_ray_calculate_wallx(t_raysdt *ray, t_gamedata *gdata)
+static void	ft_ray_calculate_wall_x(t_raysdt *ray, t_gamedata *gdata)
 {
 	if (ray->side == 0)
-		ray->wallX = gdata->player.pos.y + ray->walldist * ray->dir.y;
+		ray->wall_x = gdata->player.pos.y + ray->walldist * ray->dir.y;
 	else
-		ray->wallX = gdata->player.pos.x + ray->walldist * ray->dir.x;
-	ray->wallX -= floor(ray->wallX);
+		ray->wall_x = gdata->player.pos.x + ray->walldist * ray->dir.x;
+	ray->wall_x -= floor(ray->wall_x);
 }

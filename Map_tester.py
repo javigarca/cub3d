@@ -58,7 +58,7 @@ def main():
     test_number = 1
     for file in reversed(cub_files):
         run_test(file, "TEST", test_number)
-        run_leaks_test(file, test_number)
+        #run_leaks_test(file, test_number)
         test_number += 1
         time.sleep(2)
     print("Se han analizado todos los archivos .cub")

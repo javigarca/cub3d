@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 13:45:06 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/03/03 10:48:13 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/03/03 12:53:46 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,6 +24,15 @@
  * @warning ft_free_data(game) dentro de start the gamae func.
  * 
  * @todo write map with define vble
+ * 		1. - chequear leaks @xamayuel OBLIGATORIO
+ * 		2. - arreglar orientacion paredes @javigarc OBLIGATORIO
+ * 		3. - hacer mapas chulos @xamayuel @javigarc
+ * 		4. - sprites @xamayuel @BONUS
+ * 		5. - volcado memoria @xamayuel @NICETOHAVE
+ * 		6. - texturas open/close  @javigarc @BONUS
+ * 		7. - imagen inicial @xamayuel
+ * 		8. - NORMINETTE
+ * 		9. - Arreglar el make para que no tengamos mlx.h en includes @javigarc OBLIGATORIO
  */
 int	main(int argn, char *argv[])
 {

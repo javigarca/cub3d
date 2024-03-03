@@ -53,8 +53,10 @@
 # include "mlx.h"
 # if defined(__APPLE__)
 #  include <key_macos.h>
+#  include "mlx.h"
 # else
 #  include <key_linux.h>
+# include "mlx.h"
 # endif
 
 # define TILE_SIZE 30 // tile size
@@ -96,7 +98,6 @@ typedef struct s_raysdt
 	t_coord	posray; // Posición actual del rayo
 	t_dot	map; // Coordenadas del mapa en el que se encuentra el rayo
 	t_coord	step; // Dirección del paso en X o Y (1 o -1)
-	int		stepSize; // Tamaño del paso
 	t_coord	dir; // Dirección del rayo
 	double	camerax; // Posición X de la cámara en el espacio de la cámara
 	int		wallhit; // Indica si el rayo ha golpeado una pared
@@ -105,12 +106,12 @@ typedef struct s_raysdt
 	int		side; // Lado de la pared golpeada (Norte, Sur, Este, Oeste)
 	int		start; // Punto de inicio para el dibujo de la pared en la pantalla
 	int		end; // Punto final para el dibujo de la pared en la pantalla
-	double	wallX; // where exactly the wall was hit
+	double	wall_x; // where exactly the wall was hit
 	double	texpos;
-	int		texX; // x coordinate on the texture
-	int		texY;
-	int		stripStart;
-	int		stripEnd;
+	int		tex_x; // x coordinate on the texture
+	int		tex_y;
+	int		strip_start;
+	int		strip_end;
 	double	texture_step;
 }				t_raysdt;
 

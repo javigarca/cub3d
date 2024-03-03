@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 19:10:51 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/03/02 19:52:43 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/03/03 10:51:08 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -20,6 +20,8 @@ void		ft_clear_img(t_img *image);
  * Load textures into the game data.
  * 
  * @param gdata - The game data structure
+ * 
+ * @warning hay que arreglar uninitialised values en gdata->textures
  */
 void	ft_load_textures(t_gamedata *gdata)
 {
@@ -39,6 +41,8 @@ void	ft_load_textures(t_gamedata *gdata)
  * @param data - The game data structure
  * @param type - The type of texture (NORTH, SOUTH, EAST, WEST)
  * @return int* - The array of integers representing the texture
+ * 
+ * @warning hay que arreglar uninitialised values en buffer
  */
 static int	*ft_xpm_to_array(t_gamedata *data, int type)
 {
@@ -50,7 +54,7 @@ static int	*ft_xpm_to_array(t_gamedata *data, int type)
 	ft_init_texture_img(data, &tmp, type);
 	buffer = ft_calloc(1, sizeof * buffer * \
 						data->sizee_x[type] * data->sizee_y[type]);
-	if (!buffer) //hay que arreglar uninitialised values
+	if (!buffer)
 		ft_exit_game(data, "Malloc failed. exit");
 	y = 0;
 	while (y < data->sizee_y[type])

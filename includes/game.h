@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 15:27:45 by javigarc          #+#    #+#             */
-/*   Updated: 2024/03/03 10:59:24 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/03/03 12:18:43 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,8 +50,10 @@
 # include "mlx.h"
 # if defined(__APPLE__)
 #  include <key_macos.h>
+#  include "mlx.h"
 # else
 #  include <key_linux.h>
+# include "mlx.h"
 # endif
 
 # define TILE_SIZE 30 // tile size

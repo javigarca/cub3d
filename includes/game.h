@@ -142,6 +142,7 @@ typedef struct s_gamedata
 	int			**textures;
 	int			sizee_x[5];
 	int			sizee_y[5];
+	int			pause;
 }			t_gamedata;
 
 /// game.c///
@@ -192,4 +193,5 @@ void	ft_draw_textures(t_raysdt *ray, t_gamedata *data);
 //
 int		ft_door_system(t_gamedata *gdata, double distance);
 int		ft_toogle_door(t_data *map, t_coord new);
+void ft_game_start_screen(t_gamedata *gdata);
 #endif

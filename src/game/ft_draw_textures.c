@@ -63,15 +63,15 @@ int	ft_get_wall_direction(t_gamedata *gdata, t_raysdt *ray)
 	if (ray->side == 0)
 	{
 		if (ray->dir.x < 0)
-			return (WEST);
+			return (NORTH);
 		else
-			return (EAST);
+			return (SOUTH);
 	}
 	else
 	{
 		if (ray->dir.y > 0)
-			return (SOUTH);
-		return (NORTH);
+			return (EAST);
+		return (WEST);
 	}
 }
 

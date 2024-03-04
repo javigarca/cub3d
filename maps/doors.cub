@@ -1,8 +1,8 @@
-SO textures/other.xpm
+SO textures/minecraft_512/bricks_s.xpm
 
-NO textures/eagle.xpm
-EA textures/bluestone.xpm
-WE textures/colorstone.xpm
+NO textures/minecraft_512/bricks_n.xpm
+EA textures/minecraft_512/bricks.xpm
+WE textures/minecraft_512/cobblestone.xpm
 
 
 

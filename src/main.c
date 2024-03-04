@@ -32,7 +32,7 @@
  * 		6. - texturas open/close  @javigarc @BONUS
  * 		7. - imagen inicial @xamayuel
  * 		8. - NORMINETTE
- * 		9. - Arreglar el make para que no tengamos mlx.h en includes @javigarc OBLIGATORIO
+ *		X9. - Arreglar el make para que no tengamos mlx.h en includes @javigarc OBLIGATORIO -- DONE
  */
 int	main(int argn, char *argv[])
 {

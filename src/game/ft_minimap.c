@@ -25,11 +25,11 @@ static void	ft_minimap_walls_draw(char wall, t_gamedata *gdata, \
  */
 void	ft_minimap(t_gamedata *gdata, t_coord origin)
 {
-	if (gdata->pause == FALSE)
-	{
+	//if (gdata->pause == FALSE)
+	//{
 		ft_minimap_walls(gdata, origin, ft_2d_array_size(gdata->map->map2d));
 		ft_minimap_player(gdata, origin);
-	}
+	//}
 }
 
 /**

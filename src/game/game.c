@@ -47,7 +47,7 @@ static void	ft_gamedata_init(t_gamedata *gdata)
 	gdata->imgadd = mlx_get_data_addr(gdata->img, &gdata->pixel_b, \
 			&gdata->lines_b, &gdata->endian);
 	//gdata->pause = TRUE;
-	gdata->pause = FALSE;
+	gdata->pause = 0;
 }
 
 static void	ft_init_player(t_gamedata *gdata)

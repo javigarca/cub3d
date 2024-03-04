@@ -39,6 +39,9 @@
 # define EAST 2
 # define WEST 3
 # define DOORC 4
+# define DOORO 5
+# define OPEN 0
+# define CLOSE 1
 //
 
 # include <unistd.h>

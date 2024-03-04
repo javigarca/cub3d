@@ -36,7 +36,7 @@ int	key_hook(int keycode, t_gamedata *data)
 		ft_rotate_player(data, -ROTATION_SPEED);
 	if (keycode == K_SP)
 		ft_door_system(data, OFFSET);
-	data->pause = FALSE;
+	//data->pause = FALSE;
 	ft_start_draw(data);
 	ft_show_minimap(data);
 	return (keycode);

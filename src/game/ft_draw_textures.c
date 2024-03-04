@@ -60,6 +60,8 @@ int	ft_get_wall_direction(t_gamedata *gdata, t_raysdt *ray)
 {
 	if (gdata->map->map2d[ray->map.x][ray->map.y] == '2')
 		return (DOORC);
+	if (gdata->map->map2d[ray->map.x][ray->map.y] == 51)
+		return (DOORO);
 	if (ray->side == 0)
 	{
 		if (ray->dir.x < 0)

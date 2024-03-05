@@ -14,7 +14,8 @@
 #include "game_struct.h"
 
 static void	ft_replace_space_zeros(char *str);
-static void ft_replace_end_spaces(char *str);
+static void ft_delete_end_zeros(char *line);
+
 /**
  * Parses lines from a map file and populates a 2D character array.
  *
@@ -38,9 +39,9 @@ void	ft_parse_map_lines(char **map2d, char *filename)
 	line = get_next_line(fd);
 	while (line != NULL)
 	{
-		ft_replace_end_spaces(line);
-		lineclear = ft_strdup(line);
-		ft_replace_space_zeros(lineclear);
+		ft_replace_space_zeros(line);
+		ft_delete_end_zeros(line);
+		lineclear = ft_strdup(line);	
 		if (lineclear[0] == '1' || lineclear[0] == '0' || lineclear[0] == '2')
 		{
 			map2d[count] = ft_strdup(lineclear);
@@ -67,30 +68,23 @@ static void	ft_replace_space_zeros(char *str)
 	while (i < length)
 	{
 		if (str[i] == ' ')
-			str[i] = 'H';
+			str[i] = '0';
 		i++;
 	}
 }
 
-/**
- * Replaces trailing spaces with null terminators in a string.
- *
- * @param line The string to modify.
- */
-static void	ft_replace_end_spaces(char *line)
+static void ft_delete_end_zeros(char *line)
 {
-	int	length;
-	int	i;
+	int i;
 
-	length = ft_strlen(line);
-	while (i < length)
+	i = ft_strlen(line) - 2;
+	while (i > 0)
 	{
-		if (line[i] == ' ')
+		if (line[i] == '0')
 			line[i] = '\0';
 		else
 			break;
 		i--;
-
 	}
 
 }

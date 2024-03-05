@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 13:45:06 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/03/03 12:53:46 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/03/05 19:53:03 by javigarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,14 +25,14 @@
  * 
  * @todo write map with define vble
  * 		1. - chequear leaks @xamayuel OBLIGATORIO
- * 		2. - arreglar orientacion paredes @javigarc OBLIGATORIO
+ * 		X2. - arreglar orientacion paredes @javigarc OBLIGATORIO
  * 		3. - hacer mapas chulos @xamayuel @javigarc
  * 		4. - sprites @xamayuel @BONUS
  * 		5. - volcado memoria @xamayuel @NICETOHAVE
- * 		6. - texturas open/close  @javigarc @BONUS
+ * 		X6. - texturas open/close  @javigarc @BONUS
  * 		7. - imagen inicial @xamayuel
  * 		8. - NORMINETTE
- *		X9. - Arreglar el make para que no tengamos mlx.h en includes @javigarc OBLIGATORIO -- DONE
+ *		X9. - Arreglar make - mlx.h en includes @javigarc OBLIGATORIO -- DONE
  */
 int	main(int argn, char *argv[])
 {

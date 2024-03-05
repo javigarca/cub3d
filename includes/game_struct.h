@@ -15,6 +15,8 @@
 
 # define W_RESOL 800
 # define H_RESOL 600
+# define TEXT_DOOR_OPEN "textures/open128.xpm"
+# define TEXT_DOOR_CLOSE "textures/close128.xpm"
 
 typedef struct s_texture
 {

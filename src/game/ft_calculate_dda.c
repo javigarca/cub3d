@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 20:03:29 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/03/03 10:56:56 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/03/05 23:48:59 by javi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -69,7 +69,8 @@ static void	ft_ray_calculate_walldist(t_raysdt *ray, t_gamedata *gdata)
 			ray->map.y += ray->step.y;
 			ray->side = 1;
 		}
-		if (gdata->map->map2d[ray->map.x][ray->map.y] == '1' || gdata->map->map2d[ray->map.x][ray->map.y] == '2' || gdata->map->map2d[ray->map.x][ray->map.y] == '3')
+		if (gdata->map->map2d[ray->map.x][ray->map.y] > 48 \
+				&& gdata->map->map2d[ray->map.x][ray->map.y] < 52)
 			ray->wallhit = 1;
 		if (ray->side == 0)
 			ray->walldist = ray->sidedist.x - ray->delta.x;

@@ -96,9 +96,9 @@ static void	ft_init_texture_img(t_gamedata *data, t_img *image, int type)
 	else if (type == WEST)
 		texture_path = ft_strdup(data->map->t_we.texture_path);
 	else if (type == DOORC)
-		texture_path = ft_strdup("textures/close128.xpm");
+		texture_path = ft_strdup(TEXT_DOOR_CLOSE);
 	else //if (type == DOORO)
-		texture_path = ft_strdup("textures/open128.xpm");
+		texture_path = ft_strdup(TEXT_DOOR_OPEN);
 	image->img = mlx_xpm_file_to_image(data->mlx, texture_path, \
 										&size_x, &size_y);
 	data->sizee_x[type] = size_x;

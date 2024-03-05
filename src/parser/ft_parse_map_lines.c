@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 16:07:27 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/03/05 21:25:06 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/03/06 00:43:38 by javi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "game_struct.h"
 
 static void	ft_replace_space_zeros(char *str);
-static void ft_delete_end_zeros(char *line);
+static void	ft_delete_end_zeros(char *line);
 
 /**
  * Parses lines from a map file and populates a 2D character array.
@@ -41,7 +41,7 @@ void	ft_parse_map_lines(char **map2d, char *filename)
 	{
 		ft_replace_space_zeros(line);
 		ft_delete_end_zeros(line);
-		lineclear = ft_strdup(line);	
+		lineclear = ft_strdup(line);
 		if (lineclear[0] == '1' || lineclear[0] == '0' || lineclear[0] == '2')
 		{
 			map2d[count] = ft_strdup(lineclear);
@@ -73,9 +73,9 @@ static void	ft_replace_space_zeros(char *str)
 	}
 }
 
-static void ft_delete_end_zeros(char *line)
+static void	ft_delete_end_zeros(char *line)
 {
-	int i;
+	int	i;
 
 	i = ft_strlen(line) - 2;
 	while (i > 0)
@@ -83,8 +83,7 @@ static void ft_delete_end_zeros(char *line)
 		if (line[i] == '0')
 			line[i] = '\0';
 		else
-			break;
+			break ;
 		i--;
 	}
-
 }

@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 13:50:26 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/02/22 11:41:31 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/03/06 00:42:05 by javi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,6 +15,21 @@
 
 static t_data	*ft_init_data(char *filename);
 static t_data	*ft_check_map_data(t_data *data, char *filename);
+static int		ft_parse_door_texture(char *filename);
+
+static int	ft_parse_door_texture(char *filename)
+{
+	int	fd;
+
+	fd = open(filename, O_RDONLY);
+	if (fd != -1)
+	{
+		close(fd);
+		return (TRUE);
+	}
+	else
+		return (FALSE);
+}
 
 /**
  * Parses a map file and populates a `t_data` structure with its contents.
@@ -42,6 +57,9 @@ t_data	*ft_parse_map(char *filename)
 	ft_parse_map_color(&data->c_floor, filename, "F");
 	ft_parse_map_color(&data->c_celing, filename, "C");
 	ft_parse_map_player(&data->p_x, &data->p_y, filename);
+	if ((ft_parse_door_texture(TEXT_DOOR_OPEN) == FALSE) \
+			|| (ft_parse_door_texture(TEXT_DOOR_CLOSE) == FALSE))
+		return (ft_show_parse_error("Missing doors textures."));
 	data->w_map = W_RESOL;
 	data->h_map = H_RESOL;
 	return (ft_check_map_data(data, filename));

@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 16:07:27 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/03/05 16:21:32 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/03/05 21:25:06 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,7 @@
 #include "game_struct.h"
 
 static void	ft_replace_space_zeros(char *str);
-
+static void ft_replace_end_spaces(char *str);
 /**
  * Parses lines from a map file and populates a 2D character array.
  *
@@ -38,6 +38,7 @@ void	ft_parse_map_lines(char **map2d, char *filename)
 	line = get_next_line(fd);
 	while (line != NULL)
 	{
+		ft_replace_end_spaces(line);
 		lineclear = ft_strdup(line);
 		ft_replace_space_zeros(lineclear);
 		if (lineclear[0] == '1' || lineclear[0] == '0' || lineclear[0] == '2')
@@ -66,7 +67,30 @@ static void	ft_replace_space_zeros(char *str)
 	while (i < length)
 	{
 		if (str[i] == ' ')
-			str[i] = '0';
+			str[i] = 'H';
 		i++;
 	}
+}
+
+/**
+ * Replaces trailing spaces with null terminators in a string.
+ *
+ * @param line The string to modify.
+ */
+static void	ft_replace_end_spaces(char *line)
+{
+	int	length;
+	int	i;
+
+	length = ft_strlen(line);
+	while (i < length)
+	{
+		if (line[i] == ' ')
+			line[i] = '\0';
+		else
+			break;
+		i--;
+
+	}
+
 }

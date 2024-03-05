@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 16:44:46 by javi              #+#    #+#             */
-/*   Updated: 2024/03/02 18:58:19 by javi             ###   ########.fr       */
+/*   Updated: 2024/03/05 16:25:39 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,15 +54,15 @@ static void	ft_minimap_walls(t_gamedata *gdata, t_coord origin, int map_lines)
 		start.x = (int)origin.x;
 		while (gdata->map->map2d[cont][col] != '\0')
 		{
-			end.y = start.y + 6;
-			end.x = start.x + 6;
+			end.y = start.y + MINI_SIZE;
+			end.x = start.x + MINI_SIZE;
 			ft_minimap_walls_draw(gdata->map->map2d[cont][col], \
 					gdata, start, end);
-			start.x += 6;
-			end.x += 6;
+			start.x += MINI_SIZE;
+			end.x += MINI_SIZE;
 			col++;
 		}
-		start.y += 6;
+		start.y += MINI_SIZE;
 		cont++;
 	}
 }

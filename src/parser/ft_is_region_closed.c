@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/21 21:36:48 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/03/05 16:08:59 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/03/05 21:11:55 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,16 +123,13 @@ static char	**ft_copy_map_data(t_data data, int rows)
 	while (i < rows)
 	{
 		pantalla[i] = ft_strdup(data.map2d[i]);
-		i++;
-	}
-	i = 0;
-	while (i < rows)
-	{
 		j = 0;
 		while (j < (int)ft_strlen(pantalla[i]))
 		{
-			if (pantalla[i][j] == ' ' || pantalla[i][j] == '2')
+			if (pantalla[i][j] == ' ')
 				pantalla[i][j] = 'H';
+			if (pantalla[i][j] == '2')
+				pantalla[i][j] = '0';
 			j++;
 		}
 		i++;

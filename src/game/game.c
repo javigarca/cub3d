@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 15:27:03 by javigarc          #+#    #+#             */
-/*   Updated: 2024/03/02 20:08:58 by javi             ###   ########.fr       */
+/*   Updated: 2024/03/05 20:00:13 by javigarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ int	start_the_game(t_data *valmap, char *level)
 	gdata.map = valmap;
 	gdata.map_name = level;
 	ft_gamedata_init(&gdata);
-	//ft_game_start_screen(&gdata);
 	ft_load_textures(&gdata);
 	ft_start_draw(&gdata);
 	ft_start_hooks(&gdata);
@@ -46,8 +45,7 @@ static void	ft_gamedata_init(t_gamedata *gdata)
 			gdata->img_size.y);
 	gdata->imgadd = mlx_get_data_addr(gdata->img, &gdata->pixel_b, \
 			&gdata->lines_b, &gdata->endian);
-	//gdata->pause = TRUE;
-	gdata->pause = 0;
+	gdata->pause = FALSE;
 }
 
 static void	ft_init_player(t_gamedata *gdata)

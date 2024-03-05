@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/26 19:30:47 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/03/03 12:07:54 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/03/05 19:59:33 by javigarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,7 +36,6 @@ int	key_hook(int keycode, t_gamedata *data)
 		ft_rotate_player(data, -ROTATION_SPEED);
 	if (keycode == K_SP)
 		ft_door_system(data, OFFSET);
-	//data->pause = FALSE;
 	ft_start_draw(data);
 	ft_show_minimap(data);
 	return (keycode);
@@ -53,7 +52,6 @@ int	key_hook(int keycode, t_gamedata *data)
 void	ft_start_hooks(t_gamedata *gdata)
 {
 	mlx_hook(gdata->win, 2, 0, key_hook, gdata);
-	//mlx_key_hook(gdata->win, key_hook, gdata);
 	mlx_hook(gdata->win, 6, 0, ft_mouse_rotation, gdata);
 	mlx_hook(gdata->win, 17, 0, ft_button_close, gdata);
 }

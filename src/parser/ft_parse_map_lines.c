@@ -82,6 +82,7 @@ static void	ft_replace_end_spaces(char *line)
 	int	length;
 	int	i;
 
+	i = 0;
 	length = ft_strlen(line);
 	while (i < length)
 	{

@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/01 14:13:04 by javi              #+#    #+#             */
-/*   Updated: 2024/03/05 21:44:56 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/03/05 21:54:56 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,8 +26,8 @@ void	ft_sky_floor_draw(t_gamedata *gdata)
 	start.y = 0;
 	end.x = gdata->img_size.x;
 	end.y = gdata->img_size.y / 2 + gdata->player.pitch;
-	ft_light_rect(gdata, start, end, ft_to_color_argb(gdata->map->c_floor));
+	ft_light_rect(gdata, start, end, ft_to_color_argb(gdata->map->c_celing));
 	start.y = end.y;
 	end.y = gdata->img_size.y;
-	ft_light_rect(gdata, start, end, ft_to_color_argb(gdata->map->c_celing));
+	ft_light_rect(gdata, start, end, ft_to_color_argb(gdata->map->c_floor));
 }

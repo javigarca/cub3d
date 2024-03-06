@@ -17,6 +17,7 @@ OBJ_DIR = ../../.objs/game
 LIBFT_DIR = ../libft
 LIBFT = $(LIBFT_DIR)/libft.a
 DESTINATION = ../../libraries/
+MINILIBX_DIR = ../../minilibx_opengl
 
 # Colors
 RESET = \033[0m
@@ -54,6 +55,7 @@ CC = gcc
 HEAD = -I ../../includes \
 	   -I $(LIBFT_DIR) \
 	   -I ../minilibx_linux
+	   -I &(MINILIBX_DIR)
 CFLAGS = -Wall -Werror -Wextra
 LFLAGS = -L ./$(LIBFT_DIR) 
 RM = /bin/rm -rf

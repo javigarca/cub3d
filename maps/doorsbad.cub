@@ -1,7 +1,7 @@
 SO textures/other.xpm
 
-NO textures/eagle.xpm
-EA textures/bluestone.xpm
+EA textures/eagle.xpm
+NO textures/bluestone.xpm
 WE textures/colorstone.xpm
 
 
@@ -17,8 +17,8 @@ F 173,255,47
 
 
 C 173,216,230
-1111111  
-1000011
-1000111
-10E0101
-1111111 
+11111111111111  
+10000000000001
+10N00110000001
+10000000000001
+11111111111111

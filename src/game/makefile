@@ -54,23 +54,23 @@ OBJ = $(patsubst %.c, $(OBJ_DIR)%.o, $(SRC))
 CC = gcc
 HEAD = -I ../../includes \
 	   -I $(LIBFT_DIR) \
-	   -I ../minilibx_linux
-	   -I &(MINILIBX_DIR)
+	   -I ../minilibx_linux \
+	   -I $(MINILIBX_DIR)
 CFLAGS = -Wall -Werror -Wextra
 LFLAGS = -L ./$(LIBFT_DIR) 
 RM = /bin/rm -rf
 
 # Linker flags for final binary linking, not for object files
-LFLAGS = -L$(LIBFT_DIR) -L$(GNL_DIR) -L$(MINILIBX_DIR) -lmlx
-LLFLAGS = -framework OpenGL -framework AppKit
+LFLAGS = -L$(LIBFT_DIR) -L$(GNL_DIR) -L$(MINILIBX_DIR) -lmlx -framework OpenGL -framework AppKit
 
 # Remove command
 RM = /bin/rm -rf
 
 all: $(NAME)
 
-$(NAME): $(OBJ) $(LIBFT) 
+$(NAME): $(OBJ) $(LIBFT) $(MINILIBX)
 		@${MAKE} -C ../libft 
+		@${MAKE} -C $(MINILIBX_DIR) 
 		@ar rcs ${DESTINATION}${NAME} ${OBJ}  ../../.objs/libft/*.o 
 
 $(OBJ_DIR)/%.o: %.c
@@ -83,9 +83,13 @@ $(OBJ_DIR)/%.o: %.c
 $(LIBFT):
 		@make -C $(LIBFT_DIR) 
 
+$(MINILIBX):
+		@make -C $(MINILIBX_DIR) 
+
 		
 clean:
 		@$(RM) $(OBJ_DIR)
+		make clean -C $(MINILIBX_DIR)
 		sleep .1
 		clear
 

@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 13:45:06 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/03/05 19:53:03 by javigarc         ###   ########.fr       */
+/*   Updated: 2024/03/06 19:47:32 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,18 +21,8 @@
  * @param argn Number of arguments passed to the program
  * @param argv Array of strings containing the arguments
  * 
- * @warning ft_free_data(game) dentro de start the gamae func.
  * 
- * @todo write map with define vble
- * 		1. - chequear leaks @xamayuel OBLIGATORIO
- * 		X2. - arreglar orientacion paredes @javigarc OBLIGATORIO
- * 		3. - hacer mapas chulos @xamayuel @javigarc
- * 		4. - sprites @xamayuel @BONUS
- * 		5. - volcado memoria @xamayuel @NICETOHAVE
- * 		X6. - texturas open/close  @javigarc @BONUS
- * 		7. - imagen inicial @xamayuel
- * 		8. - NORMINETTE
- *		X9. - Arreglar make - mlx.h en includes @javigarc OBLIGATORIO -- DONE
+ * 		
  */
 int	main(int argn, char *argv[])
 {

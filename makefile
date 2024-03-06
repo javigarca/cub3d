@@ -140,12 +140,16 @@ mlx:
 		@make -C $(MLX_DIR)	
 clean:
 		@$(RM) $(OBJ_DIR)
+		@echo "Limpiando MiniLibX..."
+		@make -C $(MLX_DIR) clean
 		sleep .1
 		clear
 
 fclean: clean
 		@$(RM) libraries/*.a
 		@$(RM) $(NAME)
+		@echo "Limpiando MiniLibX (fclean)..."
+		@make -C $(MLX_DIR) clean
 		sleep .1
 		clear
 		@echo "$(BLUE)╔════════════════════════════════════╗"

@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/18 12:15:28 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/03/06 12:12:58 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/03/06 13:24:56 by javigarc         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,6 @@ int	ft_is_valid_inter_map_line(const char *line)
 		free(map_line);
 		return (ft_show_error("Incorrect map line."));
 	}
-		
 	free(map_line);
 	return (TRUE);
 }

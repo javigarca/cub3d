@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 16:07:27 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/03/06 00:43:38 by javi             ###   ########.fr       */
+/*   Updated: 2024/03/06 19:22:48 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -81,7 +81,7 @@ static void	ft_delete_end_zeros(char *line)
 	while (i > 0)
 	{
 		if (line[i] == '0')
-			line[i] = '\0';
+			line[i] = '\n';
 		else
 			break ;
 		i--;

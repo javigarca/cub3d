@@ -1,22 +1,22 @@
-SO textures/minecraft_512/acacia_planks.xpm
+SO textures/minecraft_512/bricks.xpm
 
-NO textures/minecraft_512/basalt_top_s.xpm
-EA textures/minecraft_512/acacia_planks.xpm
-WE textures/minecraft_128/door.xpm
-
-
+NO textures/minecraft_512/bricks_s.xpm
+EA textures/minecraft_512/basalt_top_s.xpm
+WE textures/minecraft_512/basalt_top.xpm
 
 
 
 
 
-F 70,70,70
+
+
+F 43,104,45
 
 
 
 
 
-C 150,235,137
+C 0,170,220
 1111111111111111111111111    
 1001100001000000000000001
 10001E0000100000000000001

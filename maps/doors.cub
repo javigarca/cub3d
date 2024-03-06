@@ -1,22 +1,22 @@
-SO textures/minecraft_512/bricks_s.xpm
+SO textures/bricks.xpm
 
-NO textures/minecraft_512/bricks_n.xpm
-EA textures/minecraft_512/bricks.xpm
-WE textures/minecraft_512/cobblestone.xpm
-
-
+NO textures/bricks_s.xpm
+EA textures/basalt_top_s.xpm
+WE textures/basalt_top.xpm
 
 
 
 
 
-F 0,0,0
+
+
+F 43,104,45
 
 
 
 
 
-C 173,216,230
+C 0,170,220
 11111111111111111111111
 10000000011000010000011
 10000000020000010000011

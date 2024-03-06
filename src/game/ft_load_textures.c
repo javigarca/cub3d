@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 19:10:51 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/03/06 12:34:42 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/03/06 20:09:39 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,7 +22,6 @@ static char	*ft_init_type_texture(t_gamedata *data, int type);
  * 
  * @param gdata - The game data structure
  * 
- * @warning hay que arreglar uninitialised values en gdata->textures
  */
 void	ft_load_textures(t_gamedata *gdata)
 {
@@ -44,7 +43,6 @@ void	ft_load_textures(t_gamedata *gdata)
  * @param type - The type of texture (NORTH, SOUTH, EAST, WEST)
  * @return int* - The array of integers representing the texture
  * 
- * @warning hay que arreglar uninitialised values en buffer
  */
 static int	*ft_xpm_to_array(t_gamedata *data, int type)
 {
@@ -94,7 +92,7 @@ static void	ft_init_texture_img(t_gamedata *data, t_img *image, int type)
 	data->sizee_x[type] = size_x;
 	data->sizee_y[type] = size_y;
 	if (image->img == NULL)
-		printf("ERROR reading xmp");
+		ft_exit_game(data, "Error reading xpm file. exit");
 	image->addr = (int *)mlx_get_data_addr(image->img, &image->pixel_bits, \
 											&image->size_line, &image->endian);
 	free(texture_path);

@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/19 13:50:26 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/03/06 00:42:05 by javi             ###   ########.fr       */
+/*   Updated: 2024/03/06 20:02:12 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -59,7 +59,10 @@ t_data	*ft_parse_map(char *filename)
 	ft_parse_map_player(&data->p_x, &data->p_y, filename);
 	if ((ft_parse_door_texture(TEXT_DOOR_OPEN) == FALSE) \
 			|| (ft_parse_door_texture(TEXT_DOOR_CLOSE) == FALSE))
+	{
+		ft_free_data(data);
 		return (ft_show_parse_error("Missing doors textures."));
+	}
 	data->w_map = W_RESOL;
 	data->h_map = H_RESOL;
 	return (ft_check_map_data(data, filename));

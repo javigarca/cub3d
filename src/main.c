@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/17 13:45:06 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/03/06 19:47:32 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/03/06 19:50:09 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ int	main(int argn, char *argv[])
 			game = ft_parse_map(argv[1]);
 			if (game != NULL)
 			{
+				printf(KBLU"Starting Game  ...\n"KNRM"");
 				start_the_game(game, argv[1]);
 			}
 		}

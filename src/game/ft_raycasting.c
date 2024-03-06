@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 11:24:41 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/03/03 10:56:56 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/03/06 20:10:49 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,7 +25,7 @@ void	ft_raycasting(t_gamedata *gdata)
 
 	ray = ft_calloc(1, sizeof (t_raysdt));
 	if (!ray)
-		printf("Error: failed to allocate memory for raycasting");
+		ft_exit_game(gdata, "Ray not allocated. exit");
 	ft_sky_floor_draw(gdata);
 	while (ray->pix < gdata->img_size.x)
 	{

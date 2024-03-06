@@ -58,7 +58,7 @@
 #  include "../minilibx_opengl/mlx.h"
 # else
 #  include <key_linux.h>
-# include "../minilibx_linux/mlx.h"
+#  include "../minilibx_linux/mlx.h"
 # endif
 
 # define TILE_SIZE 30 // tile size
@@ -71,6 +71,7 @@
 # define MOVE_SPEED 0.25	// player speed
 # define STRAFE_SPEED 0.25	// player strafe speed
 # define OFFSET .3 // para el buffer de colision
+# define FACTOR .66
 
 typedef struct s_dot
 {
@@ -195,5 +196,7 @@ void	ft_draw_textures(t_raysdt *ray, t_gamedata *data);
 //
 int		ft_door_system(t_gamedata *gdata, double distance);
 int		ft_toogle_door(t_data *map, t_coord new);
-void ft_game_start_screen(t_gamedata *gdata);
+void	ft_calculate_walldist_and_height(t_raysdt *ray, t_gamedata *gdata);
+int		ft_is_wall_hit(t_gamedata *gdata, t_raysdt *ray);
+void	ft_update_sidedist_and_map(t_raysdt *ray);
 #endif

@@ -6,7 +6,7 @@
 #    By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2022/07/13 15:38:08 by javigarc          #+#    #+#              #
-#    Updated: 2024/03/04 00:53:15 by javi             ###   ########.fr        #
+#    Updated: 2024/03/06 01:19:45 by javi             ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -47,7 +47,7 @@ SRC = $(SRC_DIR)/game.c\
 	$(SRC_DIR)/ft_calculate_dda.c\
 	$(SRC_DIR)/ft_draw_textures.c\
 	$(SRC_DIR)/ft_door_system.c\
-	$(SRC_DIR)/ft_game_start_screen.c \
+	$(SRC_DIR)/ft_calculate_dda2.c \
 
 OBJ = $(patsubst %.c, $(OBJ_DIR)%.o, $(SRC))
 CC = gcc

@@ -6,13 +6,11 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/03/02 20:03:29 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/03/05 23:48:59 by javi             ###   ########.fr       */
+/*   Updated: 2024/03/06 01:25:47 by javi             ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "game.h"
-
-#define FACTOR .66
 
 static void	ft_ray_calculate_sidedist(t_raysdt *ray, t_gamedata *gdata);
 static void	ft_ray_calculate_walldist(t_raysdt *ray, t_gamedata *gdata);
@@ -55,32 +53,13 @@ static void	ft_ray_calculate_sidedist(t_raysdt *ray, t_gamedata *gdata)
 
 static void	ft_ray_calculate_walldist(t_raysdt *ray, t_gamedata *gdata)
 {
-	while (ray->wallhit == 0)
+	while (!ray->wallhit)
 	{
-		if (ray->sidedist.x < ray->sidedist.y)
-		{
-			ray->sidedist.x += ray->delta.x;
-			ray->map.x += ray->step.x;
-			ray->side = 0;
-		}
-		else
-		{
-			ray->sidedist.y += ray->delta.y;
-			ray->map.y += ray->step.y;
-			ray->side = 1;
-		}
-		if (gdata->map->map2d[ray->map.x][ray->map.y] > 48 \
-				&& gdata->map->map2d[ray->map.x][ray->map.y] < 52)
-			ray->wallhit = 1;
-		if (ray->side == 0)
-			ray->walldist = ray->sidedist.x - ray->delta.x;
-		else
-			ray->walldist = ray->sidedist.y - ray->delta.y;
+		ft_update_sidedist_and_map(ray);
+		ray->wallhit = ft_is_wall_hit(gdata, ray);
+		if (ray->wallhit)
+			ft_calculate_walldist_and_height(ray, gdata);
 	}
-	if (ray->walldist == 0)
-		ray->wallheight = FACTOR * gdata->img_size.y ;
-	else
-		ray->wallheight = FACTOR * gdata->img_size.y / ray->walldist;
 }
 
 static void	ft_ray_calculate_stripe(t_raysdt *ray, t_gamedata *gdata)

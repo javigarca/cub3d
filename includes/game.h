@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 15:27:45 by javigarc          #+#    #+#             */
-/*   Updated: 2024/03/06 13:03:27 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/03/06 19:44:06 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,6 @@
 #  include "../minilibx_linux/mlx.h"
 # endif
 
-# define TILE_SIZE 30 // tile size
 # define MINI_SIZE 6 // tile size in minimap
 # define MINI_RADIUS 3 // radius for the player in minimap
 # define FOV 60 // field of view

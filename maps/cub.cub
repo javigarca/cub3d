@@ -1,8 +1,8 @@
-SO textures/minecraft_512/bricks.xpm
+SO textures/bricks.xpm
 
-NO textures/minecraft_512/bricks_s.xpm
-EA textures/minecraft_512/basalt_top_s.xpm
-WE textures/minecraft_512/basalt_top.xpm
+NO textures/bricks_s.xpm
+EA textures/basalt_top_s.xpm
+WE textures/basalt_top.xpm
 
 
 

@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/29 12:50:58 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/03/02 19:59:15 by javi             ###   ########.fr       */
+/*   Updated: 2024/03/06 12:23:56 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -47,6 +47,8 @@ void	ft_free_gamedata(t_gamedata *data)
 	free(data->textures[1]);
 	free(data->textures[2]);
 	free(data->textures[3]);
+	free(data->textures[4]);
+	free(data->textures[5]);
 	free(data->textures);
 	ft_free_data_map(data->map);
 	exit(0);

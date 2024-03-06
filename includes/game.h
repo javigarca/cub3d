@@ -70,8 +70,8 @@
 # define MOUSE_VERTICAL_SPEED 0.7 // mouse rotation speed
 # define MOVE_SPEED 0.25	// player speed
 # define STRAFE_SPEED 0.25	// player strafe speed
-# define OFFSET .3 // para el buffer de colision
-# define FACTOR .66
+# define OFFSET 0.6 // door collision buffer
+# define FACTOR .66 // ray factor
 
 typedef struct s_dot
 {

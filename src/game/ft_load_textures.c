@@ -15,6 +15,7 @@
 static int	*ft_xpm_to_array(t_gamedata *data, int type);
 static void	ft_init_texture_img(t_gamedata *data, t_img *image, int type);
 void		ft_clear_img(t_img *image);
+static char	*ft_init_type_texture(t_gamedata *data, int type);
 
 /**
  * Load textures into the game data.
@@ -26,7 +27,7 @@ void		ft_clear_img(t_img *image);
 void	ft_load_textures(t_gamedata *gdata)
 {
 	gdata->textures = malloc(sizeof(int *) * 7);
-	if (!gdata->textures) //hay que arreglar uninitialised values
+	if (!gdata->textures)
 		ft_exit_game(gdata, "Malloc failed. exit");
 	gdata->textures[NORTH] = ft_xpm_to_array(gdata, NORTH);
 	gdata->textures[SOUTH] = ft_xpm_to_array(gdata, SOUTH);
@@ -87,18 +88,7 @@ static void	ft_init_texture_img(t_gamedata *data, t_img *image, int type)
 	int		size_y;
 
 	ft_clear_img(image);
-	if (type == NORTH)
-		texture_path = ft_strdup(data->map->t_no.texture_path);
-	else if (type == SOUTH)
-		texture_path = ft_strdup(data->map->t_so.texture_path);
-	else if (type == EAST)
-		texture_path = ft_strdup(data->map->t_ea.texture_path);
-	else if (type == WEST)
-		texture_path = ft_strdup(data->map->t_we.texture_path);
-	else if (type == DOORC)
-		texture_path = ft_strdup(TEXT_DOOR_CLOSE);
-	else //if (type == DOORO)
-		texture_path = ft_strdup(TEXT_DOOR_OPEN);
+	texture_path = ft_init_type_texture(data, type);
 	image->img = mlx_xpm_file_to_image(data->mlx, texture_path, \
 										&size_x, &size_y);
 	data->sizee_x[type] = size_x;
@@ -109,6 +99,22 @@ static void	ft_init_texture_img(t_gamedata *data, t_img *image, int type)
 											&image->size_line, &image->endian);
 	free(texture_path);
 	return ;
+}
+
+static char	*ft_init_type_texture(t_gamedata *data, int type)
+{
+	if (type == NORTH)
+		return (ft_strdup(data->map->t_no.texture_path));
+	else if (type == SOUTH)
+		return (ft_strdup(data->map->t_so.texture_path));
+	else if (type == EAST)
+		return (ft_strdup(data->map->t_ea.texture_path));
+	else if (type == WEST)
+		return (ft_strdup(data->map->t_we.texture_path));
+	else if (type == DOORC)
+		return (ft_strdup(TEXT_DOOR_CLOSE));
+	else
+		return (ft_strdup(TEXT_DOOR_OPEN));
 }
 
 /**

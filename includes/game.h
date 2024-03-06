@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2022/11/30 15:27:45 by javigarc          #+#    #+#             */
-/*   Updated: 2024/03/04 00:57:09 by javi             ###   ########.fr       */
+/*   Updated: 2024/03/06 13:03:27 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -34,8 +34,8 @@
 # define MINI_CLR_O 0x7FFF00
 
 // defines para gestion de texturas
-# define NORTH 0
-# define SOUTH 1
+# define NORTH 1
+# define SOUTH 0
 # define EAST 2
 # define WEST 3
 # define DOORC 4
@@ -143,8 +143,8 @@ typedef struct s_gamedata
 	t_dot		img_size;
 	t_player	player;
 	int			**textures;
-	int			sizee_x[5];
-	int			sizee_y[5];
+	int			sizee_x[6];
+	int			sizee_y[6];
 	int			pause;
 }			t_gamedata;
 

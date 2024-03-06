@@ -6,7 +6,7 @@
 #    By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/02/17 14:24:44 by xamayuel          #+#    #+#              #
-#    Updated: 2024/02/29 17:59:37 by javi             ###   ########.fr        #
+#    Updated: 2024/03/06 11:53:34 by javigarc         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -100,7 +100,7 @@ minilibx:
 		echo "Generando para Linux..."; \
 		make -C minilibx_linux/; \
 	else \
-		make -C minilibx_opengl/; \
+		cd $(MLX_DIR) && make -C.; \
 	fi
 	
 

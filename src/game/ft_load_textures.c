@@ -6,7 +6,7 @@
 /*   By: xamayuel <xamayuel@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/02/27 19:10:51 by xamayuel          #+#    #+#             */
-/*   Updated: 2024/03/03 10:51:08 by xamayuel         ###   ########.fr       */
+/*   Updated: 2024/03/06 12:34:42 by xamayuel         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -29,12 +29,12 @@ void	ft_load_textures(t_gamedata *gdata)
 	gdata->textures = malloc(sizeof(int *) * 7);
 	if (!gdata->textures)
 		ft_exit_game(gdata, "Malloc failed. exit");
+	gdata->textures[DOORC] = ft_xpm_to_array(gdata, DOORC);
+	gdata->textures[DOORO] = ft_xpm_to_array(gdata, DOORO);
 	gdata->textures[NORTH] = ft_xpm_to_array(gdata, NORTH);
 	gdata->textures[SOUTH] = ft_xpm_to_array(gdata, SOUTH);
 	gdata->textures[EAST] = ft_xpm_to_array(gdata, EAST);
 	gdata->textures[WEST] = ft_xpm_to_array(gdata, WEST);
-	gdata->textures[DOORC] = ft_xpm_to_array(gdata, DOORC);
-	gdata->textures[DOORO] = ft_xpm_to_array(gdata, DOORO);
 }
 
 /**
